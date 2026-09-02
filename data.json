@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-02T15:38:51.193Z",
+  "generatedAt": "2026-09-02T15:42:39.131Z",
   "totals": {
     "stars": 294,
     "forks": 25,
@@ -8,6 +8,7 @@
     "last30": 0
   },
   "bio": "Full-Stack Developer × Product Builder × Problem Solver",
+  "growthSource": "daily-snapshots",
   "stats": {
     "relay": {
       "stars": 169,
@@ -59,7 +60,12 @@
       "description": "Mova  in motion, not in perfection"
     }
   },
-  "growth": [],
+  "growth": [
+    {
+      "m": "2026-09-02",
+      "v": 294
+    }
+  ],
   "timeline": [
     {
       "repo": "relay",
