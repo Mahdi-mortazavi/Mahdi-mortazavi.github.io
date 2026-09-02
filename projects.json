@@ -1,64 +1,421 @@
 {
-  "person": {
-    "name": "Mahdi Mortazavi",
-    "nameFa": "مهدی مرتضوی",
-    "url": "https://mahdi-mortazavi.github.io/",
-    "role": "Full-Stack Developer · Product Builder · Problem Solver",
-    "sameAs": [
-      "https://github.com/Mahdi-mortazavi",
-      "https://t.me/Mahdi_mortazavi1",
-      "https://t.me/Startup_legend"
-    ]
-  },
-  "projects": [
-    { "slug":"relay","repo":"relay","name":"relay","icon":"📡","accent":"#2AABEE",
-      "tagline":"Share your connection. Instantly.",
-      "taglineFa":"اشتراک آنیِ اینترنت بین اندروید و ویندوز",
-      "os":"Android, Windows","lang":"C#",
-      "desc":"Share your phone's internet with your PC — Android to Windows reverse tethering over an encrypted WireGuard tunnel. No root, no server, no account.",
-      "descFa":"اینترنت گوشی‌تان را با کامپیوتر به اشتراک بگذارید — تانل رمزنگاری‌شده‌ی WireGuard، بدون روت، بدون سرور و بدون حساب کاربری.",
-      "tags":["Local-only","No cloud","Private by design","WireGuard"] },
-    { "slug":"flow","repo":"flow","name":"Flow — تک‌نقطه","icon":"◉","accent":"#0A84FF",
-      "tagline":"One daily boulder. Crash-proof focus.",
-      "taglineFa":"تمرکز، عادت و کارِ عمیق — مبتنی بر علم رفتار",
-      "os":"Android","lang":"Dart / Flutter",
-      "desc":"An offline-first Persian/RTL focus, habit and deep-work app built on behavioral science: one daily boulder, a crash-proof focus timer, habits that recover after failure, and a judgment-free stats mirror.",
-      "descFa":"اپ فارسیِ مدیریت تمرکز، عادت و زمان — کاملاً آفلاین، با تایمر تمرکزِ مقاوم و عادت‌هایی که بعد از شکست بازیابی می‌شوند.",
-      "tags":["Offline-first","Persian / RTL","Behavioral science","Riverpod"] },
-    { "slug":"sooda","repo":"sooda","name":"sooda","icon":"📊","accent":"#5E5CE6",
-      "tagline":"Built in the open.",
-      "taglineFa":"ساخته‌شده به‌صورت متن‌باز",
-      "os":"Web","lang":"TypeScript",
-      "desc":"An open-source TypeScript project — see the repository for the current feature set and roadmap.",
-      "descFa":"پروژه‌ی متن‌بازِ تایپ‌اسکریپت — برای امکانات و نقشه‌ی راه به ریپازیتوری مراجعه کنید.",
-      "tags":["TypeScript","Open source","Web"] },
-    { "slug":"nava","repo":"app","name":"Nava","icon":"🍎","accent":"#FF9F0A",
-      "tagline":"The Art of Reduction.",
-      "taglineFa":"هنرِ حذفِ اضافات",
-      "os":"Android, iOS","lang":"Dart / Flutter",
-      "desc":"A Jony Ive-inspired minimalist productivity app — squircle design, haptic feedback and calm breathing animations. Pure, intentional, distraction-free.",
-      "descFa":"اپ بهره‌وریِ مینیمال با الهام از طراحی اپل — طراحی اسکوئرکل، بازخورد لمسی و انیمیشن‌های آرام.",
-      "tags":["Squircle design","Haptics","Minimal","Flutter"] },
-    { "slug":"purify","repo":"purify","name":"purify","icon":"🧹","accent":"#30D158",
-      "tagline":"Reclaim your disk. Zero friction.",
-      "taglineFa":"پاک‌سازی هوشمند و فوق‌سریع دیسک ویندوز",
-      "os":"Windows","lang":"Rust + Tauri",
-      "desc":"An ultra-fast, intelligent disk-cleanup utility for Windows, built with Rust and Tauri. Safely reclaim storage with zero cognitive friction — native and blazing fast.",
-      "descFa":"ابزار فوق‌سریع و هوشمند پاک‌سازی دیسک برای ویندوز، ساخته‌شده با راست و توری — امن، نیتیو و بسیار سریع.",
-      "tags":["Ultra-fast","Native","MIT License","Rust"] },
-    { "slug":"overrun","repo":"overrun","name":"overrun","icon":"🎮","accent":"#FF375F",
-      "tagline":"Real-time arena, at the edge.",
-      "taglineFa":"بازی آنلاین بلادرنگ روی لبه‌ی شبکه",
-      "os":"Web","lang":"JavaScript",
-      "desc":"A real-time multiplayer arena shooter running on Cloudflare Workers and Durable Objects — low-latency state at the edge.",
-      "descFa":"شوتر آرنای چندنفره‌ی بلادرنگ روی Cloudflare Workers و Durable Objects — با تأخیر بسیار کم.",
-      "tags":["Cloudflare Workers","Durable Objects","Real-time","Multiplayer"] },
-    { "slug":"mova","repo":"Mova","name":"Mova","icon":"🌀","accent":"#30D1D0",
-      "tagline":"In motion, not in perfection.",
-      "taglineFa":"در حرکت، نه در کمال",
-      "os":"Web","lang":"TypeScript",
-      "desc":"An experiment in shipping over polishing — built in TypeScript.",
-      "descFa":"تمرینی در «منتشر کردن به‌جای بی‌نقص کردن» — با تایپ‌اسکریپت.",
-      "tags":["TypeScript","Experiment"] }
+ "person": {
+  "name": "Mahdi Mortazavi",
+  "nameFa": "مهدی مرتضوی",
+  "url": "https://mahdi-mortazavi.github.io/",
+  "role": "Full-Stack Developer · Product Builder · Problem Solver",
+  "sameAs": [
+   "https://github.com/Mahdi-mortazavi",
+   "https://t.me/Mahdi_mortazavi1",
+   "https://t.me/Startup_legend"
   ]
+ },
+ "projects": [
+  {
+   "slug": "relay",
+   "repo": "relay",
+   "name": "relay",
+   "icon": "📡",
+   "accent": "#2AABEE",
+   "tagline": "Share your connection. Instantly.",
+   "taglineFa": "اشتراک آنیِ اینترنت بین اندروید و ویندوز",
+   "os": "Android, Windows",
+   "lang": "C#",
+   "desc": "Share your phone's internet with your PC — Android to Windows reverse tethering over an encrypted WireGuard tunnel. No root, no server, no account.",
+   "descFa": "اینترنت گوشی‌تان را با کامپیوتر به اشتراک بگذارید — تانل رمزنگاری‌شده‌ی WireGuard، بدون روت، بدون سرور و بدون حساب کاربری.",
+   "tags": [
+    "Local-only",
+    "No cloud",
+    "Private by design",
+    "WireGuard"
+   ],
+   "media": [
+    {
+     "type": "video",
+     "mp4": "/assets/shots/relay/relay-demo.mp4",
+     "webm": "/assets/shots/relay/relay-demo.webm",
+     "poster": "/assets/shots/relay/relay-demo-poster.webp",
+     "w": 420,
+     "h": 450,
+     "alt": "Screen recording of Relay pairing: the PC recognises the phone and its two-digit code, one click connects, and the phone reports one device connected.",
+     "altFa": "ضبط صفحه‌ی جفت‌شدن Relay: کامپیوتر گوشی و کد دورقمی‌اش را می‌شناسد، یک کلیک وصل می‌کند و گوشی می‌گوید یک دستگاه متصل است.",
+     "caption": "Pairing end to end, in twelve seconds — no account, no cable.",
+     "captionFa": "جفت‌شدن از صفر تا صد، در دوازده ثانیه — بدون حساب کاربری، بدون کابل."
+    },
+    {
+     "type": "image",
+     "src": "/assets/shots/relay/android.webp",
+     "w": 720,
+     "h": 1560,
+     "thumb": "/assets/shots/relay/android-800.webp",
+     "alt": "Relay on Android: one device connected, 4.2 GB up and 3.0 GB down, the two-digit pairing code, and a QR code.",
+     "altFa": "Relay روی اندروید: یک دستگاه متصل، ۴٫۲ گیگابایت ارسال و ۳٫۰ گیگابایت دریافت، کد دورقمی جفت‌شدن، و کد QR.",
+     "caption": "The phone side: live traffic, a two-digit code, and a QR for the PC to scan.",
+     "captionFa": "سمت گوشی: ترافیک زنده، یک کد دورقمی، و یک QR که کامپیوتر اسکن می‌کند."
+    },
+    {
+     "type": "image",
+     "src": "/assets/shots/relay/windows.webp",
+     "w": 357,
+     "h": 346,
+     "thumb": "/assets/shots/relay/windows-800.webp",
+     "alt": "Relay on Windows: a compact window offering Scan QR or Enter Code Manually.",
+     "altFa": "Relay روی ویندوز: پنجره‌ای جمع‌وجور با دو گزینه‌ی اسکن QR یا وارد کردن دستی کد.",
+     "caption": "The PC side stays out of the way — it lives in the system tray.",
+     "captionFa": "سمت کامپیوتر مزاحم نمی‌شود — در سینی سیستم می‌نشیند."
+    }
+   ]
+  },
+  {
+   "slug": "flow",
+   "repo": "flow",
+   "name": "Flow — تک‌نقطه",
+   "icon": "◉",
+   "accent": "#0A84FF",
+   "tagline": "One daily boulder. Crash-proof focus.",
+   "taglineFa": "تمرکز، عادت و کارِ عمیق — مبتنی بر علم رفتار",
+   "os": "Android",
+   "lang": "Dart / Flutter",
+   "desc": "An offline-first Persian/RTL focus, habit and deep-work app built on behavioral science: one daily boulder, a crash-proof focus timer, habits that recover after failure, and a judgment-free stats mirror.",
+   "descFa": "اپ فارسیِ مدیریت تمرکز، عادت و زمان — کاملاً آفلاین، با تایمر تمرکزِ مقاوم و عادت‌هایی که بعد از شکست بازیابی می‌شوند.",
+   "tags": [
+    "Offline-first",
+    "Persian / RTL",
+    "Behavioral science",
+    "Riverpod"
+   ],
+   "media": [
+    {
+     "type": "image",
+     "src": "/assets/shots/flow/today.webp",
+     "w": 1080,
+     "h": 2400,
+     "thumb": "/assets/shots/flow/today-800.webp",
+     "alt": "Flow's Today screen in Persian: the day's single boulder with a start-focus button, habits, and free time.",
+     "altFa": "صفحه‌ی امروزِ فلو: تخته‌سنگِ یگانه‌ی روز با دکمه‌ی شروع تمرکز، عادت‌ها، و وقت آزاد.",
+     "caption": "Today asks for one boulder — not a list you will never finish.",
+     "captionFa": "امروز فقط یک تخته‌سنگ می‌خواهد — نه فهرستی که هرگز تمام نمی‌شود."
+    },
+    {
+     "type": "image",
+     "src": "/assets/shots/flow/focus.webp",
+     "w": 1080,
+     "h": 2400,
+     "thumb": "/assets/shots/flow/focus-800.webp",
+     "alt": "A focus session running against the day's target, a ring counting down from twenty-five minutes.",
+     "altFa": "جلسه‌ی تمرکز روی هدف روز، با حلقه‌ای که از بیست‌وپنج دقیقه می‌شمارد.",
+     "caption": "One target on screen, and a ring that only counts down.",
+     "captionFa": "یک هدف روی صفحه، و حلقه‌ای که فقط می‌شمارد."
+    },
+    {
+     "type": "image",
+     "src": "/assets/shots/flow/interrupt.webp",
+     "w": 1080,
+     "h": 2400,
+     "thumb": "/assets/shots/flow/interrupt-800.webp",
+     "alt": "A sheet asking what broke the session, with chips for tiredness, people, phone, and intrusive thoughts.",
+     "altFa": "شیتی که می‌پرسد چه چیزی جلسه را قطع کرد، با چیپ‌های خستگی، آدم‌ها، موبایل و فکر مزاحم.",
+     "caption": "When focus breaks, Flow captures why instead of losing it.",
+     "captionFa": "وقتی تمرکز می‌شکند، فلو دلیلش را ثبت می‌کند نه اینکه گمش کند."
+    },
+    {
+     "type": "image",
+     "src": "/assets/shots/flow/mirror.webp",
+     "w": 1080,
+     "h": 2400,
+     "thumb": "/assets/shots/flow/mirror-800.webp",
+     "alt": "A weekly review: deep-work hours over seven days and a thirty-day pattern of what interrupts most.",
+     "altFa": "بازبینی هفتگی: ساعت‌های کار عمیق در هفت روز و الگوی سی‌روزه‌ی بیشترین عامل قطع تمرکز.",
+     "caption": "The Mirror shows the week as it was — including the zero-hour days.",
+     "captionFa": "آینه هفته را همان‌طور که بود نشان می‌دهد — از جمله روزهای صفرساعته."
+    }
+   ]
+  },
+  {
+   "slug": "sooda",
+   "repo": "sooda",
+   "name": "sooda",
+   "icon": "📊",
+   "accent": "#5E5CE6",
+   "tagline": "Profit math, crystal clear.",
+   "taglineFa": "سود و قیمت، شفاف مثل شیشه",
+   "os": "Web, iOS, Android (PWA)",
+   "lang": "TypeScript",
+   "desc": "A bilingual profit, selling-price and discount calculator for shopkeepers and small businesses. Enter a purchase price and the margin you want, and Sooda gives you the selling price and the profit. It installs like an app, works offline, and everything stays on your device — no server, no tracking, no analytics.",
+   "descFa": "ماشین‌حسابِ دوزبانه‌ی سود، قیمت فروش و تخفیف برای کسبه و کسب‌وکارهای کوچک. قیمت خرید و درصد سودی که می‌خواهی را وارد کن، سودا قیمت فروش و مبلغ سود را می‌دهد. مثل یک اپ نصب می‌شود، آفلاین کار می‌کند، و همه‌چیز روی دستگاه خودت می‌ماند — بدون سرور، بدون ردیابی، بدون آنالیتیکس.",
+   "tags": [
+    "TypeScript",
+    "PWA",
+    "Offline-first",
+    "Persian / English",
+    "Open source"
+   ],
+   "media": [
+    {
+     "type": "video",
+     "mp4": "/assets/shots/sooda/sooda-demo.mp4",
+     "webm": "/assets/shots/sooda/sooda-demo.webm",
+     "poster": "/assets/shots/sooda/sooda-demo-poster.webp",
+     "w": 440,
+     "h": 940,
+     "alt": "Screen recording of Sooda: choosing Persian, typing a purchase price and a profit percentage, and the selling price counting up to the result.",
+     "altFa": "ضبط صفحه‌ی سودا: انتخاب فارسی، وارد کردن قیمت خرید و درصد سود، و شمارش قیمت فروش تا نتیجه.",
+     "caption": "Purchase price in, profit percentage in, selling price out — in one screen.",
+     "captionFa": "قیمت خرید، درصد سود، قیمت فروش — همه در یک صفحه."
+    },
+    {
+     "type": "image",
+     "src": "/assets/shots/sooda/sooda-mobile-fa.webp",
+     "w": 844,
+     "h": 1262,
+     "alt": "Sooda in Persian on a phone: 850,000 at 35 percent gives a selling price of 1,147,500 and a profit of 297,500.",
+     "altFa": "سودا به فارسی روی گوشی: ۸۵۰٬۰۰۰ با ۳۵ درصد یعنی قیمت فروش ۱٬۱۴۷٬۵۰۰ و سود ۲۹۷٬۵۰۰.",
+     "caption": "Persian numerals throughout, right to left, with the result laid out to be read aloud.",
+     "captionFa": "اعداد فارسی در همه‌جا، راست‌به‌چپ، و نتیجه‌ای که بشود بلند خواندش."
+    },
+    {
+     "type": "image",
+     "src": "/assets/shots/sooda/sooda-mobile-en.webp",
+     "w": 844,
+     "h": 1262,
+     "alt": "The same calculation in English on a phone, showing a selling price of 1,147,500 and a profit of 297,500.",
+     "altFa": "همان محاسبه به انگلیسی روی گوشی، با قیمت فروش ۱٬۱۴۷٬۵۰۰ و سود ۲۹۷٬۵۰۰.",
+     "caption": "The same app in English — one build, two languages.",
+     "captionFa": "همان اپ به انگلیسی — یک بیلد، دو زبان."
+    },
+    {
+     "type": "image",
+     "src": "/assets/shots/sooda/sooda-desktop-fa.webp",
+     "w": 1136,
+     "h": 1358,
+     "alt": "Sooda in a desktop browser in Persian, with tabs for profit percentage, sell price, and discount.",
+     "altFa": "سودا در مرورگر دسکتاپ به فارسی، با تب‌های درصد سود، قیمت فروش، و تخفیف.",
+     "caption": "Three modes — profit, sell price, discount — behind one set of tabs.",
+     "captionFa": "سه حالت — سود، قیمت فروش، تخفیف — پشت یک ردیف تب."
+    }
+   ]
+  },
+  {
+   "slug": "nava",
+   "repo": "app",
+   "name": "Nava",
+   "icon": "🍎",
+   "accent": "#FF9F0A",
+   "tagline": "The Art of Reduction.",
+   "taglineFa": "هنرِ حذفِ اضافات",
+   "os": "Android, iOS",
+   "lang": "Dart / Flutter",
+   "desc": "A Jony Ive-inspired minimalist productivity app — squircle design, haptic feedback and calm breathing animations. Pure, intentional, distraction-free.",
+   "descFa": "اپ بهره‌وریِ مینیمال با الهام از طراحی اپل — طراحی اسکوئرکل، بازخورد لمسی و انیمیشن‌های آرام.",
+   "tags": [
+    "Squircle design",
+    "Haptics",
+    "Minimal",
+    "Flutter"
+   ],
+   "media": [
+    {
+     "type": "image",
+     "src": "/assets/shots/nava/home-light.webp",
+     "w": 1179,
+     "h": 2556,
+     "thumb": "/assets/shots/nava/home-light-800.webp",
+     "alt": "Nava's task list in light mode: a focus ring at two of three, tasks with durations, and a completed section.",
+     "altFa": "فهرست کارهای نوا در حالت روشن: حلقه‌ی تمرکز روی ۲ از ۳، کارها با مدت‌زمان، و بخش انجام‌شده.",
+     "caption": "Every task carries the one number that matters: how long it takes.",
+     "captionFa": "هر کار یک عدد مهم را با خود دارد: چقدر طول می‌کشد."
+    },
+    {
+     "type": "image",
+     "src": "/assets/shots/nava/home-dark.webp",
+     "w": 1179,
+     "h": 2556,
+     "thumb": "/assets/shots/nava/home-dark-800.webp",
+     "alt": "The same task list in dark mode, with identical layout and contrast.",
+     "altFa": "همان فهرست کارها در حالت تیره، با همان چیدمان و کنتراست.",
+     "caption": "Dark mode is a real theme, not an inverted screenshot.",
+     "captionFa": "حالت تیره یک تم واقعی است، نه یک اسکرین‌شات وارونه."
+    },
+    {
+     "type": "image",
+     "src": "/assets/shots/nava/focus.webp",
+     "w": 1179,
+     "h": 2556,
+     "thumb": "/assets/shots/nava/focus-800.webp",
+     "alt": "A forty-five minute focus timer for a study task, with plus-five and minus-five controls.",
+     "altFa": "تایمر تمرکز چهل‌وپنج دقیقه‌ای برای یک کار مطالعه، با کنترل‌های +۵ و −۵.",
+     "caption": "Start a task and it becomes a timer — the estimate is the session.",
+     "captionFa": "کار را شروع کن و تبدیل به تایمر می‌شود — همان تخمین، همان جلسه."
+    },
+    {
+     "type": "image",
+     "src": "/assets/shots/nava/task-form.webp",
+     "w": 1179,
+     "h": 2556,
+     "thumb": "/assets/shots/nava/task-form-800.webp",
+     "alt": "The new-task sheet: title, tags for personal and twenty-five minutes, pin, reminder, and subtasks.",
+     "altFa": "شیت کار جدید: عنوان، برچسب‌های شخصی و ۲۵ دقیقه، پین، یادآور، و زیرمجموعه‌ها.",
+     "caption": "Adding a task takes one sheet and no navigation.",
+     "captionFa": "افزودن یک کار یک شیت می‌خواهد و هیچ جابه‌جایی."
+    }
+   ]
+  },
+  {
+   "slug": "purify",
+   "repo": "purify",
+   "name": "purify",
+   "icon": "🧹",
+   "accent": "#30D158",
+   "tagline": "Reclaim your disk. Zero friction.",
+   "taglineFa": "پاک‌سازی هوشمند و فوق‌سریع دیسک ویندوز",
+   "os": "Windows",
+   "lang": "Rust + Tauri",
+   "desc": "An ultra-fast, intelligent disk-cleanup utility for Windows, built with Rust and Tauri. Safely reclaim storage with zero cognitive friction — native and blazing fast.",
+   "descFa": "ابزار فوق‌سریع و هوشمند پاک‌سازی دیسک برای ویندوز، ساخته‌شده با راست و توری — امن، نیتیو و بسیار سریع.",
+   "tags": [
+    "Ultra-fast",
+    "Native",
+    "MIT License",
+    "Rust"
+   ],
+   "media": [
+    {
+     "type": "image",
+     "src": "/assets/shots/purify/product-preview.svg",
+     "w": 1200,
+     "h": 720,
+     "alt": "Purify's product preview: a desktop window showing disk usage broken down by category with a safe-clean action.",
+     "altFa": "پیش‌نمایش محصول Purify: پنجره‌ای دسکتاپ که مصرف دیسک را به تفکیک دسته نشان می‌دهد، همراه اقدام پاک‌سازی امن.",
+     "caption": "A product preview of the desktop window — disk usage by category, safe to clean.",
+     "captionFa": "پیش‌نمایش پنجره‌ی دسکتاپ — مصرف دیسک به تفکیک دسته، با پاک‌سازی امن."
+    }
+   ]
+  },
+  {
+   "slug": "overrun",
+   "repo": "overrun",
+   "name": "overrun",
+   "icon": "🎮",
+   "accent": "#FF375F",
+   "tagline": "Real-time arena, at the edge.",
+   "taglineFa": "بازی آنلاین بلادرنگ روی لبه‌ی شبکه",
+   "os": "Web",
+   "lang": "JavaScript",
+   "desc": "A real-time multiplayer arena shooter running on Cloudflare Workers and Durable Objects — low-latency state at the edge.",
+   "descFa": "شوتر آرنای چندنفره‌ی بلادرنگ روی Cloudflare Workers و Durable Objects — با تأخیر بسیار کم.",
+   "tags": [
+    "Cloudflare Workers",
+    "Durable Objects",
+    "Real-time",
+    "Multiplayer"
+   ],
+   "media": [
+    {
+     "type": "image",
+     "src": "/assets/shots/overrun/00-title.webp",
+     "w": 1600,
+     "h": 900,
+     "thumb": "/assets/shots/overrun/00-title-800.webp",
+     "alt": "The OVERRUN title screen: the wordmark over a dark arena, with three mode cards below it.",
+     "altFa": "صفحه‌ی عنوان اورران: وردمارک روی یک آرنای تاریک، و زیرش سه کارت مود.",
+     "caption": "The menu: three modes, and a code box for joining a friend's room.",
+     "captionFa": "منو: سه مود، و کدی برای پیوستن به روم یک دوست."
+    },
+    {
+     "type": "image",
+     "src": "/assets/shots/overrun/01-coop-swarm.webp",
+     "w": 1600,
+     "h": 900,
+     "thumb": "/assets/shots/overrun/01-coop-swarm-800.webp",
+     "alt": "Wave 14 of co-op: dozens of enemies converging on a single player in a pale concrete arena.",
+     "altFa": "موج ۱۴ کوآپ: ده‌ها دشمن که در یک آرنای بتنی روشن به سمت یک بازیکن همگرا می‌شوند.",
+     "caption": "Wave 14, and the banner says THEY LEARN. The director composes the wave against your build.",
+     "captionFa": "موج ۱۴، و بنرش می‌گوید «آن‌ها یاد می‌گیرند». دایرکتور موج را بر اساس بیلد تو می‌چیند."
+    },
+    {
+     "type": "image",
+     "src": "/assets/shots/overrun/02-explosion.webp",
+     "w": 1600,
+     "h": 900,
+     "thumb": "/assets/shots/overrun/02-explosion-800.webp",
+     "alt": "Two explosions going off at once, damage numbers rising, a ten times combo counter on screen.",
+     "altFa": "دو انفجار هم‌زمان، اعداد آسیب که بالا می‌روند، و شمارنده‌ی کمبوی ۱۰ برابری روی صفحه.",
+     "caption": "A 10x combo. The ladder starts decaying 3.2 seconds after the last kill.",
+     "captionFa": "کمبوی ۱۰ برابری. نردبان کمبو ۳٫۲ ثانیه پس از آخرین کیل شروع به افت می‌کند."
+    },
+    {
+     "type": "image",
+     "src": "/assets/shots/overrun/03-boss.webp",
+     "w": 1600,
+     "h": 900,
+     "thumb": "/assets/shots/overrun/03-boss-800.webp",
+     "alt": "A boss twice the height of everything else, telegraphed slam rings marked in rose across the floor.",
+     "altFa": "یک باس با دو برابر قدِ بقیه، و دایره‌های صورتی تلگراف ضربه که کف آرنا را پر کرده‌اند.",
+     "caption": "Wave 20, a boss. Every rose ring is a telegraphed attack — rose is never decorative.",
+     "captionFa": "موج ۲۰، باس. هر دایره‌ی صورتی یک حمله‌ی تلگراف‌شده است — رنگ صورتی هرگز تزئینی نیست."
+    },
+    {
+     "type": "image",
+     "src": "/assets/shots/overrun/04-tdm.webp",
+     "w": 1600,
+     "h": 900,
+     "thumb": "/assets/shots/overrun/04-tdm-800.webp",
+     "alt": "Team deathmatch at 22 to 19, blue and orange players trading fire across a symmetric arena.",
+     "altFa": "ددمچ تیمی با نتیجه‌ی ۲۲ به ۱۹؛ بازیکنان آبی و نارنجی در یک آرنای متقارن آتش رد و بدل می‌کنند.",
+     "caption": "Team deathmatch, 22–19. Team colour is gameplay information, so it lives in the shared package.",
+     "captionFa": "ددمچ، ۲۲ به ۱۹. رنگ تیم اطلاعات است، پس در پکیج مشترک زندگی می‌کند."
+    },
+    {
+     "type": "image",
+     "src": "/assets/shots/overrun/05-squad.webp",
+     "w": 1600,
+     "h": 900,
+     "thumb": "/assets/shots/overrun/05-squad-800.webp",
+     "alt": "Squad royale with four scores on the HUD and the arena's rose closing zone eating the left half of the floor.",
+     "altFa": "اسکواد رویال با چهار امتیاز روی HUD، و ناحیه‌ی صورتیِ بسته‌شدن آرنا که نیمه‌ی چپ زمین را خورده است.",
+     "caption": "Squad royale with 29 seconds left. Rose means the floor is being taken away from you.",
+     "captionFa": "اسکواد رویال، ۲۹ ثانیه مانده. صورتی یعنی زمین دارد ازت گرفته می‌شود."
+    },
+    {
+     "type": "image",
+     "src": "/assets/shots/overrun/06-upgrades.webp",
+     "w": 1600,
+     "h": 900,
+     "thumb": "/assets/shots/overrun/06-upgrades-800.webp",
+     "alt": "A quiet moment on wave 7: one player alone on a wide concrete floor, the arena tinted rose on one side.",
+     "altFa": "یک لحظه‌ی آرام در موج ۷: یک بازیکن تنها روی زمین بتنی وسیع، و آرنا که یک طرفش صورتی شده.",
+     "caption": "Wave 7, and the arena is briefly empty. The relief valley is deliberate; it is what makes the next spike land.",
+     "captionFa": "موج ۷، و آرنا برای یک لحظه خالی است. دره‌ی آرامش عمدی است؛ چیزی است که ضربه‌ی بعدی را می‌سازد."
+    },
+    {
+     "type": "image",
+     "src": "/assets/shots/overrun/07-mobile.webp",
+     "w": 844,
+     "h": 390,
+     "thumb": "/assets/shots/overrun/07-mobile-800.webp",
+     "alt": "The same game on a phone in landscape, with a floating dash pad and thumb controls at the edges.",
+     "altFa": "همان بازی روی گوشی در حالت افقی، با پد شناور دش و کنترل‌های انگشتی در لبه‌ها.",
+     "caption": "On a phone, landscape and fullscreen. The HUD stays at the edges because the centre is where you are staying alive.",
+     "captionFa": "روی گوشی، افقی و تمام‌صفحه. HUD در حاشیه می‌ماند چون وسط صفحه جایی است که داری زنده می‌مانی."
+    }
+   ]
+  },
+  {
+   "slug": "mova",
+   "repo": "Mova",
+   "name": "Mova",
+   "icon": "🌀",
+   "accent": "#30D1D0",
+   "tagline": "In motion, not in perfection.",
+   "taglineFa": "در حرکت، نه در کمال",
+   "os": "Web",
+   "lang": "TypeScript",
+   "desc": "An experiment in shipping over polishing — built in TypeScript.",
+   "descFa": "تمرینی در «منتشر کردن به‌جای بی‌نقص کردن» — با تایپ‌اسکریپت.",
+   "tags": [
+    "TypeScript",
+    "Experiment"
+   ]
+  }
+ ]
 }

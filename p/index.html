@@ -21,11 +21,18 @@ body{font-family:'Inter',-apple-system,sans-serif;background:#05070d;color:#F5F5
 h1{font-size:30px;font-weight:800;letter-spacing:-.6px}
 .s{color:#B9C0CC;margin-top:8px;font-size:15px}
 ul{list-style:none;margin-top:26px}
-li a{display:flex;gap:12px;align-items:center;text-decoration:none;color:#F5F5F7;
- padding:16px 18px;margin-bottom:11px;border-radius:18px;font-size:15px;
+li a{display:flex;gap:14px;align-items:center;text-decoration:none;color:#F5F5F7;
+ padding:13px 15px;margin-bottom:11px;border-radius:18px;font-size:15px;
  background:linear-gradient(155deg,rgba(255,255,255,.09),rgba(255,255,255,.045));
  border:1px solid rgba(255,255,255,.13);transition:transform .18s,border-color .18s}
 li a:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.3)}
+.th{flex:0 0 auto;width:98px;height:64px;border-radius:12px;
+ border:1px solid rgba(255,255,255,.14);background:#080c14;
+ object-fit:cover;object-position:center 16%}
+.thi{display:grid;place-items:center;font-size:28px}
+.tx{display:flex;flex-direction:column;gap:3px;min-width:0}
+.tx b{font-size:15.5px;font-weight:650}
+.tx{color:#AEB6C4;font-size:13.5px;line-height:1.5}
 a.back{color:#8A93A3;text-decoration:none;font-size:14px;font-weight:600}
 </style></head>
 <body><div class="bg"></div><main class="w">
@@ -33,11 +40,16 @@ a.back{color:#8A93A3;text-decoration:none;font-size:14px;font-weight:600}
 <h1 style="margin-top:16px">Open-Source Projects</h1>
 <p class="s">Everything I build in the open — by <b>Mahdi Mortazavi</b> (مهدی مرتضوی).</p>
 <ul>
-<li><a href="/p/relay/"><span>📡</span><b>relay</b> — Share your connection. Instantly.</a></li>
-<li><a href="/p/flow/"><span>◉</span><b>Flow — تک‌نقطه</b> — One daily boulder. Crash-proof focus.</a></li>
-<li><a href="/p/sooda/"><span>📊</span><b>sooda</b> — Built in the open.</a></li>
-<li><a href="/p/nava/"><span>🍎</span><b>Nava</b> — The Art of Reduction.</a></li>
-<li><a href="/p/purify/"><span>🧹</span><b>purify</b> — Reclaim your disk. Zero friction.</a></li>
-<li><a href="/p/overrun/"><span>🎮</span><b>overrun</b> — Real-time arena, at the edge.</a></li>
-<li><a href="/p/mova/"><span>🌀</span><b>Mova</b> — In motion, not in perfection.</a></li>
+<li><a href="/p/relay/"><img class="th" src="/assets/shots/relay/relay-demo-poster.webp" width="420" height="450"
+         loading="lazy" decoding="async" alt="A screenshot of relay" /><span class="tx"><b>relay</b>Share your connection. Instantly.</span></a></li>
+<li><a href="/p/flow/"><img class="th" src="/assets/shots/flow/today-800.webp" width="1080" height="2400"
+         loading="lazy" decoding="async" alt="A screenshot of Flow — تک‌نقطه" /><span class="tx"><b>Flow — تک‌نقطه</b>One daily boulder. Crash-proof focus.</span></a></li>
+<li><a href="/p/sooda/"><img class="th" src="/assets/shots/sooda/sooda-demo-poster.webp" width="440" height="940"
+         loading="lazy" decoding="async" alt="A screenshot of sooda" /><span class="tx"><b>sooda</b>Profit math, crystal clear.</span></a></li>
+<li><a href="/p/nava/"><img class="th" src="/assets/shots/nava/home-light-800.webp" width="1179" height="2556"
+         loading="lazy" decoding="async" alt="A screenshot of Nava" /><span class="tx"><b>Nava</b>The Art of Reduction.</span></a></li>
+<li><a href="/p/purify/"><span class="th thi" aria-hidden="true">🧹</span><span class="tx"><b>purify</b>Reclaim your disk. Zero friction.</span></a></li>
+<li><a href="/p/overrun/"><img class="th" src="/assets/shots/overrun/00-title-800.webp" width="1600" height="900"
+         loading="lazy" decoding="async" alt="A screenshot of overrun" /><span class="tx"><b>overrun</b>Real-time arena, at the edge.</span></a></li>
+<li><a href="/p/mova/"><span class="th thi" aria-hidden="true">🌀</span><span class="tx"><b>Mova</b>In motion, not in perfection.</span></a></li>
 </ul></main></body></html>
