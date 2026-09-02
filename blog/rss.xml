@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Mahdi Mortazavi — Blog</title>
+  <link>https://mahdi-mortazavi.github.io/blog/</link>
+  <atom:link href="https://mahdi-mortazavi.github.io/blog/rss.xml" rel="self" type="application/rss+xml" />
+  <description>Daily developer digest by Mahdi Mortazavi: what is on Hacker News, which repositories are gaining traction, and why it matters.</description>
+  <language>en</language>
+  <lastBuildDate>Wed, 02 Sep 2026 18:32:42 GMT</lastBuildDate>
+  <item>
+    <title>Developer digest</title>
+    <link>https://mahdi-mortazavi.github.io/blog/2026-09-02/</link>
+    <guid isPermaLink="true">https://mahdi-mortazavi.github.io/blog/2026-09-02/</guid>
+    <pubDate>Wed, 02 Sep 2026 09:00:00 GMT</pubDate>
+    <description>What developers are reading and starring today.</description>
+  </item>
+</channel>
+</rss>
