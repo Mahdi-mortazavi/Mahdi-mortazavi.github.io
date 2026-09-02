@@ -37,32 +37,59 @@ for (const p of projects) {
   };
 }
 
-// Star history → growth series (monthly cumulative)
+// ── Growth series ──────────────────────────────────────────────────────
+// Preferred source: real starred_at timestamps. The repo-scoped GITHUB_TOKEN
+// is refused (403) on cross-repo /stargazers, so this usually yields nothing —
+// hence the snapshot history below, which always works and accumulates.
 const events = [];
 for (const r of repos.filter(r => r.stargazers_count > 0)) {
   const pages = Math.min(3, Math.ceil(r.stargazers_count / 100));
   for (let p = 1; p <= pages; p++) {
     const rows = await gh(`/repos/${USER}/${r.name}/stargazers?per_page=100&page=${p}`,
       'application/vnd.github.star+json');
-    for (const s of rows ?? []) if (s?.starred_at) events.push(s.starred_at);
+    if (!Array.isArray(rows)) { p = pages; continue; }
+    for (const s of rows) if (s?.starred_at) events.push(s.starred_at);
   }
 }
 events.sort();
-const growth = [];
+
+const totalStars = repos.reduce((s, r) => s + r.stargazers_count, 0);
+
+// Snapshot history: one row per day, appended every run. Always available.
+const today = new Date().toISOString().slice(0, 10);
+let history = [];
+try { history = JSON.parse(await readFile('history.json', 'utf8')); } catch {}
+history = history.filter(h => h.d !== today);
+history.push({ d: today, stars: totalStars, followers: user?.followers ?? 0, repos: repos.length });
+history.sort((a, b) => a.d.localeCompare(b.d));
+await writeFile('history.json', JSON.stringify(history, null, 2));
+
+const monthKey = d => `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}`;
+let growth = [];
 if (events.length) {
-  const key = d => `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}`;
   const counts = new Map();
-  for (const e of events) counts.set(key(new Date(e)), (counts.get(key(new Date(e))) ?? 0) + 1);
+  for (const e of events) {
+    const k = monthKey(new Date(e));
+    counts.set(k, (counts.get(k) ?? 0) + 1);
+  }
   const cur = new Date(events[0]); cur.setUTCDate(1);
   const end = new Date(); let total = 0;
-  while (cur <= end) {
-    total += counts.get(key(cur)) ?? 0;
-    growth.push({ m: key(cur), v: total });
-    cur.setUTCMonth(cur.getUTCMonth() + 1);
-  }
+  while (cur <= end) { total += counts.get(monthKey(cur)) ?? 0; growth.push({ m: monthKey(cur), v: total }); cur.setUTCMonth(cur.getUTCMonth() + 1); }
+} else {
+  // Fall back to the snapshot history (one point per recorded day).
+  growth = history.map(h => ({ m: h.d, v: h.stars }));
 }
+
+// Stars gained in the last 30 days: from real timestamps when we have them,
+// otherwise measured against the oldest snapshot inside the window.
 const cut = Date.now() - 30 * 86400000;
-const last30 = events.filter(e => new Date(e).getTime() >= cut).length;
+let last30;
+if (events.length) {
+  last30 = events.filter(e => new Date(e).getTime() >= cut).length;
+} else {
+  const window = history.filter(h => new Date(h.d).getTime() >= cut);
+  last30 = window.length > 1 ? totalStars - window[0].stars : 0;
+}
 
 // Build-in-public timeline: every public release, newest first
 const timeline = [];
@@ -83,13 +110,14 @@ timeline.sort((a, b) => new Date(b.at) - new Date(a.at));
 const data = {
   generatedAt: new Date().toISOString(),
   totals: {
-    stars: repos.reduce((s, r) => s + r.stargazers_count, 0),
+    stars: totalStars,
     forks: repos.reduce((s, r) => s + r.forks_count, 0),
     repos: repos.length,
     followers: user?.followers ?? 0,
     last30,
   },
   bio: (user?.bio ?? '').split('\n')[0].trim(),
+  growthSource: events.length ? 'stargazer-timestamps' : 'daily-snapshots',
   stats, growth, timeline: timeline.slice(0, 40),
 };
 await writeFile('data.json', JSON.stringify(data, null, 2));

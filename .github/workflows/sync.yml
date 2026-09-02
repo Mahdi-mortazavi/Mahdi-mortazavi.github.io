@@ -12,7 +12,7 @@ on:
 
 concurrency:
   group: hub-sync
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -38,14 +38,20 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data.json p timeline sitemap.xml robots.txt
+          STAGE="data.json history.json p timeline sitemap.xml robots.txt"
+          git add $STAGE
           if git diff --cached --quiet; then echo "No changes."; exit 0; fi
-          git commit -m "🔄 Sync with GitHub — $(TZ=Asia/Tehran date +'%Y-%m-%d %H:%M') Tehran"
-          # A scheduled run and a dispatch can overlap; rebase onto whatever
-          # landed first rather than failing on a stale ref.
+          MSG="🔄 Sync with GitHub — $(TZ=Asia/Tehran date +'%Y-%m-%d %H:%M') Tehran"
+          git commit -m "$MSG"
           for attempt in 1 2 3; do
             if git push; then echo "pushed on attempt $attempt"; exit 0; fi
-            echo "push rejected — rebasing and retrying"
-            git pull --rebase --autostash origin main || exit 1
+            echo "push rejected — replaying our snapshot on top of latest main"
+            git fetch origin main
+            # These files are a freshly generated snapshot, so ours wins wholesale;
+            # merging two runs' timestamps would only ever conflict.
+            git reset --soft origin/main
+            git add $STAGE
+            if git diff --cached --quiet; then echo "Another run already published this."; exit 0; fi
+            git commit -m "$MSG"
           done
           echo "::error::could not push after 3 attempts"; exit 1
