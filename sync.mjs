@@ -13,6 +13,9 @@ const API = 'https://api.github.com';
 // anonymous gets 401). Without it the growth curve still works, built from the
 // daily snapshots in history.json instead of backfilled timestamps.
 const TOKEN = process.env.STARS_TOKEN || process.env.GITHUB_TOKEN;
+// Which credential are we actually using? Length only — never the value.
+console.log('auth:', process.env.STARS_TOKEN ? `STARS_TOKEN (${process.env.STARS_TOKEN.length} chars)`
+  : process.env.GITHUB_TOKEN ? 'GITHUB_TOKEN (STARS_TOKEN not set)' : 'anonymous (no token)');
 const headers = {
   Accept: 'application/vnd.github+json',
   'User-Agent': 'mahdi-hub-sync',
@@ -24,12 +27,18 @@ const gh = async (p, accept) => {
   // The repo-scoped GITHUB_TOKEN is refused (403) on some cross-repo reads,
   // stargazer timestamps among them. That data is public — ask again without
   // credentials rather than losing the history entirely.
+  const authStatus = r.status;
+  let retried = false;
   if (r.status === 403 && h.Authorization) {
     const { Authorization, ...anon } = h;
     r = await fetch(API + p, { headers: anon });
-    if (r.ok) console.log('  ↩ anonymous retry succeeded:', p);
+    retried = true;
   }
-  if (!r.ok) { console.warn('  !', r.status, p); return null; }
+  if (!r.ok) {
+    console.warn(`  ! ${p} — authed:${authStatus}${retried ? ` anon:${r.status}` : ''}`);
+    return null;
+  }
+  if (retried) console.log('  ↩ anonymous retry succeeded:', p);
   return r.json();
 };
 
