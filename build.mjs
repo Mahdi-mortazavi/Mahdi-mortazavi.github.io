@@ -11,6 +11,9 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 const ORIGIN = 'https://mahdi-mortazavi.github.io';
 const GH = 'https://github.com/Mahdi-mortazavi';
 const { person, projects } = JSON.parse(await readFile('projects.json', 'utf8'));
+let live = { totals: {}, stats: {}, timeline: [], growth: [] };
+try { live = JSON.parse(await readFile('data.json', 'utf8')); console.log('using data.json'); }
+catch { console.log('no data.json yet — pages render without live numbers'); }
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 
 const page = p => {
@@ -118,7 +121,7 @@ p.descfa{color:var(--dim);font-size:14px;line-height:1.9;margin-top:10px}
     <div class="meta">
       <span><b>Platform</b> · ${esc(p.os)}</span>
       <span><b>Built with</b> · ${esc(p.lang)}</span>
-      <span><b>Stars</b> · <span data-stars="${esc(p.repo)}">—</span></span>
+      <span><b>Stars</b> · <span data-stars="${esc(p.repo)}">${live.stats?.[p.slug]?.stars != null ? "★ " + live.stats[p.slug].stars : "—"}</span></span>
     </div>
     <div class="cta">
       <a class="btn primary" href="${repo}">Open on GitHub →</a>
@@ -186,8 +189,102 @@ a.back{color:#8A93A3;text-decoration:none;font-size:14px;font-weight:600}
 ${list}
 </ul></main></body></html>`);
 
+
+/* ── Build-in-public timeline: one dated entry per release. Fresh, indexable
+      content that grows on its own every time something ships. ── */
+{
+  const items = live.timeline ?? [];
+  const fmt = iso => new Intl.DateTimeFormat('en-GB',
+    { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(iso));
+  const ld = {
+    '@context':'https://schema.org','@type':'CollectionPage',
+    name:'Build in Public — Mahdi Mortazavi', url:`${ORIGIN}/timeline/`,
+    description:'Every public release across the open-source projects of Mahdi Mortazavi (مهدی مرتضوی).',
+    isPartOf:{'@id':`${ORIGIN}/#website`},
+    about:{'@type':'Person',name:person.name,alternateName:person.nameFa,url:person.url},
+    hasPart: items.slice(0,20).map(i => ({
+      '@type':'SoftwareApplication', name:`${i.repo} ${i.tag}`,
+      softwareVersion:i.tag, datePublished:i.at, url:i.url,
+      applicationCategory:'DeveloperApplication',
+      author:{'@type':'Person',name:person.name},
+    })),
+  };
+  const rows = items.length ? items.map(i => `
+      <li class="ev">
+        <div class="dot" aria-hidden="true"></div>
+        <time datetime="${i.at}">${fmt(i.at)}</time>
+        <div class="body">
+          <a class="h" href="${i.url}"><b>${esc(i.repo)}</b> <span class="tag">${esc(i.tag)}</span></a>
+          ${i.body ? `<p>${esc(i.body)}</p>` : ''}
+          ${i.slug ? `<a class="more" href="/p/${i.slug}/">About ${esc(i.repo)} →</a>` : ''}
+        </div>
+      </li>`).join('') : '<li class="ev"><div class="body"><p>No releases published yet.</p></div></li>';
+
+  await mkdir('timeline', { recursive: true });
+  await writeFile('timeline/index.html', `<!doctype html>
+<html lang="en"><head><meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#05070d" />
+<title>Build in Public — every release by Mahdi Mortazavi · مهدی مرتضوی</title>
+<meta name="description" content="A running log of every public release Mahdi Mortazavi (مهدی مرتضوی) ships across relay, Flow, Nava, purify, sooda and overrun. Updated automatically." />
+<link rel="canonical" href="${ORIGIN}/timeline/" />
+<link rel="icon" type="image/png" href="/avatar.png" />
+<link rel="stylesheet" href="/fonts.css" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Build in Public — Mahdi Mortazavi" />
+<meta property="og:description" content="Every public release, as it ships. By Mahdi Mortazavi (مهدی مرتضوی)." />
+<meta property="og:url" content="${ORIGIN}/timeline/" />
+<meta property="og:image" content="${ORIGIN}/og-card.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="${ORIGIN}/og-card.png" />
+<script type="application/ld+json">${JSON.stringify(ld)}</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--txt:#F5F5F7;--muted:#B9C0CC;--dim:#8A93A3;--accent:#0A84FF;
+--font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;--fa:'Vazirmatn',var(--font)}
+body{font-family:var(--font);background:#05070d;color:var(--txt);display:flex;justify-content:center;
+ padding:40px 18px 70px;-webkit-font-smoothing:antialiased}
+.bg{position:fixed;inset:-25%;z-index:-2;filter:blur(70px) saturate(150%);
+ background:radial-gradient(38% 42% at 22% 16%,rgba(10,132,255,.5),transparent 70%),
+ radial-gradient(34% 38% at 82% 30%,rgba(94,92,230,.42),transparent 70%),
+ radial-gradient(40% 40% at 60% 95%,rgba(48,209,208,.24),transparent 70%)}
+.w{width:100%;max-width:660px}
+a{color:inherit}
+.back{color:var(--dim);text-decoration:none;font-size:14px;font-weight:600}
+.back:hover{color:var(--txt)}
+h1{font-size:31px;font-weight:800;letter-spacing:-.7px;margin-top:16px}
+.sub{color:var(--muted);font-size:15px;margin-top:8px;line-height:1.65}
+.subfa{font-family:var(--fa);direction:rtl;color:var(--dim);font-size:14px;margin-top:6px}
+ul{list-style:none;margin-top:30px;position:relative}
+ul:before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;
+ background:linear-gradient(#0A84FF,rgba(10,132,255,.05))}
+.ev{position:relative;padding-left:34px;padding-bottom:26px}
+.dot{position:absolute;left:0;top:5px;width:16px;height:16px;border-radius:50%;
+ background:#0A84FF;box-shadow:0 0 0 4px rgba(10,132,255,.16)}
+time{display:block;font-size:12.5px;font-weight:600;color:var(--dim);letter-spacing:.4px}
+.body{margin-top:6px;padding:15px 17px;border-radius:17px;
+ background:linear-gradient(155deg,rgba(255,255,255,.09),rgba(255,255,255,.04));
+ -webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%);
+ border:1px solid rgba(255,255,255,.13)}
+.h{text-decoration:none;font-size:16px;font-weight:650}
+.tag{display:inline-block;margin-left:6px;padding:2px 9px;border-radius:999px;font-size:12px;
+ color:#9EC9FF;background:rgba(10,132,255,.16);border:1px solid rgba(10,132,255,.35)}
+.body p{color:var(--muted);font-size:14px;line-height:1.65;margin-top:8px}
+.more{display:inline-block;margin-top:10px;font-size:13px;font-weight:600;color:var(--dim);text-decoration:none}
+.more:hover{color:var(--txt)}
+</style></head>
+<body><div class="bg" aria-hidden="true"></div><main class="w">
+<a class="back" href="/">← Mahdi Mortazavi · <span style="font-family:var(--fa)">مهدی مرتضوی</span></a>
+<h1>Build in Public</h1>
+<p class="sub">Every public release I ship, newest first — generated automatically from GitHub.</p>
+<p class="subfa">هر نسخه‌ای که منتشر می‌کنم، از جدید به قدیم — به‌صورت خودکار از گیت‌هاب ساخته می‌شود.</p>
+<ul>${rows}</ul>
+</main></body></html>`);
+  console.log('✓ timeline:', items.length, 'releases');
+}
+
 // sitemap + robots
-const urls = [`${ORIGIN}/`, `${ORIGIN}/p/`, ...projects.map(p => `${ORIGIN}/p/${p.slug}/`)];
+const urls = [`${ORIGIN}/`, `${ORIGIN}/p/`, `${ORIGIN}/timeline/`, ...projects.map(p => `${ORIGIN}/p/${p.slug}/`)];
 const today = new Date().toISOString().slice(0, 10);
 await writeFile('sitemap.xml',
 `<?xml version="1.0" encoding="UTF-8"?>

@@ -164,6 +164,34 @@ h1 .fa{display:block; font-size:19px; font-weight:700; color:var(--muted); margi
 .reveal{opacity:0; transform:translateY(14px); animation:rise .7s cubic-bezier(.2,.8,.2,1) forwards}
 @keyframes rise{to{opacity:1; transform:none}}
 
+/* live stats + growth */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-bottom:14px;border-radius:19px;
+ overflow:hidden;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.13)}
+.stat{display:flex;flex-direction:column;align-items:center;gap:2px;padding:13px 6px;text-decoration:none;
+ color:var(--txt);background:#0e131c;transition:background .18s}
+@media(hover:hover){.stat:hover{background:#151d2a}}
+.stat b{font-size:19px;font-weight:800;letter-spacing:-.4px}
+.stat span{font-size:11px;font-weight:600;color:var(--dim);letter-spacing:.3px}
+.growth{margin-bottom:16px;padding:14px 16px 10px;border-radius:19px;
+ background:linear-gradient(155deg,rgba(255,255,255,.09),rgba(255,255,255,.045));
+ border:1px solid rgba(255,255,255,.13)}
+.growth figcaption{font-size:11.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--dim);font-weight:700}
+.growth .fa{letter-spacing:0;text-transform:none;font-size:12px}
+.growth svg{width:100%;height:96px;margin-top:8px;display:block}
+.gmeta{display:flex;justify-content:space-between;font-size:11.5px;color:var(--dim);font-weight:600}
+
+/* sticky one-tap contact on phones */
+.cta-bar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:none;gap:9px;
+ padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+ background:rgba(9,12,18,.72);-webkit-backdrop-filter:blur(22px) saturate(180%);
+ backdrop-filter:blur(22px) saturate(180%);border-top:1px solid rgba(255,255,255,.12)}
+.cta-bar a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;
+ border-radius:15px;text-decoration:none;font-weight:700;font-size:15px;color:#fff;
+ border:1px solid rgba(255,255,255,.16)}
+.cta-bar .tg{background:linear-gradient(155deg,#2AABEE,#1c8fca);border-color:#2AABEE}
+.cta-bar .em{background:linear-gradient(155deg,rgba(255,255,255,.14),rgba(255,255,255,.06))}
+@media(max-width:959px){.cta-bar{display:flex}body{padding-bottom:104px}}
+
 /* ─────────────────────────────────────────────────────────────
    Desktop ≥ 960px — a floating macOS app window
    ───────────────────────────────────────────────────────────── */
@@ -223,15 +251,35 @@ h1 .fa{display:block; font-size:19px; font-weight:700; color:var(--muted); margi
             <img class="avatar" src="avatar.png" alt="Mahdi Mortazavi" width="104" height="104" />
           </div>
           <h1>Mahdi Mortazavi<span class="fa" lang="fa">مهدی مرتضوی</span></h1>
-          <p class="role"><b>Problem Solver</b> · Flutter Developer · Product Designer · Iran 🇮🇷</p>
+          <p class="role" data-bio><b>Full-Stack Developer</b> · Product Builder · Problem Solver · Iran 🇮🇷</p>
           <div class="status"><span class="dot" aria-hidden="true"></span> Available for collaborations · <span class="fa" lang="fa">آماده‌ی همکاری</span></div>
-          <p class="bio">I take hard problems, break them down to first principles, and turn the solution into a real, shipped product.</p>
-          <p class="bio" dir="rtl" lang="fa">مسئله‌های سخت را می‌گیرم، تا اصول پایه تجزیه‌شان می‌کنم و راه‌حل را به یک محصول واقعی تبدیل می‌کنم.</p>
+          <p class="bio">🧩 First-principles thinking → 💡 designing solutions → 🚀 building real products. I break hard problems down to fundamentals and ship the answer as something people actually use.</p>
+          <p class="bio" dir="rtl" lang="fa">تفکر بر پایه‌ی اصول ← طراحی راه‌حل ← ساختِ محصول واقعی. مسئله‌های سخت را تا مبانی پایه تجزیه می‌کنم و پاسخ را به محصولی تبدیل می‌کنم که واقعاً استفاده می‌شود.</p>
         </div>
       </aside>
 
       <!-- CONTENT -->
       <main class="content">
+        <!-- Live from GitHub (data.json, refreshed by the sync workflow) -->
+        <div class="stats reveal" id="stats" style="animation-delay:.03s" data-glass>
+          <a class="stat" href="https://github.com/Mahdi-mortazavi?tab=repositories"><b data-t="stars">—</b><span>Stars</span></a>
+          <a class="stat" href="https://github.com/Mahdi-mortazavi?tab=followers"><b data-t="followers">—</b><span>Followers</span></a>
+          <a class="stat" href="https://github.com/Mahdi-mortazavi?tab=repositories"><b data-t="repos">—</b><span>Repos</span></a>
+          <a class="stat" href="/timeline/"><b data-t="last30">—</b><span>★ / 30d</span></a>
+        </div>
+        <figure class="growth reveal" id="growth" style="animation-delay:.05s" data-glass hidden>
+          <figcaption>Star growth <span class="fa" lang="fa">· رشد ستاره‌ها</span></figcaption>
+          <svg viewBox="0 0 560 150" preserveAspectRatio="none" role="img" aria-label="Cumulative star growth">
+            <defs><linearGradient id="gf" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0A84FF" stop-opacity=".5"/>
+              <stop offset="100%" stop-color="#0A84FF" stop-opacity="0"/></linearGradient></defs>
+            <path id="gArea" fill="url(#gf)"/><path id="gLine" fill="none" stroke="#0A84FF" stroke-width="2.5"
+              stroke-linejoin="round" stroke-linecap="round"/>
+            <circle id="gDot" r="4" fill="#fff"/>
+          </svg>
+          <div class="gmeta"><span id="gFrom"></span><span id="gTo"></span></div>
+        </figure>
+
         <p class="label reveal" style="animation-delay:.05s">Let's Connect <span class="fa" lang="fa">· بیایید در ارتباط باشیم</span></p>
         <div class="two reveal" style="animation-delay:.08s">
           <a class="row tg" href="https://t.me/Mahdi_mortazavi1" data-glass>
@@ -279,17 +327,48 @@ h1 .fa{display:block; font-size:19px; font-weight:700; color:var(--muted); margi
         <a class="row reveal" href="/p/" style="animation-delay:.31s" data-glass>
           <span class="ic">🗂️</span><span class="rt"><span class="t">All projects</span><span class="d">Browse everything I build in the open</span></span><span class="arrow" aria-hidden="true">→</span>
         </a>
+        <a class="row reveal" href="/timeline/" style="animation-delay:.33s" data-glass>
+          <span class="ic">🛠️</span><span class="rt"><span class="t">Build in Public</span><span class="d">Every release, as it ships</span></span><span class="arrow" aria-hidden="true">→</span>
+        </a>
 
         <p class="foot reveal" style="animation-delay:.28s">
           <b>Mahdi Mortazavi</b> · <span class="fa" lang="fa">مهدی مرتضوی</span><br/>
-          Flutter Developer &amp; Product Designer · <a href="https://github.com/Mahdi-mortazavi">github.com/Mahdi-mortazavi</a>
+          Full-Stack Developer · Product Builder · <a href="https://github.com/Mahdi-mortazavi">github.com/Mahdi-mortazavi</a>
         </p>
       </main>
     </div>
   </div>
 </div>
 
+<nav class="cta-bar" aria-label="Quick contact">
+  <a class="tg" href="https://t.me/Mahdi_mortazavi1">💬 Message me</a>
+  <a class="em" href="mailto:mahdimortazavi135@gmail.com">✉️ Email</a>
+</nav>
+
 <script>
+  // Live numbers + growth curve, straight from the synced GitHub data.
+  fetch('/data.json', {cache:'no-cache'}).then(r=>r.ok?r.json():null).then(d=>{
+    if(!d) return;
+    const set=(k,v)=>document.querySelectorAll('[data-t="'+k+'"]').forEach(e=>e.textContent=v);
+    set('stars', d.totals.stars); set('followers', d.totals.followers);
+    set('repos', d.totals.repos); set('last30', '+'+d.totals.last30);
+    if (d.bio) { const r=document.querySelector('[data-bio]');
+      if(r) r.innerHTML = '<b>'+d.bio.split(/\s*[×·|]\s*/)[0]+'</b> · '
+        + d.bio.split(/\s*[×·|]\s*/).slice(1).join(' · ') + ' · Iran 🇮🇷'; }
+    const g=d.growth||[]; if(g.length<2) return;
+    const W=560,H=150,max=g[g.length-1].v||1;
+    const X=i=>i*(W/(g.length-1)), Y=v=>H-4-(v/max)*(H-16);
+    const line=g.map((p,i)=>(i?'L':'M')+X(i).toFixed(1)+','+Y(p.v).toFixed(1)).join('');
+    document.getElementById('gLine').setAttribute('d',line);
+    document.getElementById('gArea').setAttribute('d',line+'L'+W+','+H+'L0,'+H+'Z');
+    const dot=document.getElementById('gDot');
+    dot.setAttribute('cx',X(g.length-1)); dot.setAttribute('cy',Y(g[g.length-1].v));
+    const lbl=m=>{const[y,mo]=m.split('-');return new Date(y,mo-1).toLocaleString('en',{month:'short',year:'2-digit'})};
+    document.getElementById('gFrom').textContent=lbl(g[0].m);
+    document.getElementById('gTo').textContent=lbl(g[g.length-1].m)+' · '+max+'★';
+    document.getElementById('growth').hidden=false;
+  }).catch(()=>{});
+
   // Liquid-glass pointer sheen (rAF-throttled)
   (function(){
     var glasses = document.querySelectorAll('[data-glass]');
