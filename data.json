@@ -1,0 +1,362 @@
+{
+  "generatedAt": "2026-09-02T15:36:20.052Z",
+  "totals": {
+    "stars": 294,
+    "forks": 25,
+    "repos": 10,
+    "followers": 43,
+    "last30": 0
+  },
+  "bio": "Full-Stack Developer × Product Builder × Problem Solver",
+  "stats": {
+    "relay": {
+      "stars": 169,
+      "forks": 14,
+      "language": "C#",
+      "pushedAt": "2026-09-02T15:17:29Z",
+      "description": "📱 Share your phone's internet with your PC — Android → Windows reverse tethering over an encrypted WireGuard tunnel. No root, no server, no account."
+    },
+    "flow": {
+      "stars": 69,
+      "forks": 8,
+      "language": "Dart",
+      "pushedAt": "2026-08-20T23:36:49Z",
+      "description": "🪨 One decision a day. ⏱ Focus. 🌱 Habits. 🔒 100% offline."
+    },
+    "sooda": {
+      "stars": 27,
+      "forks": 0,
+      "language": "TypeScript",
+      "pushedAt": "2026-07-14T03:31:47Z",
+      "description": "💎 Sooda — Liquid-glass profit, price & discount calculator. Offline-first PWA, bilingual (EN/FA), zero dependencies on servers."
+    },
+    "nava": {
+      "stars": 23,
+      "forks": 1,
+      "language": "Dart",
+      "pushedAt": "2026-07-23T00:22:09Z",
+      "description": "🍎 Nava: The Art of Reduction. A Jony Ive inspired productivity app with Squircle design, Haptic feedback & Breathing animations. | نوا: مینیمالیسم محض؛ هنرِ حذف اضافات."
+    },
+    "purify": {
+      "stars": 2,
+      "forks": 0,
+      "language": "Rust",
+      "pushedAt": "2026-08-27T14:03:50Z",
+      "description": "🧹 Clean your Windows disk with confidence. Fast, private, reversible cleanup built with Rust and Tauri."
+    },
+    "overrun": {
+      "stars": 1,
+      "forks": 2,
+      "language": "JavaScript",
+      "pushedAt": "2026-08-21T02:43:51Z",
+      "description": "A browser arena shooter that installs like an app, plays offline, and takes eight people online. Co-op waves, 4v4 team deathmatch, 2v2v2v2 squad royale. Zero asset files."
+    },
+    "mova": {
+      "stars": 2,
+      "forks": 0,
+      "language": "TypeScript",
+      "pushedAt": "2026-07-04T18:06:32Z",
+      "description": "Mova  in motion, not in perfection"
+    }
+  },
+  "growth": [],
+  "timeline": [
+    {
+      "repo": "relay",
+      "slug": "relay",
+      "tag": "v2.7.1",
+      "name": "Relay 2.7.1",
+      "at": "2026-08-27T12:28:13Z",
+      "url": "https://github.com/Mahdi-mortazavi/relay/releases/tag/v2.7.1",
+      "body": "یک باگ که به‌عنوان مشکل فیلترشکن گزارش شد، و فیلترشکن اصلاً مقصرش نبود. ## پیام «اجازه می‌دهید؟» حالا به شما می‌رسد گزارش این بود: وقتی روی گوشی VPN روشن است و از کامپیوتر Connect می‌زنید، پیام تأیید"
+    },
+    {
+      "repo": "purify",
+      "slug": "purify",
+      "tag": "v0.1.4",
+      "name": "purify v0.1.4",
+      "at": "2026-08-27T12:05:12Z",
+      "url": "https://github.com/Mahdi-mortazavi/purify/releases/tag/v0.1.4",
+      "body": "## What's Changed * fix(desktop): keep cleanup content scrollable by @Mahdi-mortazavi in https://github.com/Mahdi-mortazavi/purify/pull/9 **Full Changelog**: https://github.com/Mahdi-mortazavi/purify/compare/v0.1.3...v0.1.4"
+    },
+    {
+      "repo": "relay",
+      "slug": "relay",
+      "tag": "v2.7.0",
+      "name": "Relay 2.7.0",
+      "at": "2026-08-25T11:36:03Z",
+      "url": "https://github.com/Mahdi-mortazavi/relay/releases/tag/v2.7.0",
+      "body": "Four defects on the path every byte takes, found by reading it end to end and then measuring it — plus benchmarks that now run on every change, so the next regression here is visible instead of silent."
+    },
+    {
+      "repo": "relay",
+      "slug": "relay",
+      "tag": "v2.6.1",
+      "name": "Relay 2.6.1",
+      "at": "2026-08-25T01:06:36Z",
+      "url": "https://github.com/Mahdi-mortazavi/relay/releases/tag/v2.6.1",
+      "body": "2.6.0 connected Relay's updater for the first time. Testing it on real hardware showed it still could not finish — for two reasons that never appear on a build server, only on the kind of connection Relay is actually used on."
+    },
+    {
+      "repo": "relay",
+      "slug": "relay",
+      "tag": "v2.6.0",
+      "name": "Relay 2.6.0",
+      "at": "2026-08-24T23:16:27Z",
+      "url": "https://github.com/Mahdi-mortazavi/relay/releases/tag/v2.6.0",
+      "body": "Relay could not update itself. That is fixed. ## Updates now actually happen Every piece of the update path existed already — check GitHub, compare versions,"
+    },
+    {
+      "repo": "relay",
+      "slug": "relay",
+      "tag": "v2.5.0",
+      "name": "Relay 2.5.0",
+      "at": "2026-08-24T21:13:12Z",
+      "url": "https://github.com/Mahdi-mortazavi/relay/releases/tag/v2.5.0",
+      "body": "## Relay 2.5.0 **Share your phone's internet with your PC.** Tap *Start Sharing* on the phone, click your phone in the list on the PC, tap *Allow*."
+    },
+    {
+      "repo": "overrun",
+      "slug": "overrun",
+      "tag": "v1.0.4",
+      "name": "OVERRUN 1.0.4 (test key)",
+      "at": "2026-08-21T02:50:30Z",
+      "url": "https://github.com/Mahdi-mortazavi/overrun/releases/tag/v1.0.4",
+      "body": "OVERRUN 1.0.4 for Android — **signed with a throwaway CI key**, because the release keystore is not in this repository's Actions secrets yet."
+    },
+    {
+      "repo": "overrun",
+      "slug": "overrun",
+      "tag": "v1.0.3",
+      "name": "OVERRUN 1.0.3 (test key)",
+      "at": "2026-08-21T02:32:31Z",
+      "url": "https://github.com/Mahdi-mortazavi/overrun/releases/tag/v1.0.3",
+      "body": "OVERRUN 1.0.3 for Android — **signed with a throwaway CI key**, because the release keystore is not in this repository's Actions secrets yet."
+    },
+    {
+      "repo": "flow",
+      "slug": "flow",
+      "tag": "v0.6.1",
+      "name": "تک‌نقطه v0.6.1",
+      "at": "2026-08-20T23:36:38Z",
+      "url": "https://github.com/Mahdi-mortazavi/flow/releases/tag/v0.6.1",
+      "body": "<div align=\"center\"> # ◉ تک‌نقطه — Flow · v0.6.1 **[ ⬇️ دانلود نسخه‌ی یونیورسال ](https://github.com/Mahdi-mortazavi/flow/releases/download/v0.6.1/taknoghte-v0.6.1-universal.apk)**"
+    },
+    {
+      "repo": "flow",
+      "slug": "flow",
+      "tag": "v0.6.0",
+      "name": "تک‌نقطه v0.6.0",
+      "at": "2026-08-16T00:29:01Z",
+      "url": "https://github.com/Mahdi-mortazavi/flow/releases/tag/v0.6.0",
+      "body": "<div align=\"center\"> # ◉ تک‌نقطه — Flow · v0.6.0 **[ ⬇️ دانلود نسخه‌ی یونیورسال ](https://github.com/Mahdi-mortazavi/flow/releases/download/v0.6.0/taknoghte-v0.6.0-universal.apk)**"
+    },
+    {
+      "repo": "overrun",
+      "slug": "overrun",
+      "tag": "v1.0.2",
+      "name": "OVERRUN 1.0.2 (test key)",
+      "at": "2026-08-01T06:29:02Z",
+      "url": "https://github.com/Mahdi-mortazavi/overrun/releases/tag/v1.0.2",
+      "body": "OVERRUN 1.0.2 for Android — **signed with a throwaway CI key**, because the release keystore is not in this repository's Actions secrets yet."
+    },
+    {
+      "repo": "overrun",
+      "slug": "overrun",
+      "tag": "v1.0.1",
+      "name": "OVERRUN 1.0.1 (test key)",
+      "at": "2026-08-01T01:03:13Z",
+      "url": "https://github.com/Mahdi-mortazavi/overrun/releases/tag/v1.0.1",
+      "body": "OVERRUN 1.0.1 for Android — **signed with a throwaway CI key**, because the release keystore is not in this repository's Actions secrets yet."
+    },
+    {
+      "repo": "overrun",
+      "slug": "overrun",
+      "tag": "v1.0.0",
+      "name": "OVERRUN 1.0.0 (test key)",
+      "at": "2026-08-01T00:55:31Z",
+      "url": "https://github.com/Mahdi-mortazavi/overrun/releases/tag/v1.0.0",
+      "body": "OVERRUN 1.0.0 for Android — **signed with a throwaway CI key**, because the release keystore is not in this repository's Actions secrets yet."
+    },
+    {
+      "repo": "app",
+      "slug": "nava",
+      "tag": "v3.1.0",
+      "name": "🍎 Nava v3.1.0",
+      "at": "2026-07-22T23:07:11Z",
+      "url": "https://github.com/Mahdi-mortazavi/app/releases/tag/v3.1.0",
+      "body": "یک بیلد بهینه و پایدار از Nava — ساخته‌شده با Flutter، معماری Riverpod و رابط کاربری Liquid Glass. ### 📥 کدام فایل را دانلود کنم؟ / Which file should I download? | فایل | مناسب برای |"
+    },
+    {
+      "repo": "app",
+      "slug": "nava",
+      "tag": "v3.0.0",
+      "name": "🍎 Nava v3.0.0",
+      "at": "2026-07-20T11:19:20Z",
+      "url": "https://github.com/Mahdi-mortazavi/app/releases/tag/v3.0.0",
+      "body": "یک بیلد بهینه و پایدار از Nava — ساخته‌شده با Flutter، معماری Riverpod و رابط کاربری Liquid Glass. ### 📥 کدام فایل را دانلود کنم؟ / Which file should I download? | فایل | مناسب برای |"
+    },
+    {
+      "repo": "flow",
+      "slug": "flow",
+      "tag": "v0.5.2",
+      "name": "تک‌نقطه v0.5.2",
+      "at": "2026-07-20T01:24:07Z",
+      "url": "https://github.com/Mahdi-mortazavi/flow/releases/tag/v0.5.2",
+      "body": "<div align=\"center\"> # ◉ Flow — تک‌نقطه · v0.5.2 **نصب روی همه‌ی گوشی‌ها · Installs on every Android phone**"
+    },
+    {
+      "repo": "sooda",
+      "slug": "sooda",
+      "tag": "v1.2.0",
+      "name": "Sooda v1.2.0",
+      "at": "2026-07-14T03:31:48Z",
+      "url": "https://github.com/Mahdi-mortazavi/sooda/releases/tag/v1.2.0",
+      "body": "### Added - **Basket mode (سبد محاسبه):** add any result to a basket and see live totals — total cost, revenue, profit and overall margin for sales; total original/pay/saved for purchases — grouped per currency unit, with a header badge counter. - **PWA home-s"
+    },
+    {
+      "repo": "sooda",
+      "slug": "sooda",
+      "tag": "v1.1.0",
+      "name": "Sooda v1.1.0",
+      "at": "2026-07-14T02:35:04Z",
+      "url": "https://github.com/Mahdi-mortazavi/sooda/releases/tag/v1.1.0",
+      "body": "### Added - **Currency/unit presets:** Toman (تومان), Rial (ریال), $ and € — selectable in Settings, applied across results, history and CSV export, with locale-aware placement ($19.99 vs ۲۰ دلار). - **Reverse discount mode:** enter the final (discounted) pric"
+    },
+    {
+      "repo": "sooda",
+      "slug": "sooda",
+      "tag": "v1.0.0",
+      "name": "Sooda v1.0.0",
+      "at": "2026-07-14T01:46:51Z",
+      "url": "https://github.com/Mahdi-mortazavi/sooda/releases/tag/v1.0.0",
+      "body": "### Added - **Three calculators:** profit % (purchase + profit % → selling price), sell price (purchase + selling → profit %/amount, with clear loss display), and discount (original + % → final price & savings) — all backed by a unit-tested pure calculation en"
+    },
+    {
+      "repo": "purify",
+      "slug": "purify",
+      "tag": "v0.1.3",
+      "name": "purify v0.1.3",
+      "at": "2026-07-13T00:04:36Z",
+      "url": "https://github.com/Mahdi-mortazavi/purify/releases/tag/v0.1.3",
+      "body": "## What's Changed * v0.1.3: macOS-inspired \"Liquid Glass\" desktop redesign by @Mahdi-mortazavi in https://github.com/Mahdi-mortazavi/purify/pull/7 **Full Changelog**: https://github.com/Mahdi-mortazavi/purify/compare/v0.1.2...v0.1.3"
+    },
+    {
+      "repo": "purify",
+      "slug": "purify",
+      "tag": "v0.1.2",
+      "name": "purify v0.1.2",
+      "at": "2026-07-12T23:31:20Z",
+      "url": "https://github.com/Mahdi-mortazavi/purify/releases/tag/v0.1.2",
+      "body": "## What's Changed * v0.1.1: QA & hardening — fix scanner, safety, quarantine, and desktop… by @Mahdi-mortazavi in https://github.com/Mahdi-mortazavi/purify/pull/5 * v0.1.2: major analysis speedup + full Windows end-to-end testing by @Mahdi-mortazavi in https:/"
+    },
+    {
+      "repo": "purify",
+      "slug": "purify",
+      "tag": "v0.1.1",
+      "name": "purify v0.1.1",
+      "at": "2026-07-12T10:30:41Z",
+      "url": "https://github.com/Mahdi-mortazavi/purify/releases/tag/v0.1.1",
+      "body": "## What's Changed * Claude/windows cleanup rust app 6b5m3t by @Mahdi-mortazavi in https://github.com/Mahdi-mortazavi/purify/pull/3 * v0.1.1: QA & hardening — scanner/safety/quarantine/desktop bug fixes by @Mahdi-mortazavi in https://github.com/Mahdi-mortazavi/"
+    },
+    {
+      "repo": "app",
+      "slug": "nava",
+      "tag": "v2.0.1",
+      "name": "🍎 Nava v2.0.1",
+      "at": "2026-07-12T10:29:35Z",
+      "url": "https://github.com/Mahdi-mortazavi/app/releases/tag/v2.0.1",
+      "body": "یک بیلد بهینه و پایدار از Nava — ساخته‌شده با Flutter، معماری Riverpod و رابط کاربری Liquid Glass. ### 📦 دانلود / Download | فایل | معماری | حداقل نسخه اندروید |"
+    },
+    {
+      "repo": "purify",
+      "slug": "purify",
+      "tag": "v0.1.0",
+      "name": "purify v0.1.0",
+      "at": "2026-07-12T09:31:00Z",
+      "url": "https://github.com/Mahdi-mortazavi/purify/releases/tag/v0.1.0",
+      "body": "## What's Changed * Phase 0: workspace skeleton with safety-first foundations by @Mahdi-mortazavi in https://github.com/Mahdi-mortazavi/purify/pull/1 * purify Phases 1–6: scanner, rule engine, quarantine, desktop UI, organizer/guardian, release by @Mahdi-morta"
+    },
+    {
+      "repo": "app",
+      "slug": "nava",
+      "tag": "v2.0.0",
+      "name": "🍎 Nava v2.0.0",
+      "at": "2026-07-09T05:33:45Z",
+      "url": "https://github.com/Mahdi-mortazavi/app/releases/tag/v2.0.0",
+      "body": "<div align=\"center\"> ### هنرِ حذف کردن اضافات — The Art of Reduction </div>"
+    },
+    {
+      "repo": "app",
+      "slug": "nava",
+      "tag": "v1.1.0",
+      "name": "🍎 Nava v1.1.0 ",
+      "at": "2026-07-09T03:53:32Z",
+      "url": "https://github.com/Mahdi-mortazavi/app/releases/tag/v1.1.0",
+      "body": "<div align=\"center\"> ### هنرِ حذف کردن اضافات — The Art of Reduction </div>"
+    },
+    {
+      "repo": "flow",
+      "slug": "flow",
+      "tag": "v0.5.1",
+      "name": "تک‌نقطه v0.5.1",
+      "at": "2026-07-08T23:56:01Z",
+      "url": "https://github.com/Mahdi-mortazavi/flow/releases/tag/v0.5.1",
+      "body": "# Flow (تک‌نقطه) ۰.۵.۱ — رفع کرش استارت روی نسخه‌ی نصبی این یک نسخه‌ی اصلاحی مهم است. نسخه‌ی نصبی (release) روی برخی گوشی‌ها — به‌ویژه دستگاه‌های با GPU مالی مثل گلکسی A30s و اندروید ۱۱ — **هنگام باز شدن صفحه‌سیاه می‌شد و بالا نمی‌آمد.** حالا کامل حل شده. ## \ud83d"
+    },
+    {
+      "repo": "flow",
+      "slug": "flow",
+      "tag": "v0.5.0",
+      "name": "تک‌نقطه v0.5.0",
+      "at": "2026-07-07T19:09:54Z",
+      "url": "https://github.com/Mahdi-mortazavi/flow/releases/tag/v0.5.0",
+      "body": "# Flow (تک‌نقطه) ۰.۵.۰ — «سریع‌تر، هوشمندتر، چسبنده‌تر» این نسخه سراغِ شکاف‌های پروداکتی رفته — همان چیزهای کوچکی که فاصله‌ی «یک اپِ خوب» تا «اپی که واقعاً رفتارت را عوض می‌کند» را می‌سازند. ## 📥 نصب و تست"
+    },
+    {
+      "repo": "flow",
+      "slug": "flow",
+      "tag": "v0.4.1",
+      "name": "تک‌نقطه v0.4.1",
+      "at": "2026-07-07T15:38:29Z",
+      "url": "https://github.com/Mahdi-mortazavi/flow/releases/tag/v0.4.1",
+      "body": "# Flow (تک‌نقطه) ۰.۴.۱ — نسخه‌ی «قابل اتکا» > نکته: نسخه‌ی ۰.۴.۰ به‌دلیل خطای فرایند انتشار، از کد قدیمی ساخته شده بود و معتبر نیست — این نسخه (۰.۴.۱) ریلیز صحیح همان تغییرات است. این نسخه حاصل یک ممیزی کامل پروداکت است: **۱۵ مشکل شناسایی‌شده — از حلقه‌ی بازگش"
+    },
+    {
+      "repo": "flow",
+      "slug": "flow",
+      "tag": "v0.4.0",
+      "name": "تک‌نقطه v0.4.0",
+      "at": "2026-07-07T15:24:00Z",
+      "url": "https://github.com/Mahdi-mortazavi/flow/releases/tag/v0.4.0",
+      "body": "# Flow (تک‌نقطه) ۰.۳.۰ — تجربه‌ی کاربری به سبک اپل **Flow** یک سیستم مدیریت تمرکز، انرژی و زمان است — فارسی، آفلاین، بدون اکانت. هر روز فقط یک سؤال دارد: *«اگر فقط یک کار امروز انجام شود، کدام است؟»* ## 📥 نصب و تست"
+    },
+    {
+      "repo": "flow",
+      "slug": "flow",
+      "tag": "v0.3.0",
+      "name": "تک‌نقطه v0.3.0",
+      "at": "2026-07-06T23:41:12Z",
+      "url": "https://github.com/Mahdi-mortazavi/flow/releases/tag/v0.3.0",
+      "body": "# Flow (تک‌نقطه) ۰.۳.۰ — تجربه‌ی کاربری به سبک اپل **Flow** یک سیستم مدیریت تمرکز، انرژی و زمان است — فارسی، آفلاین، بدون اکانت. هر روز فقط یک سؤال دارد: *«اگر فقط یک کار امروز انجام شود، کدام است؟»* ## 📥 نصب و تست"
+    },
+    {
+      "repo": "flow",
+      "slug": "flow",
+      "tag": "v0.2.0",
+      "name": "تک‌نقطه v0.2.0",
+      "at": "2026-07-06T22:36:18Z",
+      "url": "https://github.com/Mahdi-mortazavi/flow/releases/tag/v0.2.0",
+      "body": "# تک‌نقطه ۰.۲.۰ — عادت‌ها، آینه و انرژی **تک‌نقطه** یک سیستم مدیریت تمرکز، انرژی و زمان است — فارسی، آفلاین، بدون اکانت. هر روز فقط یک سؤال دارد: *«اگر فقط یک کار امروز انجام شود، کدام است؟»* ## 📥 نصب و تست"
+    },
+    {
+      "repo": "app",
+      "slug": "nava",
+      "tag": "v1.0.0",
+      "name": "🏛️ Nava v1.0.0 — Classic Edition (نسخهٔ کلاسیک)",
+      "at": "2025-12-03T01:25:18Z",
+      "url": "https://github.com/Mahdi-mortazavi/app/releases/tag/v1.0.0",
+      "body": "> 🏛️ **نسخهٔ کلاسیک — Classic Edition**\r > این اولین انتشار عمومی Nava است و به‌عنوان نسخهٔ کلاسیک و آرشیوی نگه داشته می‌شود.\r > برای آخرین نسخه به [Releases](https://github.com/Mahdi-mortazavi/app/releases/latest) بروید.\r"
+    }
+  ]
+}
