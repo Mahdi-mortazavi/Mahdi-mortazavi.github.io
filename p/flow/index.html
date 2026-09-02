@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#05070d" />
+<title>Flow — تک‌نقطه — One daily boulder. Crash-proof focus. | Mahdi Mortazavi</title>
+<meta name="description" content="An offline-first Persian/RTL focus, habit and deep-work app built on behavioral science: one daily boulder, a crash-proof focus timer, habits that recover after failure, and a judgment-free stats mirror." />
+<link rel="canonical" href="https://mahdi-mortazavi.github.io/p/flow/" />
+<link rel="icon" type="image/png" href="/avatar.png" />
+<link rel="stylesheet" href="/fonts.css" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Mahdi Mortazavi" />
+<meta property="og:title" content="Flow — تک‌نقطه — One daily boulder. Crash-proof focus. | Mahdi Mortazavi" />
+<meta property="og:description" content="An offline-first Persian/RTL focus, habit and deep-work app built on behavioral science: one daily boulder, a crash-proof focus timer, habits that recover after failure, and a judgment-free stats mirror." />
+<meta property="og:url" content="https://mahdi-mortazavi.github.io/p/flow/" />
+<meta property="og:image" content="https://mahdi-mortazavi.github.io/og-card.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Flow — تک‌نقطه — One daily boulder. Crash-proof focus. | Mahdi Mortazavi" />
+<meta name="twitter:description" content="An offline-first Persian/RTL focus, habit and deep-work app built on behavioral science: one daily boulder, a crash-proof focus timer, habits that recover after failure, and a judgment-free stats mirror." />
+<meta name="twitter:image" content="https://mahdi-mortazavi.github.io/og-card.png" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Flow — تک‌نقطه","alternateName":"flow","url":"https://mahdi-mortazavi.github.io/p/flow/","sameAs":["https://github.com/Mahdi-mortazavi/flow"],"description":"An offline-first Persian/RTL focus, habit and deep-work app built on behavioral science: one daily boulder, a crash-proof focus timer, habits that recover after failure, and a judgment-free stats mirror.","applicationCategory":"DeveloperApplication","operatingSystem":"Android","programmingLanguage":"Dart / Flutter","isAccessibleForFree":true,"license":"https://opensource.org/licenses","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Mahdi Mortazavi","alternateName":"مهدی مرتضوی","url":"https://mahdi-mortazavi.github.io/","sameAs":["https://github.com/Mahdi-mortazavi","https://t.me/Mahdi_mortazavi1","https://t.me/Startup_legend"]}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Mahdi Mortazavi","item":"https://mahdi-mortazavi.github.io/"},{"@type":"ListItem","position":2,"name":"Projects","item":"https://mahdi-mortazavi.github.io/p/"},{"@type":"ListItem","position":3,"name":"Flow — تک‌نقطه","item":"https://mahdi-mortazavi.github.io/p/flow/"}]}</script>
+<style>
+:root{--accent:#0A84FF;--txt:#F5F5F7;--muted:#B9C0CC;--dim:#8A93A3;--stroke:rgba(255,255,255,.16);
+--font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;--fa:'Vazirmatn',var(--font)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);color:var(--txt);background:#05070d;min-height:100vh;
+ -webkit-font-smoothing:antialiased;display:flex;justify-content:center;
+ padding:max(28px,env(safe-area-inset-top)) 18px 56px}
+.bg{position:fixed;inset:-25%;z-index:-2;filter:blur(70px) saturate(150%);
+ background:radial-gradient(38% 42% at 24% 18%,#0A84FF88,transparent 70%),
+ radial-gradient(34% 38% at 80% 26%,rgba(94,92,230,.45),transparent 70%),
+ radial-gradient(42% 44% at 66% 92%,rgba(48,209,208,.28),transparent 70%)}
+.wrap{width:100%;max-width:640px}
+a{color:inherit}
+.back{display:inline-flex;gap:8px;align-items:center;text-decoration:none;color:var(--dim);
+ font-size:14px;font-weight:600;margin-bottom:18px}
+.back:hover{color:var(--txt)}
+.card{padding:32px 28px;border-radius:28px;
+ background:linear-gradient(155deg,rgba(255,255,255,.11),rgba(255,255,255,.055));
+ -webkit-backdrop-filter:blur(30px) saturate(185%);backdrop-filter:blur(30px) saturate(185%);
+ border:1px solid var(--stroke);
+ box-shadow:0 12px 50px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.28)}
+.ic{width:74px;height:74px;border-radius:22px;display:grid;place-items:center;font-size:36px;
+ background:#0A84FF2e;border:1px solid #0A84FF66;margin-bottom:18px}
+h1{font-size:34px;font-weight:800;letter-spacing:-.8px}
+.tag{color:var(--muted);font-size:18px;font-weight:600;margin-top:8px}
+.fa{font-family:var(--fa);direction:rtl}
+.tagfa{color:var(--dim);font-size:15px;margin-top:6px}
+p.desc{color:var(--muted);font-size:15px;line-height:1.7;margin-top:18px}
+p.descfa{color:var(--dim);font-size:14px;line-height:1.9;margin-top:10px}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+.chip{padding:8px 15px;border-radius:999px;font-size:13.5px;font-weight:600;color:#C9D1D9;
+ background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13)}
+.meta{display:flex;gap:22px;flex-wrap:wrap;margin-top:22px;font-size:13.5px;color:var(--dim)}
+.meta b{color:var(--muted);font-weight:600}
+.cta{display:flex;gap:11px;flex-wrap:wrap;margin-top:26px}
+.btn{flex:1 1 180px;display:flex;align-items:center;justify-content:center;gap:9px;
+ padding:15px 18px;border-radius:17px;text-decoration:none;font-weight:650;font-size:15.5px;
+ border:1px solid var(--stroke);background:linear-gradient(155deg,rgba(255,255,255,.1),rgba(255,255,255,.05));
+ transition:transform .18s,border-color .18s}
+.btn.primary{background:linear-gradient(155deg,#0A84FFcc,#0A84FF77);border-color:#0A84FF}
+@media(hover:hover){.btn:hover{transform:translateY(-2px);border-color:#fff6}}
+.foot{text-align:center;color:var(--dim);font-size:13px;margin-top:26px;line-height:1.9}
+.foot a{color:var(--muted);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+<main class="wrap">
+  <a class="back" href="/">← Mahdi Mortazavi · <span class="fa">مهدی مرتضوی</span></a>
+  <article class="card">
+    <div class="ic" aria-hidden="true">◉</div>
+    <h1>Flow — تک‌نقطه</h1>
+    <div class="tag">One daily boulder. Crash-proof focus.</div>
+    <div class="tagfa fa">تمرکز، عادت و کارِ عمیق — مبتنی بر علم رفتار</div>
+    <p class="desc">An offline-first Persian/RTL focus, habit and deep-work app built on behavioral science: one daily boulder, a crash-proof focus timer, habits that recover after failure, and a judgment-free stats mirror.</p>
+    <p class="descfa fa">اپ فارسیِ مدیریت تمرکز، عادت و زمان — کاملاً آفلاین، با تایمر تمرکزِ مقاوم و عادت‌هایی که بعد از شکست بازیابی می‌شوند.</p>
+    <div class="chips"><span class="chip">Offline-first</span><span class="chip">Persian / RTL</span><span class="chip">Behavioral science</span><span class="chip">Riverpod</span></div>
+    <div class="meta">
+      <span><b>Platform</b> · Android</span>
+      <span><b>Built with</b> · Dart / Flutter</span>
+      <span><b>Stars</b> · <span data-stars="flow">—</span></span>
+    </div>
+    <div class="cta">
+      <a class="btn primary" href="https://github.com/Mahdi-mortazavi/flow">Open on GitHub →</a>
+      <a class="btn" href="https://github.com/Mahdi-mortazavi/flow/releases/latest">Download</a>
+    </div>
+  </article>
+  <p class="foot">
+    An open-source project by <a href="/"><b>Mahdi Mortazavi</b></a> · <span class="fa">مهدی مرتضوی</span><br/>
+    <a href="https://t.me/Mahdi_mortazavi1">Telegram</a> · <a href="https://github.com/Mahdi-mortazavi">GitHub</a>
+  </p>
+</main>
+<script>
+fetch('https://api.github.com/repos/Mahdi-mortazavi/flow')
+  .then(r=>r.ok?r.json():null)
+  .then(d=>{if(d)document.querySelectorAll('[data-stars]').forEach(e=>e.textContent='★ '+d.stargazers_count)})
+  .catch(()=>{});
+</script>
+</body>
+</html>
