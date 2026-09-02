@@ -8,10 +8,15 @@ import { writeFile, readFile } from 'node:fs/promises';
 
 const USER = 'Mahdi-mortazavi';
 const API = 'https://api.github.com';
+// STARS_TOKEN (optional) is a personal token with public-repo read — the only
+// credential GitHub accepts for cross-repo /stargazers (GITHUB_TOKEN gets 403,
+// anonymous gets 401). Without it the growth curve still works, built from the
+// daily snapshots in history.json instead of backfilled timestamps.
+const TOKEN = process.env.STARS_TOKEN || process.env.GITHUB_TOKEN;
 const headers = {
   Accept: 'application/vnd.github+json',
   'User-Agent': 'mahdi-hub-sync',
-  ...(process.env.GITHUB_TOKEN ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` } : {}),
+  ...(TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {}),
 };
 const gh = async (p, accept) => {
   const h = accept ? { ...headers, Accept: accept } : { ...headers };

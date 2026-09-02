@@ -29,6 +29,9 @@ jobs:
       - name: 🔄 Pull live data from GitHub
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Optional: a personal token with public-repo read unlocks real star
+          # history. Without it the growth curve builds from daily snapshots.
+          STARS_TOKEN: ${{ secrets.STARS_TOKEN }}
         run: node sync.mjs
 
       - name: 🏗️ Rebuild generated pages
