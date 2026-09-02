@@ -6,7 +6,7 @@
  *   sitemap.xml, robots.txt
  * Run: node build.mjs
  */
-import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
 
 const ORIGIN = 'https://mahdi-mortazavi.github.io';
 const GH = 'https://github.com/Mahdi-mortazavi';
@@ -284,14 +284,7 @@ time{display:block;font-size:12.5px;font-weight:600;color:var(--dim);letter-spac
 }
 
 // sitemap + robots
-const postSlugs = (await readdir('content/posts').catch(() => []))
-  .filter(f => f.endsWith('.json')).map(f => f.replace(/\.json$/, '')).sort().reverse();
-const urls = [
-  `${ORIGIN}/`, `${ORIGIN}/p/`, `${ORIGIN}/timeline/`,
-  `${ORIGIN}/blog/`, `${ORIGIN}/blog/fa/`,
-  ...projects.map(p => `${ORIGIN}/p/${p.slug}/`),
-  ...postSlugs.flatMap(s => [`${ORIGIN}/blog/${s}/`, `${ORIGIN}/blog/fa/${s}/`]),
-];
+const urls = [`${ORIGIN}/`, `${ORIGIN}/p/`, `${ORIGIN}/timeline/`, ...projects.map(p => `${ORIGIN}/p/${p.slug}/`)];
 const today = new Date().toISOString().slice(0, 10);
 await writeFile('sitemap.xml',
 `<?xml version="1.0" encoding="UTF-8"?>
