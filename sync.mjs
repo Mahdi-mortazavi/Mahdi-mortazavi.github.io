@@ -14,7 +14,16 @@ const headers = {
   ...(process.env.GITHUB_TOKEN ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` } : {}),
 };
 const gh = async (p, accept) => {
-  const r = await fetch(API + p, { headers: accept ? { ...headers, Accept: accept } : headers });
+  const h = accept ? { ...headers, Accept: accept } : { ...headers };
+  let r = await fetch(API + p, { headers: h });
+  // The repo-scoped GITHUB_TOKEN is refused (403) on some cross-repo reads,
+  // stargazer timestamps among them. That data is public — ask again without
+  // credentials rather than losing the history entirely.
+  if (r.status === 403 && h.Authorization) {
+    const { Authorization, ...anon } = h;
+    r = await fetch(API + p, { headers: anon });
+    if (r.ok) console.log('  ↩ anonymous retry succeeded:', p);
+  }
   if (!r.ok) { console.warn('  !', r.status, p); return null; }
   return r.json();
 };
