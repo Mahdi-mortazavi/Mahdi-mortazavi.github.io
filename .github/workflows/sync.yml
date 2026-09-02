@@ -35,23 +35,36 @@ jobs:
         run: node build.mjs
 
       - name: 🚀 Commit if changed
+        id: commit
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           STAGE="data.json history.json p timeline sitemap.xml robots.txt"
           git add $STAGE
-          if git diff --cached --quiet; then echo "No changes."; exit 0; fi
+          if git diff --cached --quiet; then
+            echo "No changes."; echo "changed=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
           MSG="🔄 Sync with GitHub — $(TZ=Asia/Tehran date +'%Y-%m-%d %H:%M') Tehran"
           git commit -m "$MSG"
           for attempt in 1 2 3; do
-            if git push; then echo "pushed on attempt $attempt"; exit 0; fi
+            if git push; then
+              echo "pushed on attempt $attempt"
+              echo "changed=true" >> "$GITHUB_OUTPUT"; exit 0
+            fi
             echo "push rejected — replaying our snapshot on top of latest main"
             git fetch origin main
             # These files are a freshly generated snapshot, so ours wins wholesale;
             # merging two runs' timestamps would only ever conflict.
             git reset --soft origin/main
             git add $STAGE
-            if git diff --cached --quiet; then echo "Another run already published this."; exit 0; fi
+            if git diff --cached --quiet; then
+              echo "Another run already published this."
+              echo "changed=false" >> "$GITHUB_OUTPUT"; exit 0
+            fi
             git commit -m "$MSG"
           done
           echo "::error::could not push after 3 attempts"; exit 1
+
+      - name: 📣 Ping IndexNow (Bing · Yandex · DuckDuckGo · Seznam)
+        if: steps.commit.outputs.changed == 'true'
+        run: node ping-indexnow.mjs
