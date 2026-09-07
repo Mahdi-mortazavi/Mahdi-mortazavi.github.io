@@ -14,6 +14,45 @@ const { person, projects } = JSON.parse(await readFile('projects.json', 'utf8'))
 let live = { totals: {}, stats: {}, timeline: [], growth: [] };
 try { live = JSON.parse(await readFile('data.json', 'utf8')); console.log('using data.json'); }
 catch { console.log('no data.json yet — pages render without live numbers'); }
+/**
+ * Release notes are markdown, often with HTML wrappers, shields badges and a
+ * full changelog URL. Escaping them printed the markup verbatim and a lone
+ * 100-character download link forced the page wider than a phone. Reduce a
+ * note to the prose a reader actually wants.
+ */
+/** Trim to a length search results will actually show, on a sentence or word
+ *  boundary. Google truncates titles past ~60 and descriptions past ~160. */
+const clip = (text, max) => {
+  const t = String(text ?? '').replace(/\s+/g, ' ').trim();
+  if (t.length <= max) return t;
+  const cut = t.slice(0, max - 1);
+  const stop = cut.lastIndexOf('. ');
+  if (stop > max * 0.55) return cut.slice(0, stop + 1);
+  return cut.replace(/\s\S*$/, '') + '…';
+};
+
+const plain = (md, max = 190) => {
+  let t = String(md ?? '')
+    .replace(/```[\s\S]*?```/g, ' ')          // fenced code
+    .replace(/<[^>]+>/g, ' ')                  // html wrappers
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')     // images and badges
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')   // links -> their text
+    .replace(/https?:\/\/\S+/g, ' ')           // bare urls
+    .replace(/(^|\s)#{1,6}\s+/g, '$1')         // headings, wherever they landed
+    .replace(/(^|\s)[*\-+]\s+/g, '$1')         // list bullets
+    .replace(/\b(What's Changed|Full Changelog)\s*:?/gi, ' ')  // github boilerplate
+    .replace(/[*_`~]+/g, '')                   // emphasis marks
+    .replace(/\bby @\S+(\s+in\b)?/g, ' ')       // "by @author in <url>"
+    .replace(/\s+/g, ' ')
+    .replace(/\s+([,.:;،؛])/g, '$1')
+    .replace(/^[\s,.:;،؛—–-]+|[\s,:;،؛—–-]+$/g, '')
+    .trim();
+  if (t.length <= max) return t;
+  const cut = t.slice(0, max);
+  const stop = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('؟'), cut.lastIndexOf('.'));
+  return (stop > max * 0.5 ? cut.slice(0, stop + 1) : cut.replace(/\s\S*$/, '')) + '…';
+};
+
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 
 /* ── Media: real screenshots and screen recordings, rendered as a horizontal
@@ -115,7 +154,10 @@ const page = p => {
       {'@type':'ListItem',position:3,name:p.name,item:url},
     ],
   };
-  const title = `${p.name} — ${p.tagline} | Mahdi Mortazavi`;
+  // The brand suffix is the point of the title, so the tagline yields instead.
+  const SUFFIX = ' · Mahdi Mortazavi';
+  const title = clip(`${p.name} — ${p.tagline}`, 60 - SUFFIX.length) + SUFFIX;
+  const metaDesc = clip(p.desc, 155);
   const chips = p.tags.map(t=>`<span class="chip">${esc(t)}</span>`).join('');
   return `<!doctype html>
 <html lang="en">
@@ -124,19 +166,19 @@ const page = p => {
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#05070d" />
 <title>${esc(title)}</title>
-<meta name="description" content="${esc(p.desc)}" />
+<meta name="description" content="${esc(metaDesc)}" />
 <link rel="canonical" href="${url}" />
 <link rel="icon" type="image/png" href="/avatar.png" />
 <link rel="stylesheet" href="/fonts.css" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Mahdi Mortazavi" />
 <meta property="og:title" content="${esc(title)}" />
-<meta property="og:description" content="${esc(p.desc)}" />
+<meta property="og:description" content="${esc(metaDesc)}" />
 <meta property="og:url" content="${url}" />
 <meta property="og:image" content="${og}" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="${esc(title)}" />
-<meta name="twitter:description" content="${esc(p.desc)}" />
+<meta name="twitter:description" content="${esc(metaDesc)}" />
 <meta name="twitter:image" content="${og}" />
 <script type="application/ld+json">${JSON.stringify(ld)}</script>
 <script type="application/ld+json">${JSON.stringify(crumbs)}</script>
@@ -342,10 +384,12 @@ for (const p of projects) {
 // Projects index
 const thumbOf = p => {
   const m = (p.media ?? []).filter(x => !String(x.src ?? '').endsWith('.svg'));
-  const v = m.find(x => x.type === 'video');
   const i = m.find(x => x.type === 'image');
-  if (v) return { src: v.poster, w: v.w, h: v.h };
+  const v = m.find(x => x.type === 'video');
+  // Prefer a real screenshot; a video poster is only a frame, and it can catch
+  // whatever happened to be on screen.
   if (i) return { src: i.thumb ?? i.src, w: i.w, h: i.h };
+  if (v) return { src: v.poster, w: v.w, h: v.h };
   return null;
 };
 const list = projects.map(p => {
@@ -356,12 +400,40 @@ const list = projects.map(p => {
     : `<span class="th thi" aria-hidden="true">${p.icon}</span>`;
   return `<li><a href="/p/${p.slug}/">${shot}<span class="tx"><b>${esc(p.name)}</b>${esc(p.tagline)}</span></a></li>`;
 }).join('\n');
+const listLd = {
+  '@context':'https://schema.org','@type':'CollectionPage',
+  '@id':`${ORIGIN}/p/`, url:`${ORIGIN}/p/`,
+  name:'Open-Source Projects — Mahdi Mortazavi',
+  description:`Open-source projects by Mahdi Mortazavi (${person.nameFa}): ${projects.map(p=>p.name).join(', ')}.`,
+  inLanguage:['en','fa'],
+  isPartOf:{'@id':`${ORIGIN}/#website`},
+  about:{'@type':'Person',name:person.name,alternateName:person.nameFa,url:person.url,sameAs:person.sameAs},
+  mainEntity:{
+    '@type':'ItemList',
+    numberOfItems:projects.length,
+    itemListElement:projects.map((p,i)=>({
+      '@type':'ListItem',position:i+1,
+      item:{'@type':'SoftwareApplication',name:p.name,url:`${ORIGIN}/p/${p.slug}/`,
+            description:p.tagline,applicationCategory:'DeveloperApplication',
+            operatingSystem:p.os,programmingLanguage:p.lang},
+    })),
+  },
+};
+const crumbsLd = {
+  '@context':'https://schema.org','@type':'BreadcrumbList',
+  itemListElement:[
+    {'@type':'ListItem',position:1,name:'Mahdi Mortazavi',item:`${ORIGIN}/`},
+    {'@type':'ListItem',position:2,name:'Projects',item:`${ORIGIN}/p/`},
+  ],
+};
 await writeFile('p/index.html', `<!doctype html>
 <html lang="en"><head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Open-Source Projects — Mahdi Mortazavi · مهدی مرتضوی</title>
 <meta name="description" content="Open-source projects by Mahdi Mortazavi (مهدی مرتضوی): ${projects.map(p=>p.name).join(', ')}." />
 <link rel="canonical" href="${ORIGIN}/p/" /><link rel="stylesheet" href="/fonts.css" />
+<script type="application/ld+json">${JSON.stringify(listLd)}</script>
+<script type="application/ld+json">${JSON.stringify(crumbsLd)}</script>
 <link rel="icon" type="image/png" href="/avatar.png" />
 <meta property="og:title" content="Open-Source Projects — Mahdi Mortazavi" />
 <meta property="og:description" content="Open-source projects by Mahdi Mortazavi (مهدی مرتضوی)." />
@@ -396,7 +468,7 @@ a.back{color:#8A93A3;text-decoration:none;font-size:14px;font-weight:600}
 <body><div class="bg"></div><main class="w">
 <a class="back" href="/">← Mahdi Mortazavi · مهدی مرتضوی</a>
 <h1 style="margin-top:16px">Open-Source Projects</h1>
-<p class="s">Everything I build in the open — by <b>Mahdi Mortazavi</b> (مهدی مرتضوی).</p>
+<p class="s">Everything I build in the open — by <b>Mahdi Mortazavi</b> <bdi>(مهدی مرتضوی)</bdi>.</p>
 <ul>
 ${list}
 </ul></main></body></html>`);
@@ -426,8 +498,8 @@ ${list}
         <div class="dot" aria-hidden="true"></div>
         <time datetime="${i.at}">${fmt(i.at)}</time>
         <div class="body">
-          <a class="h" href="${i.url}"><b>${esc(i.repo)}</b> <span class="tag">${esc(i.tag)}</span></a>
-          ${i.body ? `<p>${esc(i.body)}</p>` : ''}
+          <a class="h" href="${i.url}" dir="auto"><b>${esc(i.repo)}</b> <span class="tag">${esc(i.tag)}</span></a>
+          ${(() => { const b = plain(i.body); return b ? `<p dir="auto">${esc(b)}</p>` : ''; })()}
           ${i.slug ? `<a class="more" href="/p/${i.slug}/">About ${esc(i.repo)} →</a>` : ''}
         </div>
       </li>`).join('') : '<li class="ev"><div class="body"><p>No releases published yet.</p></div></li>';
@@ -437,7 +509,7 @@ ${list}
 <html lang="en"><head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#05070d" />
-<title>Build in Public — every release by Mahdi Mortazavi · مهدی مرتضوی</title>
+<title>Build in Public — Mahdi Mortazavi · مهدی مرتضوی</title>
 <meta name="description" content="A running log of every public release Mahdi Mortazavi (مهدی مرتضوی) ships across relay, Flow, Nava, purify, sooda and overrun. Updated automatically." />
 <link rel="canonical" href="${ORIGIN}/timeline/" />
 <link rel="icon" type="image/png" href="/avatar.png" />
@@ -455,7 +527,7 @@ ${list}
 :root{--txt:#F5F5F7;--muted:#B9C0CC;--dim:#8A93A3;--accent:#0A84FF;
 --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;--fa:'Vazirmatn',var(--font)}
 body{font-family:var(--font);background:#05070d;color:var(--txt);display:flex;justify-content:center;
- padding:40px 18px 70px;-webkit-font-smoothing:antialiased}
+ padding:40px 18px 70px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 .bg{position:fixed;inset:-25%;z-index:-2;filter:blur(70px) saturate(150%);
  background:radial-gradient(38% 42% at 22% 16%,rgba(10,132,255,.5),transparent 70%),
  radial-gradient(34% 38% at 82% 30%,rgba(94,92,230,.42),transparent 70%),
@@ -481,7 +553,7 @@ time{display:block;font-size:12.5px;font-weight:600;color:var(--dim);letter-spac
 .h{text-decoration:none;font-size:16px;font-weight:650}
 .tag{display:inline-block;margin-left:6px;padding:2px 9px;border-radius:999px;font-size:12px;
  color:#9EC9FF;background:rgba(10,132,255,.16);border:1px solid rgba(10,132,255,.35)}
-.body p{color:var(--muted);font-size:14px;line-height:1.65;margin-top:8px}
+.body p{color:var(--muted);font-size:14px;line-height:1.65;margin-top:8px;overflow-wrap:anywhere}
 .more{display:inline-block;margin-top:10px;font-size:13px;font-weight:600;color:var(--dim);text-decoration:none}
 .more:hover{color:var(--txt)}
 </style></head>
