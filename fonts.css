@@ -1,3 +1,9 @@
+/* Source of truth for the six @font-face rules.
+   Nothing fetches this file: build.mjs reads it and inlines the rules into
+   every page, including the hand-written index.html between its FONTS
+   markers. Linking it instead cost a round trip and hid the woff2 URLs
+   behind it, so the fonts could not start downloading until it arrived.
+   Edit here; run `node build.mjs` to propagate. */
 @font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;
 src:url(/assets/fonts/inter-400.woff2) format('woff2')}
 @font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;

@@ -11,6 +11,15 @@ import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
 const ORIGIN = 'https://mahdi-mortazavi.github.io';
 const GH = 'https://github.com/Mahdi-mortazavi';
 const { person, projects } = JSON.parse(await readFile('projects.json', 'utf8'));
+
+/* The six @font-face rules, inlined into every page rather than linked.
+   As a linked stylesheet — even at 856 bytes — it costs a round trip AND
+   hides the woff2 URLs behind it: the fonts could not start downloading
+   until it landed, which put the whole font set one hop deeper in the
+   critical path. Inlined, the browser sees the URLs while parsing the
+   first HTML packet. fonts.css remains the source; nothing fetches it. */
+const FONT_CSS = (await readFile('fonts.css', 'utf8')).replace(/\/\*[\s\S]*?\*\//g, '').trim();
+const FONT_TAG = `<style>${FONT_CSS}</style>`;
 let live = { totals: {}, stats: {}, timeline: [], growth: [] };
 try { live = JSON.parse(await readFile('data.json', 'utf8')); console.log('using data.json'); }
 catch { console.log('no data.json yet — pages render without live numbers'); }
@@ -207,7 +216,7 @@ const page = p => {
 <meta name="description" content="${esc(metaDesc)}" />
 <link rel="canonical" href="${url}" />
 <link rel="icon" type="image/png" href="/avatar.png" />
-<link rel="stylesheet" href="/fonts.css" />
+${FONT_TAG}
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Mahdi Mortazavi" />
 <meta property="og:title" content="${esc(title)}" />
@@ -489,7 +498,7 @@ await writeFile('p/index.html', `<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Open-Source Projects — Mahdi Mortazavi · مهدی مرتضوی</title>
 <meta name="description" content="Open-source projects by Mahdi Mortazavi (مهدی مرتضوی): ${projects.map(p=>p.name).join(', ')}." />
-<link rel="canonical" href="${ORIGIN}/p/" /><link rel="stylesheet" href="/fonts.css" />
+<link rel="canonical" href="${ORIGIN}/p/" />${FONT_TAG}
 <script type="application/ld+json">${JSON.stringify(listLd)}</script>
 <script type="application/ld+json">${JSON.stringify(crumbsLd)}</script>
 <link rel="icon" type="image/png" href="/avatar.png" />
@@ -571,7 +580,7 @@ ${list}
 <meta name="description" content="A running log of every public release Mahdi Mortazavi (مهدی مرتضوی) ships across relay, Flow, Nava, purify, sooda and overrun. Updated automatically." />
 <link rel="canonical" href="${ORIGIN}/timeline/" />
 <link rel="icon" type="image/png" href="/avatar.png" />
-<link rel="stylesheet" href="/fonts.css" />
+${FONT_TAG}
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Build in Public — Mahdi Mortazavi" />
 <meta property="og:description" content="Every public release, as it ships. By Mahdi Mortazavi (مهدی مرتضوی)." />
@@ -648,4 +657,14 @@ ${urls.map((u, i) => `  <url><loc>${u}</loc><lastmod>${today}</lastmod><changefr
 </urlset>
 `);
 await writeFile('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${ORIGIN}/sitemap.xml\n`);
+
+/* index.html is hand-written, so the font block is delimited and rewritten
+   here — one source of truth, no drift between it and the built pages. */
+{
+  const home = await readFile('index.html', 'utf8');
+  const re = /(<!-- FONTS -->)[\s\S]*?(<!-- \/FONTS -->)/;
+  if (!re.test(home)) throw new Error('index.html is missing its FONTS markers');
+  const next = home.replace(re, `$1\n${FONT_TAG}\n$2`);
+  if (next !== home) { await writeFile('index.html', next); console.log('✓ index.html font block refreshed'); }
+}
 console.log(`✓ ${projects.length} project pages + index + sitemap(${urls.length}) + robots`);
