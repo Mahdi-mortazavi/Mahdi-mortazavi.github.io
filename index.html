@@ -11,7 +11,7 @@
 <meta name="google-site-verification" content="aAHPPvsYFRi91Ey3-MIEcLEP-M76pLV6z-P0M4CEMNg" />
 <link rel="icon" type="image/png" href="avatar.png" />
 <link rel="apple-touch-icon" href="avatar.png" />
-<link rel="preload" as="image" href="avatar.png" />
+<link rel="preload" as="image" href="avatar.webp" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="profile" />
@@ -249,7 +249,10 @@ h1 .fa{display:block; font-size:19px; font-weight:700; color:var(--muted); margi
         <div>
           <div class="avatar-wrap">
             <div class="avatar-glow" aria-hidden="true"></div>
-            <img class="avatar" src="avatar.png" alt="Mahdi Mortazavi" width="104" height="104" />
+            <picture>
+              <source srcset="avatar.webp" type="image/webp" />
+              <img class="avatar" src="avatar.png" alt="Mahdi Mortazavi" width="104" height="104" />
+            </picture>
           </div>
           <h1>Mahdi Mortazavi<span class="fa" lang="fa">مهدی مرتضوی</span></h1>
           <p class="role" data-bio><b>Full-Stack Developer</b> · Product Builder · Problem Solver · Iran 🇮🇷</p>
