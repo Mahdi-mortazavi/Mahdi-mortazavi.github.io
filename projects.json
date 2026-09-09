@@ -64,6 +64,32 @@
      "caption": "The PC side stays out of the way — it lives in the system tray.",
      "captionFa": "سمت کامپیوتر مزاحم نمی‌شود — در سینی سیستم می‌نشیند."
     }
+   ],
+   "faq": [
+    {
+     "q": "Do I need to root my Android phone to use relay?",
+     "a": "No. relay works on a stock, unrooted Android phone. It builds a WireGuard tunnel between the phone and the Windows PC over USB or Wi-Fi, so the phone shares its mobile data or Wi-Fi connection with the computer without any system-level modification.",
+     "qFa": "برای استفاده از ریلی باید گوشی را روت کنم؟",
+     "aFa": "نه. ریلی روی گوشی اندروید معمولی و بدون روت کار می‌کند. یک تونل WireGuard بین گوشی و کامپیوتر ویندوز از راه USB یا وای‌فای می‌سازد، پس گوشی اینترنت موبایل یا وای‌فای خودش را بدون هیچ تغییری در سیستم با کامپیوتر به اشتراک می‌گذارد."
+    },
+    {
+     "q": "Does my traffic go through someone else's server?",
+     "a": "No. There is no relay server and no account. The encrypted tunnel is established directly between your phone and your PC on your own network, so nobody in the middle sees or stores your traffic.",
+     "qFa": "آیا ترافیک من از سرور شخص دیگری عبور می‌کند؟",
+     "aFa": "نه. هیچ سرور واسط و هیچ حساب کاربری‌ای در کار نیست. تونل رمزنگاری‌شده مستقیماً بین گوشی و کامپیوتر خودتان و روی شبکه‌ی خودتان برقرار می‌شود، پس هیچ‌کس در میانه ترافیک شما را نمی‌بیند و ذخیره نمی‌کند."
+    },
+    {
+     "q": "How is this different from normal USB tethering?",
+     "a": "Ordinary tethering depends on the carrier and the phone vendor allowing it, and it is often throttled or blocked. relay works at the tunnel level instead, so it keeps working where built-in tethering is disabled — and the link is encrypted end to end.",
+     "qFa": "تفاوتش با تترینگ معمولی USB چیست؟",
+     "aFa": "تترینگ معمولی به اجازه‌ی اپراتور و سازنده‌ی گوشی وابسته است و اغلب محدود یا مسدود می‌شود. ریلی به‌جای آن در سطح تونل کار می‌کند، پس جایی که تترینگ داخلی غیرفعال است هم کار می‌کند — و ارتباط سرتاسر رمزنگاری‌شده است."
+    },
+    {
+     "q": "Which Windows versions does relay support?",
+     "a": "relay targets Windows 10 and Windows 11. The installer is published on the GitHub releases page; the desktop side is written in C# and the tunnel layer in Go.",
+     "qFa": "ریلی از کدام نسخه‌های ویندوز پشتیبانی می‌کند؟",
+     "aFa": "ریلی برای ویندوز ۱۰ و ۱۱ ساخته شده است. نصب‌کننده در صفحه‌ی انتشارهای گیت‌هاب منتشر می‌شود؛ سمت دسکتاپ با سی‌شارپ و لایه‌ی تونل با Go نوشته شده است."
+    }
    ]
   },
   {
@@ -129,6 +155,32 @@
      "caption": "The Mirror shows the week as it was — including the zero-hour days.",
      "captionFa": "آینه هفته را همان‌طور که بود نشان می‌دهد — از جمله روزهای صفرساعته."
     }
+   ],
+   "faq": [
+    {
+     "q": "Does Flow work without an internet connection?",
+     "a": "Yes — Flow is offline-first. There is no sign-up, no sync and no telemetry. Every task, habit and focus session is stored on the device, so the app behaves identically in airplane mode.",
+     "qFa": "آیا تک‌نقطه بدون اینترنت کار می‌کند؟",
+     "aFa": "بله — تک‌نقطه کاملاً آفلاین است. نه ثبت‌نام دارد، نه همگام‌سازی و نه جمع‌آوری داده. همه‌ی کارها، عادت‌ها و جلسه‌های تمرکز روی خود دستگاه ذخیره می‌شوند، پس اپ در حالت پرواز هم دقیقاً همان‌طور کار می‌کند."
+    },
+    {
+     "q": "Is Flow designed for people with ADHD?",
+     "a": "It is built for anyone who struggles to start, but the design decisions come from that problem: one daily boulder instead of a long list, a focus timer that survives an interrupted session, and habits that recover after a miss rather than resetting your streak to zero.",
+     "qFa": "تک‌نقطه برای افراد دارای ADHD طراحی شده؟",
+     "aFa": "برای هر کسی است که شروع‌کردن برایش سخت است، اما تصمیم‌های طراحی از همین مسئله آمده‌اند: یک کارِ مهمِ روز به‌جای فهرست بلند، تایمری که با قطع‌شدن جلسه از بین نمی‌رود، و عادت‌هایی که بعد از یک شکست بازیابی می‌شوند به‌جای اینکه زنجیره را صفر کنند."
+    },
+    {
+     "q": "Does Flow support Persian and right-to-left layout?",
+     "a": "Yes. Persian is a first-class language in Flow, not a translated afterthought — full RTL layout, Persian digits and a Persian typeface chosen for the interface.",
+     "qFa": "آیا تک‌نقطه از فارسی و راست‌به‌چپ پشتیبانی می‌کند؟",
+     "aFa": "بله. فارسی در تک‌نقطه زبان درجه‌یک است، نه ترجمه‌ای که بعداً اضافه شده باشد — چیدمان کامل راست‌به‌چپ، ارقام فارسی و قلمی که برای همین رابط انتخاب شده."
+    },
+    {
+     "q": "What is a “daily boulder”?",
+     "a": "The one thing that, if you finish it today, makes the day a success. Flow asks you to name exactly one, because a list of ten priorities is the same as having none.",
+     "qFa": "«کارِ مهمِ روز» یعنی چه؟",
+     "aFa": "همان یک کاری که اگر امروز تمامش کنی، روز موفق بوده. تک‌نقطه از تو می‌خواهد دقیقاً یکی را نام ببری، چون ده اولویت با هیچ اولویتی فرق ندارد."
+    }
    ]
   },
   {
@@ -192,6 +244,32 @@
      "altFa": "سودا در مرورگر دسکتاپ به فارسی، با تب‌های درصد سود، قیمت فروش، و تخفیف.",
      "caption": "Three modes — profit, sell price, discount — behind one set of tabs.",
      "captionFa": "سه حالت — سود، قیمت فروش، تخفیف — پشت یک ردیف تب."
+    }
+   ],
+   "faq": [
+    {
+     "q": "How do I calculate the selling price from a cost and a profit margin?",
+     "a": "Enter the purchase price and the margin you want, and Sooda returns the selling price and the profit amount. It also works in the other direction — give it a selling price and it tells you the margin you are actually making.",
+     "qFa": "چطور قیمت فروش را از قیمت خرید و درصد سود حساب کنم؟",
+     "aFa": "قیمت خرید و درصد سودی که می‌خواهی را وارد کن؛ سودا قیمت فروش و مبلغ سود را می‌دهد. برعکسش هم کار می‌کند — قیمت فروش را بده تا بگوید واقعاً چند درصد سود می‌کنی."
+    },
+    {
+     "q": "Do I need to install anything or create an account?",
+     "a": "No. Sooda is a PWA — open it in the browser and it runs. If you add it to the home screen it installs like a native app and keeps working offline. There is no account, no server and no analytics.",
+     "qFa": "باید چیزی نصب کنم یا حساب بسازم؟",
+     "aFa": "نه. سودا یک وب‌اپ (PWA) است — در مرورگر بازش می‌کنی و کار می‌کند. اگر به صفحه‌ی اصلی اضافه‌اش کنی مثل یک اپ بومی نصب می‌شود و آفلاین هم کار می‌کند. نه حساب کاربری دارد، نه سرور و نه آنالیتیکس."
+    },
+    {
+     "q": "Does it handle discounts as well as profit?",
+     "a": "Yes. Discount and markup are both built in, so you can price a sale, check what a discount does to your margin, and work backwards from the price you want to advertise.",
+     "qFa": "تخفیف را هم مثل سود حساب می‌کند؟",
+     "aFa": "بله. تخفیف و درصد افزایش هر دو در آن هست، پس می‌توانی قیمت حراج بگذاری، ببینی تخفیف چه بلایی سر سودت می‌آورد و از قیمتی که می‌خواهی اعلام کنی به عقب حساب کنی."
+    },
+    {
+     "q": "Where is my data stored?",
+     "a": "On your own device, and nowhere else. Sooda has no backend to send anything to — the calculation happens in the browser and stays there.",
+     "qFa": "اطلاعاتم کجا ذخیره می‌شود؟",
+     "aFa": "روی دستگاه خودت و هیچ جای دیگر. سودا اصلاً سروری ندارد که چیزی به آن بفرستد — محاسبه در مرورگر انجام می‌شود و همان‌جا می‌ماند."
     }
    ]
   },
@@ -258,6 +336,26 @@
      "caption": "Adding a task takes one sheet and no navigation.",
      "captionFa": "افزودن یک کار یک شیت می‌خواهد و هیچ جابه‌جایی."
     }
+   ],
+   "faq": [
+    {
+     "q": "What makes Nava different from other to-do apps?",
+     "a": "Subtraction. Nava is built around removing everything that is not the task — squircle geometry, haptic feedback and slow breathing animations instead of badges, streaks and notifications competing for your attention.",
+     "qFa": "نوا چه فرقی با بقیه‌ی اپ‌های کار دارد؟",
+     "aFa": "حذف. نوا حول این ساخته شده که هر چیزی جز خودِ کار برداشته شود — هندسه‌ی اسکوئرکل، بازخورد لمسی و انیمیشن‌های آرام، به‌جای نشان و زنجیره و اعلان‌هایی که سر توجه شما دعوا می‌کنند."
+    },
+    {
+     "q": "Which platforms does Nava run on?",
+     "a": "Android and iOS. It is written in Dart and Flutter from a single codebase.",
+     "qFa": "نوا روی چه پلتفرم‌هایی اجرا می‌شود؟",
+     "aFa": "اندروید و iOS. با دارت و فلاتر و از یک کدِ مشترک نوشته شده است."
+    },
+    {
+     "q": "Is Nava free?",
+     "a": "Yes — free and open source, with no ads, no subscription and no account.",
+     "qFa": "نوا رایگان است؟",
+     "aFa": "بله — رایگان و متن‌باز، بدون تبلیغات، بدون اشتراک و بدون حساب کاربری."
+    }
    ]
   },
   {
@@ -288,6 +386,32 @@
      "altFa": "پیش‌نمایش محصول Purify: پنجره‌ای دسکتاپ که مصرف دیسک را به تفکیک دسته نشان می‌دهد، همراه اقدام پاک‌سازی امن.",
      "caption": "A product preview of the desktop window — disk usage by category, safe to clean.",
      "captionFa": "پیش‌نمایش پنجره‌ی دسکتاپ — مصرف دیسک به تفکیک دسته، با پاک‌سازی امن."
+    }
+   ],
+   "faq": [
+    {
+     "q": "Is it safe to delete what purify finds?",
+     "a": "purify shows you exactly what it found before it removes anything, and every clean is reversible. It targets the categories Windows itself considers disposable — caches, temporary files, leftover installers and update remnants — and never touches your documents.",
+     "qFa": "پاک کردن چیزهایی که پیوریفای پیدا می‌کند امن است؟",
+     "aFa": "پیوریفای پیش از حذف، دقیقاً نشان می‌دهد چه چیزی پیدا کرده و هر پاک‌سازی برگشت‌پذیر است. سراغ همان دسته‌هایی می‌رود که خود ویندوز دورریختنی می‌داندشان — کش، فایل‌های موقت، نصب‌کننده‌های باقی‌مانده و ته‌مانده‌ی آپدیت‌ها — و هرگز به فایل‌های شخصی شما دست نمی‌زند."
+    },
+    {
+     "q": "Why is it faster than the built-in Windows disk cleanup?",
+     "a": "It is written in Rust and packaged with Tauri, so it is a small native binary rather than a heavyweight framework app. The scan is parallel and the UI stays responsive while it runs.",
+     "qFa": "چرا از پاک‌سازی دیسک خود ویندوز سریع‌تر است؟",
+     "aFa": "با راست نوشته شده و با Tauri بسته‌بندی شده، پس یک باینری بومیِ کوچک است نه یک اپ سنگین. اسکن به‌صورت موازی انجام می‌شود و رابط کاربری در حین کار پاسخ‌گو می‌ماند."
+    },
+    {
+     "q": "Does purify send anything to the internet?",
+     "a": "No. It scans locally and reports locally. Nothing about your disk, your files or your machine leaves the computer.",
+     "qFa": "پیوریفای چیزی به اینترنت می‌فرستد؟",
+     "aFa": "نه. به‌صورت محلی اسکن می‌کند و به‌صورت محلی گزارش می‌دهد. هیچ چیزی درباره‌ی دیسک، فایل‌ها یا دستگاه شما از کامپیوتر خارج نمی‌شود."
+    },
+    {
+     "q": "Is purify free and open source?",
+     "a": "Yes — it is MIT licensed. The source is on GitHub and the signed build is on the releases page.",
+     "qFa": "پیوریفای رایگان و متن‌باز است؟",
+     "aFa": "بله — با مجوز MIT. کد روی گیت‌هاب است و نسخه‌ی آماده در صفحه‌ی انتشارها."
     }
    ]
   },
@@ -398,6 +522,26 @@
      "caption": "On a phone, landscape and fullscreen. The HUD stays at the edges because the centre is where you are staying alive.",
      "captionFa": "روی گوشی، افقی و تمام‌صفحه. HUD در حاشیه می‌ماند چون وسط صفحه جایی است که داری زنده می‌مانی."
     }
+   ],
+   "faq": [
+    {
+     "q": "What is Overrun built on?",
+     "a": "Cloudflare Workers and Durable Objects. Each arena is a Durable Object holding authoritative game state at the edge, which is what keeps latency low for players in different regions.",
+     "qFa": "اورران روی چه چیزی ساخته شده؟",
+     "aFa": "Cloudflare Workers و Durable Objects. هر آرنا یک Durable Object است که وضعیت مرجع بازی را روی لبه‌ی شبکه نگه می‌دارد؛ همین است که تأخیر را برای بازیکن‌های مناطق مختلف پایین نگه می‌دارد."
+    },
+    {
+     "q": "Do I need to install or sign up to play?",
+     "a": "No. It runs in the browser — open the link and you are in the arena.",
+     "qFa": "برای بازی باید نصب کنم یا ثبت‌نام کنم؟",
+     "aFa": "نه. در مرورگر اجرا می‌شود — لینک را باز کن و داخل آرنا هستی."
+    },
+    {
+     "q": "Why build a game on Durable Objects?",
+     "a": "Real-time multiplayer needs one authoritative copy of the world and a short path to every player. Durable Objects give you exactly that — a single-threaded, consistent object placed near the players — without running or paying for game servers.",
+     "qFa": "چرا یک بازی را روی Durable Objects بسازیم؟",
+     "aFa": "بازی چندنفره‌ی بلادرنگ به یک نسخه‌ی مرجع از دنیا و مسیر کوتاه تا هر بازیکن نیاز دارد. Durable Objects دقیقاً همین را می‌دهد — یک شیء تک‌نخی و سازگار، نزدیک به بازیکن‌ها — بدون اینکه سرور بازی راه بیندازی و هزینه‌اش را بدهی."
+    }
    ]
   },
   {
@@ -415,6 +559,20 @@
    "tags": [
     "TypeScript",
     "Experiment"
+   ],
+   "faq": [
+    {
+     "q": "What is Mova?",
+     "a": "An experiment in shipping over polishing — a small TypeScript project kept public on purpose, so the work is visible while it is still in motion.",
+     "qFa": "موا چیست؟",
+     "aFa": "تمرینی در «منتشر کردن به‌جای بی‌نقص کردن» — یک پروژه‌ی کوچک تایپ‌اسکریپت که عمداً عمومی نگه داشته شده تا کار در حالِ حرکت دیده شود."
+    },
+    {
+     "q": "Is Mova finished?",
+     "a": "No, and that is the point. It is published in the state it is in rather than held back until it feels perfect.",
+     "qFa": "موا تمام شده؟",
+     "aFa": "نه، و نکته دقیقاً همین است. به‌جای اینکه تا رسیدن به حسِ بی‌نقصی نگه داشته شود، در همین وضعیتی که هست منتشر شده."
+    }
    ]
   }
  ]

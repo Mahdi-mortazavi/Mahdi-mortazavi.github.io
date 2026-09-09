@@ -21,6 +21,7 @@
 <meta name="twitter:image" content="https://mahdi-mortazavi.github.io/assets/og/overrun.png" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"overrun","alternateName":"overrun","url":"https://mahdi-mortazavi.github.io/p/overrun/","sameAs":["https://github.com/Mahdi-mortazavi/overrun"],"description":"A real-time multiplayer arena shooter running on Cloudflare Workers and Durable Objects — low-latency state at the edge.","applicationCategory":"DeveloperApplication","operatingSystem":"Web","programmingLanguage":"JavaScript","isAccessibleForFree":true,"license":"https://opensource.org/licenses","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Mahdi Mortazavi","alternateName":"مهدی مرتضوی","url":"https://mahdi-mortazavi.github.io/","sameAs":["https://github.com/Mahdi-mortazavi","https://t.me/Mahdi_mortazavi1","https://t.me/Startup_legend"]},"screenshot":[{"@type":"ImageObject","contentUrl":"https://mahdi-mortazavi.github.io/assets/shots/overrun/00-title.webp","url":"https://mahdi-mortazavi.github.io/assets/shots/overrun/00-title.webp","width":1600,"height":900,"caption":"The menu: three modes, and a code box for joining a friend's room."},{"@type":"ImageObject","contentUrl":"https://mahdi-mortazavi.github.io/assets/shots/overrun/01-coop-swarm.webp","url":"https://mahdi-mortazavi.github.io/assets/shots/overrun/01-coop-swarm.webp","width":1600,"height":900,"caption":"Wave 14, and the banner says THEY LEARN. The director composes the wave against your build."},{"@type":"ImageObject","contentUrl":"https://mahdi-mortazavi.github.io/assets/shots/overrun/02-explosion.webp","url":"https://mahdi-mortazavi.github.io/assets/shots/overrun/02-explosion.webp","width":1600,"height":900,"caption":"A 10x combo. The ladder starts decaying 3.2 seconds after the last kill."},{"@type":"ImageObject","contentUrl":"https://mahdi-mortazavi.github.io/assets/shots/overrun/03-boss.webp","url":"https://mahdi-mortazavi.github.io/assets/shots/overrun/03-boss.webp","width":1600,"height":900,"caption":"Wave 20, a boss. Every rose ring is a telegraphed attack — rose is never decorative."},{"@type":"ImageObject","contentUrl":"https://mahdi-mortazavi.github.io/assets/shots/overrun/04-tdm.webp","url":"https://mahdi-mortazavi.github.io/assets/shots/overrun/04-tdm.webp","width":1600,"height":900,"caption":"Team deathmatch, 22–19. Team colour is gameplay information, so it lives in the shared package."},{"@type":"ImageObject","contentUrl":"https://mahdi-mortazavi.github.io/assets/shots/overrun/05-squad.webp","url":"https://mahdi-mortazavi.github.io/assets/shots/overrun/05-squad.webp","width":1600,"height":900,"caption":"Squad royale with 29 seconds left. Rose means the floor is being taken away from you."},{"@type":"ImageObject","contentUrl":"https://mahdi-mortazavi.github.io/assets/shots/overrun/06-upgrades.webp","url":"https://mahdi-mortazavi.github.io/assets/shots/overrun/06-upgrades.webp","width":1600,"height":900,"caption":"Wave 7, and the arena is briefly empty. The relief valley is deliberate; it is what makes the next spike land."},{"@type":"ImageObject","contentUrl":"https://mahdi-mortazavi.github.io/assets/shots/overrun/07-mobile.webp","url":"https://mahdi-mortazavi.github.io/assets/shots/overrun/07-mobile.webp","width":844,"height":390,"caption":"On a phone, landscape and fullscreen. The HUD stays at the edges because the centre is where you are staying alive."}],"image":["https://mahdi-mortazavi.github.io/assets/shots/overrun/00-title.webp","https://mahdi-mortazavi.github.io/assets/shots/overrun/01-coop-swarm.webp","https://mahdi-mortazavi.github.io/assets/shots/overrun/02-explosion.webp","https://mahdi-mortazavi.github.io/assets/shots/overrun/03-boss.webp","https://mahdi-mortazavi.github.io/assets/shots/overrun/04-tdm.webp","https://mahdi-mortazavi.github.io/assets/shots/overrun/05-squad.webp","https://mahdi-mortazavi.github.io/assets/shots/overrun/06-upgrades.webp","https://mahdi-mortazavi.github.io/assets/shots/overrun/07-mobile.webp"]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Mahdi Mortazavi","item":"https://mahdi-mortazavi.github.io/"},{"@type":"ListItem","position":2,"name":"Projects","item":"https://mahdi-mortazavi.github.io/p/"},{"@type":"ListItem","position":3,"name":"overrun","item":"https://mahdi-mortazavi.github.io/p/overrun/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","@id":"https://mahdi-mortazavi.github.io/p/overrun/#faq","inLanguage":["en","fa"],"mainEntity":[{"@type":"Question","name":"What is Overrun built on?","inLanguage":"en","acceptedAnswer":{"@type":"Answer","text":"Cloudflare Workers and Durable Objects. Each arena is a Durable Object holding authoritative game state at the edge, which is what keeps latency low for players in different regions."}},{"@type":"Question","name":"اورران روی چه چیزی ساخته شده؟","inLanguage":"fa","acceptedAnswer":{"@type":"Answer","text":"Cloudflare Workers و Durable Objects. هر آرنا یک Durable Object است که وضعیت مرجع بازی را روی لبه‌ی شبکه نگه می‌دارد؛ همین است که تأخیر را برای بازیکن‌های مناطق مختلف پایین نگه می‌دارد."}},{"@type":"Question","name":"Do I need to install or sign up to play?","inLanguage":"en","acceptedAnswer":{"@type":"Answer","text":"No. It runs in the browser — open the link and you are in the arena."}},{"@type":"Question","name":"برای بازی باید نصب کنم یا ثبت‌نام کنم؟","inLanguage":"fa","acceptedAnswer":{"@type":"Answer","text":"نه. در مرورگر اجرا می‌شود — لینک را باز کن و داخل آرنا هستی."}},{"@type":"Question","name":"Why build a game on Durable Objects?","inLanguage":"en","acceptedAnswer":{"@type":"Answer","text":"Real-time multiplayer needs one authoritative copy of the world and a short path to every player. Durable Objects give you exactly that — a single-threaded, consistent object placed near the players — without running or paying for game servers."}},{"@type":"Question","name":"چرا یک بازی را روی Durable Objects بسازیم؟","inLanguage":"fa","acceptedAnswer":{"@type":"Answer","text":"بازی چندنفره‌ی بلادرنگ به یک نسخه‌ی مرجع از دنیا و مسیر کوتاه تا هر بازیکن نیاز دارد. Durable Objects دقیقاً همین را می‌دهد — یک شیء تک‌نخی و سازگار، نزدیک به بازیکن‌ها — بدون اینکه سرور بازی راه بیندازی و هزینه‌اش را بدهی."}}]}</script>
 
 <style>
 :root{--accent:#FF375F;--txt:#F5F5F7;--muted:#B9C0CC;--dim:#8A93A3;--stroke:rgba(255,255,255,.16);
@@ -120,6 +121,24 @@ p.descfa{color:var(--dim);font-size:14px;line-height:1.9;margin-top:10px}
 .lbx{top:18px;right:18px}.lbp{left:14px}.lbn{right:14px}
 .lbp,.lbn{top:50%;transform:translateY(-50%)}
 @media(max-width:520px){.lbp,.lbn{top:auto;bottom:18px;transform:none}}
+/* ── frequently asked ── */
+.faq{margin-top:18px;padding:26px 24px}
+.faq h2{font-size:20px;font-weight:750;letter-spacing:-.3px;display:flex;
+ flex-wrap:wrap;align-items:baseline;gap:10px}
+.faqhfa{font-size:15px;font-weight:600;color:var(--dim)}
+.faq details{border-top:1px solid rgba(255,255,255,.1);padding:15px 0 3px}
+.faq details:last-of-type{padding-bottom:0}
+.faq summary{cursor:pointer;list-style:none;font-weight:650;font-size:15px;line-height:1.55;
+ display:grid;gap:4px;padding-right:26px;position:relative;color:var(--txt)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";position:absolute;right:0;top:-1px;font-size:19px;font-weight:500;
+ color:var(--dim);transition:transform .2s}
+.faq details[open] summary:after{transform:rotate(45deg)}
+.faq summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:6px}
+.faq .qfa{font-size:14px;font-weight:600;color:var(--muted)}
+.faq details p{color:var(--muted);font-size:14.5px;line-height:1.75;margin-top:12px}
+.faq details p.afa{color:var(--dim);font-size:13.5px;line-height:1.95;margin-top:8px}
+@media(max-width:520px){.faq{padding:22px 20px}}
 </style>
 </head>
 <body>
@@ -196,6 +215,24 @@ p.descfa{color:var(--dim);font-size:14px;line-height:1.9;margin-top:10px}
       <a class="btn" href="https://github.com/Mahdi-mortazavi/overrun/releases/latest">Download</a>
     </div>
   </article>
+  <section class="card faq" aria-labelledby="faqh">
+    <h2 id="faqh">Frequently asked<span class="fa faqhfa">پرسش‌های پرتکرار</span></h2>
+    <details>
+      <summary><span>What is Overrun built on?</span><span class="fa qfa">اورران روی چه چیزی ساخته شده؟</span></summary>
+      <p>Cloudflare Workers and Durable Objects. Each arena is a Durable Object holding authoritative game state at the edge, which is what keeps latency low for players in different regions.</p>
+      <p class="fa afa">Cloudflare Workers و Durable Objects. هر آرنا یک Durable Object است که وضعیت مرجع بازی را روی لبه‌ی شبکه نگه می‌دارد؛ همین است که تأخیر را برای بازیکن‌های مناطق مختلف پایین نگه می‌دارد.</p>
+    </details>
+    <details>
+      <summary><span>Do I need to install or sign up to play?</span><span class="fa qfa">برای بازی باید نصب کنم یا ثبت‌نام کنم؟</span></summary>
+      <p>No. It runs in the browser — open the link and you are in the arena.</p>
+      <p class="fa afa">نه. در مرورگر اجرا می‌شود — لینک را باز کن و داخل آرنا هستی.</p>
+    </details>
+    <details>
+      <summary><span>Why build a game on Durable Objects?</span><span class="fa qfa">چرا یک بازی را روی Durable Objects بسازیم؟</span></summary>
+      <p>Real-time multiplayer needs one authoritative copy of the world and a short path to every player. Durable Objects give you exactly that — a single-threaded, consistent object placed near the players — without running or paying for game servers.</p>
+      <p class="fa afa">بازی چندنفره‌ی بلادرنگ به یک نسخه‌ی مرجع از دنیا و مسیر کوتاه تا هر بازیکن نیاز دارد. Durable Objects دقیقاً همین را می‌دهد — یک شیء تک‌نخی و سازگار، نزدیک به بازیکن‌ها — بدون اینکه سرور بازی راه بیندازی و هزینه‌اش را بدهی.</p>
+    </details>
+  </section>
   <p class="foot">
     An open-source project by <a href="/"><b>Mahdi Mortazavi</b></a> · <span class="fa">مهدی مرتضوی</span><br/>
     <a href="https://t.me/Mahdi_mortazavi1">Telegram</a> · <a href="https://github.com/Mahdi-mortazavi">GitHub</a>

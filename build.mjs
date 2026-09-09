@@ -113,6 +113,44 @@ const mediaImages = p => (p.media ?? []).filter(x => x.type === 'image').map(x =
   width:x.w, height:x.h, caption:x.caption,
 }));
 
+/* ── Frequently asked ─────────────────────────────────────────────────────
+   The questions are the phrases people actually search with, so the answers
+   have to be on the page as readable text — structured data that describes
+   content a visitor cannot see is a violation, not a shortcut. The JSON-LD
+   below simply mirrors what faqHtml renders.
+   Note: Google restricted the FAQ *rich result* to health and government
+   sites in 2023, so do not expect the SERP accordion. The value here is the
+   visible long-tail text, plus parsers and answer engines that still read
+   FAQPage.                                                                */
+const faqHtml = p => {
+  const rows = p.faq ?? [];
+  if (!rows.length) return '';
+  return `<section class="card faq" aria-labelledby="faqh">
+    <h2 id="faqh">Frequently asked<span class="fa faqhfa">پرسش‌های پرتکرار</span></h2>
+    ${rows.map(f => `<details>
+      <summary><span>${esc(f.q)}</span><span class="fa qfa">${esc(f.qFa)}</span></summary>
+      <p>${esc(f.a)}</p>
+      <p class="fa afa">${esc(f.aFa)}</p>
+    </details>`).join('\n    ')}
+  </section>`;
+};
+
+const faqLd = p => {
+  const rows = p.faq ?? [];
+  if (!rows.length) return '';
+  return JSON.stringify({
+    '@context':'https://schema.org','@type':'FAQPage',
+    '@id':`${ORIGIN}/p/${p.slug}/#faq`,
+    inLanguage:['en','fa'],
+    mainEntity: rows.flatMap(f => ([
+      {'@type':'Question', name:f.q,   inLanguage:'en',
+       acceptedAnswer:{'@type':'Answer', text:f.a}},
+      {'@type':'Question', name:f.qFa, inLanguage:'fa',
+       acceptedAnswer:{'@type':'Answer', text:f.aFa}},
+    ])),
+  });
+};
+
 /* Social cards, best first: a purpose-built 1200x630 card if one has been
    generated for this project, then the widest real landscape shot, then the
    site-wide card. SVG and small squares never make good previews. */
@@ -182,6 +220,7 @@ const page = p => {
 <meta name="twitter:image" content="${og}" />
 <script type="application/ld+json">${JSON.stringify(ld)}</script>
 <script type="application/ld+json">${JSON.stringify(crumbs)}</script>
+${faqLd(p) ? `<script type="application/ld+json">${faqLd(p)}</script>` : ''}
 ${mediaLd(p).map(j => `<script type="application/ld+json">${j}</script>`).join('\n')}
 <style>
 :root{--accent:${p.accent};--txt:#F5F5F7;--muted:#B9C0CC;--dim:#8A93A3;--stroke:rgba(255,255,255,.16);
@@ -281,6 +320,24 @@ p.descfa{color:var(--dim);font-size:14px;line-height:1.9;margin-top:10px}
 .lbx{top:18px;right:18px}.lbp{left:14px}.lbn{right:14px}
 .lbp,.lbn{top:50%;transform:translateY(-50%)}
 @media(max-width:520px){.lbp,.lbn{top:auto;bottom:18px;transform:none}}
+/* ── frequently asked ── */
+.faq{margin-top:18px;padding:26px 24px}
+.faq h2{font-size:20px;font-weight:750;letter-spacing:-.3px;display:flex;
+ flex-wrap:wrap;align-items:baseline;gap:10px}
+.faqhfa{font-size:15px;font-weight:600;color:var(--dim)}
+.faq details{border-top:1px solid rgba(255,255,255,.1);padding:15px 0 3px}
+.faq details:last-of-type{padding-bottom:0}
+.faq summary{cursor:pointer;list-style:none;font-weight:650;font-size:15px;line-height:1.55;
+ display:grid;gap:4px;padding-right:26px;position:relative;color:var(--txt)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";position:absolute;right:0;top:-1px;font-size:19px;font-weight:500;
+ color:var(--dim);transition:transform .2s}
+.faq details[open] summary:after{transform:rotate(45deg)}
+.faq summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:6px}
+.faq .qfa{font-size:14px;font-weight:600;color:var(--muted)}
+.faq details p{color:var(--muted);font-size:14.5px;line-height:1.75;margin-top:12px}
+.faq details p.afa{color:var(--dim);font-size:13.5px;line-height:1.95;margin-top:8px}
+@media(max-width:520px){.faq{padding:22px 20px}}
 </style>
 </head>
 <body>
@@ -306,6 +363,7 @@ p.descfa{color:var(--dim);font-size:14px;line-height:1.9;margin-top:10px}
       <a class="btn" href="${repo}/releases/latest">Download</a>
     </div>
   </article>
+  ${faqHtml(p)}
   <p class="foot">
     An open-source project by <a href="/"><b>Mahdi Mortazavi</b></a> · <span class="fa">مهدی مرتضوی</span><br/>
     <a href="https://t.me/Mahdi_mortazavi1">Telegram</a> · <a href="${GH}">GitHub</a>
