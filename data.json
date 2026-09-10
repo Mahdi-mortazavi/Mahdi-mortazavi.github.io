@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-09-09T23:18:29.926Z",
+  "generatedAt": "2026-09-10T04:40:54.735Z",
   "totals": {
-    "stars": 303,
+    "stars": 304,
     "forks": 25,
     "repos": 10,
     "followers": 45,
-    "last30": 9
+    "last30": 10
   },
   "bio": "Full-Stack Developer × Product Builder × Problem Solver",
   "growthSource": "daily-snapshots",
@@ -14,7 +14,7 @@
       "stars": 178,
       "forks": 14,
       "language": "C#",
-      "pushedAt": "2026-09-07T05:47:21Z",
+      "pushedAt": "2026-09-10T00:33:18Z",
       "description": "📱 Share your phone's internet with your PC — Android → Windows reverse tethering over an encrypted WireGuard tunnel. No root, no server, no account."
     },
     "flow": {
@@ -92,9 +92,22 @@
     {
       "m": "2026-09-09",
       "v": 303
+    },
+    {
+      "m": "2026-09-10",
+      "v": 304
     }
   ],
   "timeline": [
+    {
+      "repo": "relay",
+      "slug": "relay",
+      "tag": "v2.8.1",
+      "name": "Relay 2.8.1",
+      "at": "2026-09-10T00:37:39Z",
+      "url": "https://github.com/Mahdi-mortazavi/relay/releases/tag/v2.8.1",
+      "body": "## Relay 2.8.1 **Share your phone's internet with your PC.** Tap *Start Sharing* on the phone, click your phone in the list on the PC, tap *Allow*."
+    },
     {
       "repo": "relay",
       "slug": "relay",
