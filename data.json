@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-15T11:42:45.694Z",
+  "generatedAt": "2026-09-15T16:57:55.874Z",
   "totals": {
     "stars": 317,
     "forks": 25,
@@ -28,7 +28,7 @@
       "stars": 28,
       "forks": 0,
       "language": "TypeScript",
-      "pushedAt": "2026-07-14T03:31:47Z",
+      "pushedAt": "2026-09-15T16:13:59Z",
       "description": "💎 Sooda — Liquid-glass profit, price & discount calculator. Offline-first PWA, bilingual (EN/FA), zero dependencies on servers."
     },
     "nava": {
@@ -119,6 +119,15 @@
     }
   ],
   "timeline": [
+    {
+      "repo": "sooda",
+      "slug": "sooda",
+      "tag": "v1.3.0",
+      "name": "Sooda v1.3.0",
+      "at": "2026-09-15T13:49:39Z",
+      "url": "https://github.com/Mahdi-mortazavi/sooda/releases/tag/v1.3.0",
+      "body": "### Added - **Real-profit lens (سود واقعی):** a \"when does the money come back?\" row on the profit and sell calculators. Pick a delay and Sooda shows nominal profit beside **real** profit — what is left once you have bought the same goods again — with a health"
+    },
     {
       "repo": "relay",
       "slug": "relay",
