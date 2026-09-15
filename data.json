@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-09-15T16:57:55.874Z",
+  "generatedAt": "2026-09-15T21:19:36.360Z",
   "totals": {
     "stars": 317,
     "forks": 25,
     "repos": 10,
-    "followers": 48,
+    "followers": 49,
     "last30": 23
   },
   "bio": "Full-Stack Developer × Product Builder × Problem Solver",
@@ -28,7 +28,7 @@
       "stars": 28,
       "forks": 0,
       "language": "TypeScript",
-      "pushedAt": "2026-09-15T16:13:59Z",
+      "pushedAt": "2026-09-15T21:11:51Z",
       "description": "💎 Sooda — Liquid-glass profit, price & discount calculator. Offline-first PWA, bilingual (EN/FA), zero dependencies on servers."
     },
     "nava": {
@@ -119,6 +119,24 @@
     }
   ],
   "timeline": [
+    {
+      "repo": "sooda",
+      "slug": "sooda",
+      "tag": "v1.4.1",
+      "name": "Sooda v1.4.1",
+      "at": "2026-09-15T21:11:52Z",
+      "url": "https://github.com/Mahdi-mortazavi/sooda/releases/tag/v1.4.1",
+      "body": "### Fixed - **A browser that refuses to store data no longer costs you the whole app.** v1.4.0 wrapped everything in a single error boundary, so one database failure inside one feature replaced the entire screen — including the calculator, which needs no stora"
+    },
+    {
+      "repo": "sooda",
+      "slug": "sooda",
+      "tag": "v1.4.0",
+      "name": "Sooda v1.4.0",
+      "at": "2026-09-15T20:00:30Z",
+      "url": "https://github.com/Mahdi-mortazavi/sooda/releases/tag/v1.4.0",
+      "body": "### Added - **Smart price growth (نرخ گرانی هوشمند):** inflation is not one number, so Sooda no longer treats it as one. It estimates a **monthly price-growth rate for each product** from three signals — the purchase prices you record yourself, the inflation f"
+    },
     {
       "repo": "sooda",
       "slug": "sooda",
@@ -460,15 +478,6 @@
       "at": "2026-07-06T22:36:18Z",
       "url": "https://github.com/Mahdi-mortazavi/flow/releases/tag/v0.2.0",
       "body": "# تک‌نقطه ۰.۲.۰ — عادت‌ها، آینه و انرژی **تک‌نقطه** یک سیستم مدیریت تمرکز، انرژی و زمان است — فارسی، آفلاین، بدون اکانت. هر روز فقط یک سؤال دارد: *«اگر فقط یک کار امروز انجام شود، کدام است؟»* ## 📥 نصب و تست"
-    },
-    {
-      "repo": "app",
-      "slug": "nava",
-      "tag": "v1.0.0",
-      "name": "🏛️ Nava v1.0.0 — Classic Edition (نسخهٔ کلاسیک)",
-      "at": "2025-12-03T01:25:18Z",
-      "url": "https://github.com/Mahdi-mortazavi/app/releases/tag/v1.0.0",
-      "body": "> 🏛️ **نسخهٔ کلاسیک — Classic Edition**\r > این اولین انتشار عمومی Nava است و به‌عنوان نسخهٔ کلاسیک و آرشیوی نگه داشته می‌شود.\r > برای آخرین نسخه به [Releases](https://github.com/Mahdi-mortazavi/app/releases/latest) بروید.\r"
     }
   ]
 }
