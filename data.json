@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-16T11:30:28.852Z",
+  "generatedAt": "2026-09-16T16:53:36.842Z",
   "totals": {
     "stars": 318,
     "forks": 25,
@@ -13,8 +13,8 @@
     "relay": {
       "stars": 188,
       "forks": 14,
-      "language": "C#",
-      "pushedAt": "2026-09-16T11:25:07Z",
+      "language": "Kotlin",
+      "pushedAt": "2026-09-16T12:09:00Z",
       "description": "📱 Share your phone's internet with your PC — Android → Windows reverse tethering over an encrypted WireGuard tunnel. No root, no server, no account."
     },
     "flow": {
@@ -123,6 +123,15 @@
     }
   ],
   "timeline": [
+    {
+      "repo": "relay",
+      "slug": "relay",
+      "tag": "v2.8.8",
+      "name": "Relay 2.8.8",
+      "at": "2026-09-16T12:16:16Z",
+      "url": "https://github.com/Mahdi-mortazavi/relay/releases/tag/v2.8.8",
+      "body": "## Relay 2.8.8 **Share your phone's internet with your PC.** Tap *Start Sharing* on the phone, click your phone in the list on the PC, tap *Allow*."
+    },
     {
       "repo": "relay",
       "slug": "relay",
@@ -473,15 +482,6 @@
       "at": "2026-07-08T23:56:01Z",
       "url": "https://github.com/Mahdi-mortazavi/flow/releases/tag/v0.5.1",
       "body": "# Flow (تک‌نقطه) ۰.۵.۱ — رفع کرش استارت روی نسخه‌ی نصبی این یک نسخه‌ی اصلاحی مهم است. نسخه‌ی نصبی (release) روی برخی گوشی‌ها — به‌ویژه دستگاه‌های با GPU مالی مثل گلکسی A30s و اندروید ۱۱ — **هنگام باز شدن صفحه‌سیاه می‌شد و بالا نمی‌آمد.** حالا کامل حل شده. ## \ud83d"
-    },
-    {
-      "repo": "flow",
-      "slug": "flow",
-      "tag": "v0.5.0",
-      "name": "تک‌نقطه v0.5.0",
-      "at": "2026-07-07T19:09:54Z",
-      "url": "https://github.com/Mahdi-mortazavi/flow/releases/tag/v0.5.0",
-      "body": "# Flow (تک‌نقطه) ۰.۵.۰ — «سریع‌تر، هوشمندتر، چسبنده‌تر» این نسخه سراغِ شکاف‌های پروداکتی رفته — همان چیزهای کوچکی که فاصله‌ی «یک اپِ خوب» تا «اپی که واقعاً رفتارت را عوض می‌کند» را می‌سازند. ## 📥 نصب و تست"
     }
   ]
 }
