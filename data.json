@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-09-15T21:19:36.360Z",
+  "generatedAt": "2026-09-16T04:47:34.861Z",
   "totals": {
     "stars": 317,
     "forks": 25,
     "repos": 10,
-    "followers": 49,
+    "followers": 50,
     "last30": 23
   },
   "bio": "Full-Stack Developer × Product Builder × Problem Solver",
@@ -28,7 +28,7 @@
       "stars": 28,
       "forks": 0,
       "language": "TypeScript",
-      "pushedAt": "2026-09-15T21:11:51Z",
+      "pushedAt": "2026-09-16T01:55:32Z",
       "description": "💎 Sooda — Liquid-glass profit, price & discount calculator. Offline-first PWA, bilingual (EN/FA), zero dependencies on servers."
     },
     "nava": {
@@ -116,9 +116,22 @@
     {
       "m": "2026-09-15",
       "v": 317
+    },
+    {
+      "m": "2026-09-16",
+      "v": 317
     }
   ],
   "timeline": [
+    {
+      "repo": "sooda",
+      "slug": "sooda",
+      "tag": "v1.5.0",
+      "name": "Sooda v1.5.0",
+      "at": "2026-09-16T01:42:39Z",
+      "url": "https://github.com/Mahdi-mortazavi/sooda/releases/tag/v1.5.0",
+      "body": "### Added - **آموزش سودا — an interactive tutorial you do rather than watch.** Eight lessons, each 50–90 seconds, performed on the real screens with real buttons inside a practice shop stocked with five demo products. Nothing you do in a lesson touches your ow"
+    },
     {
       "repo": "sooda",
       "slug": "sooda",
@@ -469,15 +482,6 @@
       "at": "2026-07-06T23:41:12Z",
       "url": "https://github.com/Mahdi-mortazavi/flow/releases/tag/v0.3.0",
       "body": "# Flow (تک‌نقطه) ۰.۳.۰ — تجربه‌ی کاربری به سبک اپل **Flow** یک سیستم مدیریت تمرکز، انرژی و زمان است — فارسی، آفلاین، بدون اکانت. هر روز فقط یک سؤال دارد: *«اگر فقط یک کار امروز انجام شود، کدام است؟»* ## 📥 نصب و تست"
-    },
-    {
-      "repo": "flow",
-      "slug": "flow",
-      "tag": "v0.2.0",
-      "name": "تک‌نقطه v0.2.0",
-      "at": "2026-07-06T22:36:18Z",
-      "url": "https://github.com/Mahdi-mortazavi/flow/releases/tag/v0.2.0",
-      "body": "# تک‌نقطه ۰.۲.۰ — عادت‌ها، آینه و انرژی **تک‌نقطه** یک سیستم مدیریت تمرکز، انرژی و زمان است — فارسی، آفلاین، بدون اکانت. هر روز فقط یک سؤال دارد: *«اگر فقط یک کار امروز انجام شود، کدام است؟»* ## 📥 نصب و تست"
     }
   ]
 }
