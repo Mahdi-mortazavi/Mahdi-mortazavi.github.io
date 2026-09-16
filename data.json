@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-09-16T04:47:34.861Z",
+  "generatedAt": "2026-09-16T11:30:28.852Z",
   "totals": {
-    "stars": 317,
+    "stars": 318,
     "forks": 25,
     "repos": 10,
     "followers": 50,
-    "last30": 23
+    "last30": 24
   },
   "bio": "Full-Stack Developer × Product Builder × Problem Solver",
   "growthSource": "daily-snapshots",
@@ -14,7 +14,7 @@
       "stars": 188,
       "forks": 14,
       "language": "C#",
-      "pushedAt": "2026-09-14T04:03:34Z",
+      "pushedAt": "2026-09-16T11:25:07Z",
       "description": "📱 Share your phone's internet with your PC — Android → Windows reverse tethering over an encrypted WireGuard tunnel. No root, no server, no account."
     },
     "flow": {
@@ -25,10 +25,10 @@
       "description": "🪨 One decision a day. ⏱ Focus. 🌱 Habits. 🔒 100% offline."
     },
     "sooda": {
-      "stars": 28,
+      "stars": 29,
       "forks": 0,
       "language": "TypeScript",
-      "pushedAt": "2026-09-16T01:55:32Z",
+      "pushedAt": "2026-09-16T10:27:19Z",
       "description": "💎 Sooda — Liquid-glass profit, price & discount calculator. Offline-first PWA, bilingual (EN/FA), zero dependencies on servers."
     },
     "nava": {
@@ -119,10 +119,37 @@
     },
     {
       "m": "2026-09-16",
-      "v": 317
+      "v": 318
     }
   ],
   "timeline": [
+    {
+      "repo": "relay",
+      "slug": "relay",
+      "tag": "v2.8.7",
+      "name": "Relay 2.8.7",
+      "at": "2026-09-16T10:36:10Z",
+      "url": "https://github.com/Mahdi-mortazavi/relay/releases/tag/v2.8.7",
+      "body": "## Relay 2.8.7 **Share your phone's internet with your PC.** Tap *Start Sharing* on the phone, click your phone in the list on the PC, tap *Allow*."
+    },
+    {
+      "repo": "relay",
+      "slug": "relay",
+      "tag": "v2.8.6",
+      "name": "Relay 2.8.6",
+      "at": "2026-09-16T09:06:41Z",
+      "url": "https://github.com/Mahdi-mortazavi/relay/releases/tag/v2.8.6",
+      "body": "## Relay 2.8.6 **Share your phone's internet with your PC.** Tap *Start Sharing* on the phone, click your phone in the list on the PC, tap *Allow*."
+    },
+    {
+      "repo": "relay",
+      "slug": "relay",
+      "tag": "v2.8.5",
+      "name": "Relay 2.8.5",
+      "at": "2026-09-16T06:35:21Z",
+      "url": "https://github.com/Mahdi-mortazavi/relay/releases/tag/v2.8.5",
+      "body": "## Relay 2.8.5\r \r **Share your phone's internet with your PC.** Tap *Start Sharing* on\r"
+    },
     {
       "repo": "sooda",
       "slug": "sooda",
@@ -455,33 +482,6 @@
       "at": "2026-07-07T19:09:54Z",
       "url": "https://github.com/Mahdi-mortazavi/flow/releases/tag/v0.5.0",
       "body": "# Flow (تک‌نقطه) ۰.۵.۰ — «سریع‌تر، هوشمندتر، چسبنده‌تر» این نسخه سراغِ شکاف‌های پروداکتی رفته — همان چیزهای کوچکی که فاصله‌ی «یک اپِ خوب» تا «اپی که واقعاً رفتارت را عوض می‌کند» را می‌سازند. ## 📥 نصب و تست"
-    },
-    {
-      "repo": "flow",
-      "slug": "flow",
-      "tag": "v0.4.1",
-      "name": "تک‌نقطه v0.4.1",
-      "at": "2026-07-07T15:38:29Z",
-      "url": "https://github.com/Mahdi-mortazavi/flow/releases/tag/v0.4.1",
-      "body": "# Flow (تک‌نقطه) ۰.۴.۱ — نسخه‌ی «قابل اتکا» > نکته: نسخه‌ی ۰.۴.۰ به‌دلیل خطای فرایند انتشار، از کد قدیمی ساخته شده بود و معتبر نیست — این نسخه (۰.۴.۱) ریلیز صحیح همان تغییرات است. این نسخه حاصل یک ممیزی کامل پروداکت است: **۱۵ مشکل شناسایی‌شده — از حلقه‌ی بازگش"
-    },
-    {
-      "repo": "flow",
-      "slug": "flow",
-      "tag": "v0.4.0",
-      "name": "تک‌نقطه v0.4.0",
-      "at": "2026-07-07T15:24:00Z",
-      "url": "https://github.com/Mahdi-mortazavi/flow/releases/tag/v0.4.0",
-      "body": "# Flow (تک‌نقطه) ۰.۳.۰ — تجربه‌ی کاربری به سبک اپل **Flow** یک سیستم مدیریت تمرکز، انرژی و زمان است — فارسی، آفلاین، بدون اکانت. هر روز فقط یک سؤال دارد: *«اگر فقط یک کار امروز انجام شود، کدام است؟»* ## 📥 نصب و تست"
-    },
-    {
-      "repo": "flow",
-      "slug": "flow",
-      "tag": "v0.3.0",
-      "name": "تک‌نقطه v0.3.0",
-      "at": "2026-07-06T23:41:12Z",
-      "url": "https://github.com/Mahdi-mortazavi/flow/releases/tag/v0.3.0",
-      "body": "# Flow (تک‌نقطه) ۰.۳.۰ — تجربه‌ی کاربری به سبک اپل **Flow** یک سیستم مدیریت تمرکز، انرژی و زمان است — فارسی، آفلاین، بدون اکانت. هر روز فقط یک سؤال دارد: *«اگر فقط یک کار امروز انجام شود، کدام است؟»* ## 📥 نصب و تست"
     }
   ]
 }
