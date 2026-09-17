@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-17T11:39:45.857Z",
+  "generatedAt": "2026-09-17T16:59:00.095Z",
   "totals": {
     "stars": 319,
     "forks": 25,
@@ -14,7 +14,7 @@
       "stars": 189,
       "forks": 14,
       "language": "Kotlin",
-      "pushedAt": "2026-09-17T11:30:36Z",
+      "pushedAt": "2026-09-17T12:38:47Z",
       "description": "📱 Share your phone's internet with your PC — Android → Windows reverse tethering over an encrypted WireGuard tunnel. No root, no server, no account."
     },
     "flow": {
@@ -127,6 +127,15 @@
     }
   ],
   "timeline": [
+    {
+      "repo": "relay",
+      "slug": "relay",
+      "tag": "v2.9.0",
+      "name": "Relay 2.9.0",
+      "at": "2026-09-17T12:29:17Z",
+      "url": "https://github.com/Mahdi-mortazavi/relay/releases/tag/v2.9.0",
+      "body": "## Relay 2.9.0 **Share your phone's internet with your PC.** Tap *Start Sharing* on the phone, click your phone in the list on the PC, tap *Allow*."
+    },
     {
       "repo": "relay",
       "slug": "relay",
@@ -476,15 +485,6 @@
       "name": "🍎 Nava v2.0.0",
       "at": "2026-07-09T05:33:45Z",
       "url": "https://github.com/Mahdi-mortazavi/app/releases/tag/v2.0.0",
-      "body": "<div align=\"center\"> ### هنرِ حذف کردن اضافات — The Art of Reduction </div>"
-    },
-    {
-      "repo": "app",
-      "slug": "nava",
-      "tag": "v1.1.0",
-      "name": "🍎 Nava v1.1.0 ",
-      "at": "2026-07-09T03:53:32Z",
-      "url": "https://github.com/Mahdi-mortazavi/app/releases/tag/v1.1.0",
       "body": "<div align=\"center\"> ### هنرِ حذف کردن اضافات — The Art of Reduction </div>"
     }
   ]
