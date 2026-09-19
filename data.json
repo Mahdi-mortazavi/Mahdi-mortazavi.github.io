@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-18T20:53:32.756Z",
+  "generatedAt": "2026-09-19T04:36:06.643Z",
   "totals": {
     "stars": 320,
     "forks": 25,
@@ -28,7 +28,7 @@
       "stars": 29,
       "forks": 0,
       "language": "TypeScript",
-      "pushedAt": "2026-09-16T10:27:19Z",
+      "pushedAt": "2026-09-19T01:53:58Z",
       "description": "💎 Sooda — Liquid-glass profit, price & discount calculator. Offline-first PWA, bilingual (EN/FA), zero dependencies on servers."
     },
     "nava": {
@@ -127,6 +127,10 @@
     },
     {
       "m": "2026-09-18",
+      "v": 320
+    },
+    {
+      "m": "2026-09-19",
       "v": 320
     }
   ],
