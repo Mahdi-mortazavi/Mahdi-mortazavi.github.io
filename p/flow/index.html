@@ -150,19 +150,91 @@ p.descfa{color:var(--dim);font-size:14px;line-height:1.9;margin-top:10px}
 .faq details p{color:var(--muted);font-size:14.5px;line-height:1.75;margin-top:12px}
 .faq details p.afa{color:var(--dim);font-size:13.5px;line-height:1.95;margin-top:8px}
 @media(max-width:520px){.faq{padding:22px 20px}}
+/* ── Desktop ────────────────────────────────────────────────────────────
+   Below 1024 this file describes a phone, and every rule above still does.
+   The page was a 640px column no matter how wide the display was, so a
+   1512px screen showed 42% content and 58% background, and the gallery was
+   a horizontal scroller — a touch affordance a mouse user never discovers,
+   which clipped the second screenshot and its caption mid-word.
+   Everything below is additive and scoped to wide viewports.            */
+@media (min-width:1024px){
+  body{padding:56px 40px 96px}
+  .wrap{max-width:1240px}
+  .back{font-size:15px;margin-bottom:28px}
+
+  /* The copy column stays a readable measure; the media takes the rest. */
+  .card.has-media{
+    display:grid;
+    grid-template-columns:minmax(0,400px) minmax(0,1fr);
+    /* The gallery spans both rows and is the tallest thing here. With two
+       auto rows its height gets shared between them, which pushed the chips
+       and buttons far below the copy. Giving row 2 all the slack and
+       aligning to its start keeps the left column as one block. */
+    grid-template-rows:auto 1fr;
+    grid-template-areas:"lead gal" "tail gal";
+    column-gap:54px;align-items:start;
+    padding:46px 50px}
+  .card.has-media .lead{grid-area:lead}
+  .card.has-media .gal{grid-area:gal;margin-top:6px}
+  .card.has-media .tail{grid-area:tail;align-self:start;margin-top:30px}
+  /* Nothing to put beside the copy — so don't stretch it to the full width. */
+  .card.no-media{padding:48px 54px;max-width:820px;margin-inline:auto}
+
+  h1{font-size:46px;letter-spacing:-1.1px}
+  .tag{font-size:20px}
+  .tagfa{font-size:16px}
+  p.desc{font-size:16px;line-height:1.75}
+  p.descfa{font-size:15px}
+  .ic{width:84px;height:84px;border-radius:25px;font-size:41px}
+
+  /* A gallery you can see at a glance instead of one you have to drag.
+     Fixed heights keep every aspect ratio honest while the row wraps. */
+  .stripw{margin:16px 0 0}
+  .stripw:after{display:none}
+  .strip{display:flex;flex-wrap:wrap;gap:22px;overflow:visible;padding:0;
+    scroll-snap-type:none}
+  .strip>*:last-child{padding-right:0}
+  /* A flex item sizes to its content by default, so a wide screenshot made
+     the figure wider than the column it sits in — overrun overflowed by
+     51px at exactly 1024, where the gallery column is at its narrowest. */
+  .m{max-width:100%;min-width:0}
+  .m img,.m video{max-width:100%}
+  .m.port img,.m.port video{height:400px;width:auto}
+  .m.land img,.m.land video{height:auto;width:100%;max-width:530px}
+  .m figcaption{max-width:300px}
+  .galh{font-size:13.5px}
+
+  .faq{padding:36px 42px;margin-top:24px}
+  .faq h2{font-size:24px}
+  .faq summary{font-size:16px;padding-right:30px}
+  .faq .qfa{font-size:15px}
+  .faq details p{font-size:15px;max-width:74ch}
+  .faq details{padding:18px 0 5px}
+
+  .foot{font-size:14px;margin-top:34px}
+  .cta{margin-top:28px}
+  .btn{flex:0 1 auto;min-width:200px;font-size:16px;padding:16px 26px}
+}
+@media (min-width:1440px){
+  .wrap{max-width:1340px}
+  .card.has-media{grid-template-columns:minmax(0,430px) minmax(0,1fr)}
+  .m.port img,.m.port video{height:430px}
+}
 </style>
 </head>
 <body>
 <div class="bg" aria-hidden="true"></div>
 <main class="wrap">
   <a class="back" href="/">← Mahdi Mortazavi · <span class="fa">مهدی مرتضوی</span></a>
-  <article class="card">
-    <div class="ic" aria-hidden="true">◉</div>
-    <h1>Flow — تک‌نقطه</h1>
-    <div class="tag">One daily boulder. Crash-proof focus.</div>
-    <div class="tagfa fa">تمرکز، عادت و کارِ عمیق — مبتنی بر علم رفتار</div>
-    <p class="desc">An offline-first Persian/RTL focus, habit and deep-work app built on behavioral science: one daily boulder, a crash-proof focus timer, habits that recover after failure, and a judgment-free stats mirror.</p>
-    <p class="descfa fa">اپ فارسیِ مدیریت تمرکز، عادت و زمان — کاملاً آفلاین، با تایمر تمرکزِ مقاوم و عادت‌هایی که بعد از شکست بازیابی می‌شوند.</p>
+  <article class="card has-media">
+    <div class="lead">
+      <div class="ic" aria-hidden="true">◉</div>
+      <h1>Flow — تک‌نقطه</h1>
+      <div class="tag">One daily boulder. Crash-proof focus.</div>
+      <div class="tagfa fa">تمرکز، عادت و کارِ عمیق — مبتنی بر علم رفتار</div>
+      <p class="desc">An offline-first Persian/RTL focus, habit and deep-work app built on behavioral science: one daily boulder, a crash-proof focus timer, habits that recover after failure, and a judgment-free stats mirror.</p>
+      <p class="descfa fa">اپ فارسیِ مدیریت تمرکز، عادت و زمان — کاملاً آفلاین، با تایمر تمرکزِ مقاوم و عادت‌هایی که بعد از شکست بازیابی می‌شوند.</p>
+    </div>
     
     <section class="gal" aria-label="Screenshots of Flow — تک‌نقطه">
       <h2 class="galh">Screens <span class="galn">4</span><span class="fa galhfa">تصاویر</span></h2>
@@ -191,6 +263,7 @@ p.descfa{color:var(--dim);font-size:14px;line-height:1.9;margin-top:10px}
              loading="lazy" decoding="async" alt="A weekly review: deep-work hours over seven days and a thirty-day pattern of what interrupts most." />
       </button><figcaption>The Mirror shows the week as it was — including the zero-hour days.<span class="capfa fa">آینه هفته را همان‌طور که بود نشان می‌دهد — از جمله روزهای صفرساعته.</span></figcaption></figure></div></div>
     </section>
+    <div class="tail">
     <div class="chips"><span class="chip">Offline-first</span><span class="chip">Persian / RTL</span><span class="chip">Behavioral science</span><span class="chip">Riverpod</span></div>
     <div class="meta">
       <span><b>Platform</b> · Android</span>
@@ -200,6 +273,7 @@ p.descfa{color:var(--dim);font-size:14px;line-height:1.9;margin-top:10px}
     <div class="cta">
       <a class="btn primary" href="https://github.com/Mahdi-mortazavi/flow">Open on GitHub →</a>
       <a class="btn" href="https://github.com/Mahdi-mortazavi/flow/releases/latest">Download</a>
+    </div>
     </div>
   </article>
   <section class="card faq" aria-labelledby="faqh">

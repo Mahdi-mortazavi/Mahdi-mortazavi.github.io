@@ -59,6 +59,27 @@ time{display:block;font-size:12.5px;font-weight:600;color:var(--dim);letter-spac
  color:#9EC9FF;background:rgba(10,132,255,.16);border:1px solid rgba(10,132,255,.35)}
 .body p{color:var(--muted);font-size:14px;line-height:1.65;margin-top:8px;overflow-wrap:anywhere}
 .more{display:inline-block;margin-top:10px;font-size:13px;font-weight:600;color:var(--dim);text-decoration:none}
+/* Desktop: 40 releases down one 660px column ran to 7,500px of scroll.
+   Two columns halve that, and the connecting rail goes with it — a spine
+   that threads through only the left column would be describing an order
+   the eye no longer follows. The dot stays as the date marker. */
+@media (min-width:900px){
+  body{padding:56px 40px 96px}
+  .w{max-width:1180px}
+  h1{font-size:44px;letter-spacing:-1.2px}
+  .sub{font-size:17px;max-width:70ch}
+  ul{margin-top:40px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+     column-gap:26px}
+  ul:before{display:none}
+  .ev{padding-left:30px;padding-bottom:24px}
+  .h{font-size:17px}
+  .body{padding:17px 19px}
+  .body p{font-size:14.5px}
+}
+@media (min-width:1440px){
+  .w{max-width:1320px}
+  ul{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
 .more:hover{color:var(--txt)}
 </style></head>
 <body><div class="bg" aria-hidden="true"></div><main class="w">
