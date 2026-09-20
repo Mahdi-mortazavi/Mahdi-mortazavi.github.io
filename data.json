@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-20T00:38:23.787Z",
+  "generatedAt": "2026-09-20T04:52:30.017Z",
   "totals": {
     "stars": 320,
     "forks": 25,
@@ -14,7 +14,7 @@
       "stars": 190,
       "forks": 14,
       "language": "Kotlin",
-      "pushedAt": "2026-09-20T00:33:16Z",
+      "pushedAt": "2026-09-20T00:58:32Z",
       "description": "📱 Share your phone's internet with your PC — Android → Windows reverse tethering over an encrypted WireGuard tunnel. No root, no server, no account."
     },
     "flow": {
@@ -28,7 +28,7 @@
       "stars": 29,
       "forks": 0,
       "language": "TypeScript",
-      "pushedAt": "2026-09-19T01:53:58Z",
+      "pushedAt": "2026-09-20T02:10:08Z",
       "description": "💎 Sooda — Liquid-glass profit, price & discount calculator. Offline-first PWA, bilingual (EN/FA), zero dependencies on servers."
     },
     "nava": {
