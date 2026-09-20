@@ -47,6 +47,27 @@ li a:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.3)}
 .tx b{font-size:15.5px;font-weight:650}
 .tx{color:#AEB6C4;font-size:13.5px;line-height:1.5}
 a.back{color:#8A93A3;text-decoration:none;font-size:14px;font-weight:600}
+/* Desktop: seven rows in a 620px column left ~60% of a laptop screen empty
+   and shrank every cover to a 98x64 crop. As a grid the covers get to be
+   covers, and the whole catalogue is visible without scrolling. */
+@media (min-width:900px){
+  body{padding:56px 40px 92px}
+  .w{max-width:1180px}
+  h1{font-size:44px;letter-spacing:-1.2px}
+  .s{font-size:17px;margin-top:10px}
+  ul{margin-top:38px;display:grid;gap:22px;
+     grid-template-columns:repeat(auto-fill,minmax(324px,1fr))}
+  li a{flex-direction:column;align-items:stretch;gap:0;height:100%;
+       padding:0;margin:0;border-radius:22px;overflow:hidden}
+  li a:hover{transform:translateY(-4px)}
+  .th{width:100%;height:auto;aspect-ratio:16/10;border-radius:0;
+      border:0;border-bottom:1px solid rgba(255,255,255,.10);
+      object-position:center 12%}
+  .thi{display:grid;place-items:center;aspect-ratio:16/10;font-size:58px}
+  .tx{padding:19px 21px 21px;gap:6px;font-size:14.5px}
+  .tx b{font-size:18.5px;letter-spacing:-.2px}
+}
+@media (min-width:1440px){ .w{max-width:1300px} }
 </style></head>
 <body><div class="bg"></div><main class="w">
 <a class="back" href="/">← Mahdi Mortazavi · مهدی مرتضوی</a>

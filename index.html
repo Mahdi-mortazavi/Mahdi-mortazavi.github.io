@@ -211,7 +211,7 @@ h1 .fa{display:block; font-size:19px; font-weight:700; color:var(--muted); margi
    ───────────────────────────────────────────────────────────── */
 @media (min-width:960px){
   body{padding-top:56px}
-  .shell{max-width:1080px}
+  .shell{max-width:1240px}
   .window{
     border-radius:30px; overflow:hidden;
     background:linear-gradient(160deg, rgba(255,255,255,.10), rgba(255,255,255,.045));
@@ -228,7 +228,7 @@ h1 .fa{display:block; font-size:19px; font-weight:700; color:var(--muted); margi
   .tl i{width:12px; height:12px; border-radius:50%; border:1px solid rgba(0,0,0,.25)}
   .tl .r{background:#FF5F57}.tl .y{background:#FFBD2E}.tl .g{background:#28C840}
   .wt{position:absolute; left:50%; transform:translateX(-50%); font-size:13px; font-weight:600; color:var(--dim); letter-spacing:.2px}
-  .panes{display:grid; grid-template-columns:390px 1fr}
+  .panes{display:grid; grid-template-columns:400px 1fr}
   .side{
     border-radius:0; border:none; box-shadow:none;
     -webkit-backdrop-filter:none; backdrop-filter:none;
@@ -238,6 +238,18 @@ h1 .fa{display:block; font-size:19px; font-weight:700; color:var(--muted); margi
     display:flex; flex-direction:column; justify-content:center;
   }
   .content{padding:30px 34px 36px}
+  /* The sidebar was centred, which split its spare height into two voids —
+     one above the avatar and a larger one below. Anchored to the top with
+     the availability pill pushed to the bottom, the same content reads as
+     a designed column instead of a floating block. */
+  .side{justify-content:flex-start}
+  /* Nine identical full-width rows is a phone list shown on a desk. */
+  .projgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .projgrid .row{margin-bottom:0;align-items:flex-start}
+  /* Half-width rows cut "Crash-proof focus." to "Crash-..." — the taglines
+     are the reason to click, so let them wrap to a second line instead. */
+  .projgrid .rt .d{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.45}
+  .projgrid .ic{margin-top:1px}
   .label:first-child{margin-top:2px}
   .foot{margin-top:26px}
 }
@@ -320,6 +332,7 @@ h1 .fa{display:block; font-size:19px; font-weight:700; color:var(--muted); margi
         </a>
 
         <p class="label reveal" style="animation-delay:.15s">Open-Source Projects <span class="fa" lang="fa">· پروژه‌های متن‌باز</span></p>
+        <div class="projgrid">
         <a class="row star reveal" href="/p/relay/" style="animation-delay:.17s" data-glass>
           <span class="ic">📡</span><span class="rt"><span class="t">relay</span><span class="d">C# · Share your connection. Instantly.</span></span><span class="arrow" aria-hidden="true">→</span>
         </a>
@@ -347,6 +360,7 @@ h1 .fa{display:block; font-size:19px; font-weight:700; color:var(--muted); margi
         <a class="row reveal" href="/timeline/" style="animation-delay:.33s" data-glass>
           <span class="ic">🛠️</span><span class="rt"><span class="t">Build in Public</span><span class="d">Every release, as it ships</span></span><span class="arrow" aria-hidden="true">→</span>
         </a>
+        </div>
 
         <p class="foot reveal" style="animation-delay:.28s">
           <b>Mahdi Mortazavi</b> · <span class="fa" lang="fa">مهدی مرتضوی</span><br/>

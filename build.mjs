@@ -347,20 +347,93 @@ p.descfa{color:var(--dim);font-size:14px;line-height:1.9;margin-top:10px}
 .faq details p{color:var(--muted);font-size:14.5px;line-height:1.75;margin-top:12px}
 .faq details p.afa{color:var(--dim);font-size:13.5px;line-height:1.95;margin-top:8px}
 @media(max-width:520px){.faq{padding:22px 20px}}
+/* ── Desktop ────────────────────────────────────────────────────────────
+   Below 1024 this file describes a phone, and every rule above still does.
+   The page was a 640px column no matter how wide the display was, so a
+   1512px screen showed 42% content and 58% background, and the gallery was
+   a horizontal scroller — a touch affordance a mouse user never discovers,
+   which clipped the second screenshot and its caption mid-word.
+   Everything below is additive and scoped to wide viewports.            */
+@media (min-width:1024px){
+  body{padding:56px 40px 96px}
+  .wrap{max-width:1240px}
+  .back{font-size:15px;margin-bottom:28px}
+
+  /* The copy column stays a readable measure; the media takes the rest. */
+  .card.has-media{
+    display:grid;
+    grid-template-columns:minmax(0,400px) minmax(0,1fr);
+    /* The gallery spans both rows and is the tallest thing here. With two
+       auto rows its height gets shared between them, which pushed the chips
+       and buttons far below the copy. Giving row 2 all the slack and
+       aligning to its start keeps the left column as one block. */
+    grid-template-rows:auto 1fr;
+    grid-template-areas:"lead gal" "tail gal";
+    column-gap:54px;align-items:start;
+    padding:46px 50px}
+  .card.has-media .lead{grid-area:lead}
+  .card.has-media .gal{grid-area:gal;margin-top:6px}
+  .card.has-media .tail{grid-area:tail;align-self:start;margin-top:30px}
+  /* Nothing to put beside the copy — so don't stretch it to the full width. */
+  .card.no-media{padding:48px 54px;max-width:820px;margin-inline:auto}
+
+  h1{font-size:46px;letter-spacing:-1.1px}
+  .tag{font-size:20px}
+  .tagfa{font-size:16px}
+  p.desc{font-size:16px;line-height:1.75}
+  p.descfa{font-size:15px}
+  .ic{width:84px;height:84px;border-radius:25px;font-size:41px}
+
+  /* A gallery you can see at a glance instead of one you have to drag.
+     Fixed heights keep every aspect ratio honest while the row wraps. */
+  .stripw{margin:16px 0 0}
+  .stripw:after{display:none}
+  .strip{display:flex;flex-wrap:wrap;gap:22px;overflow:visible;padding:0;
+    scroll-snap-type:none}
+  .strip>*:last-child{padding-right:0}
+  /* A flex item sizes to its content by default, so a wide screenshot made
+     the figure wider than the column it sits in — overrun overflowed by
+     51px at exactly 1024, where the gallery column is at its narrowest. */
+  .m{max-width:100%;min-width:0}
+  .m img,.m video{max-width:100%}
+  .m.port img,.m.port video{height:400px;width:auto}
+  .m.land img,.m.land video{height:auto;width:100%;max-width:530px}
+  .m figcaption{max-width:300px}
+  .galh{font-size:13.5px}
+
+  .faq{padding:36px 42px;margin-top:24px}
+  .faq h2{font-size:24px}
+  .faq summary{font-size:16px;padding-right:30px}
+  .faq .qfa{font-size:15px}
+  .faq details p{font-size:15px;max-width:74ch}
+  .faq details{padding:18px 0 5px}
+
+  .foot{font-size:14px;margin-top:34px}
+  .cta{margin-top:28px}
+  .btn{flex:0 1 auto;min-width:200px;font-size:16px;padding:16px 26px}
+}
+@media (min-width:1440px){
+  .wrap{max-width:1340px}
+  .card.has-media{grid-template-columns:minmax(0,430px) minmax(0,1fr)}
+  .m.port img,.m.port video{height:430px}
+}
 </style>
 </head>
 <body>
 <div class="bg" aria-hidden="true"></div>
 <main class="wrap">
   <a class="back" href="/">← Mahdi Mortazavi · <span class="fa">مهدی مرتضوی</span></a>
-  <article class="card">
-    <div class="ic" aria-hidden="true">${p.icon}</div>
-    <h1>${esc(p.name)}</h1>
-    <div class="tag">${esc(p.tagline)}</div>
-    <div class="tagfa fa">${esc(p.taglineFa)}</div>
-    <p class="desc">${esc(p.desc)}</p>
-    <p class="descfa fa">${esc(p.descFa)}</p>
+  <article class="card ${gal ? 'has-media' : 'no-media'}">
+    <div class="lead">
+      <div class="ic" aria-hidden="true">${p.icon}</div>
+      <h1>${esc(p.name)}</h1>
+      <div class="tag">${esc(p.tagline)}</div>
+      <div class="tagfa fa">${esc(p.taglineFa)}</div>
+      <p class="desc">${esc(p.desc)}</p>
+      <p class="descfa fa">${esc(p.descFa)}</p>
+    </div>
     ${gal}
+    <div class="tail">
     <div class="chips">${chips}</div>
     <div class="meta">
       <span><b>Platform</b> · ${esc(p.os)}</span>
@@ -370,6 +443,7 @@ p.descfa{color:var(--dim);font-size:14px;line-height:1.9;margin-top:10px}
     <div class="cta">
       <a class="btn primary" href="${repo}">Open on GitHub →</a>
       <a class="btn" href="${repo}/releases/latest">Download</a>
+    </div>
     </div>
   </article>
   ${faqHtml(p)}
@@ -531,6 +605,27 @@ li a:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.3)}
 .tx b{font-size:15.5px;font-weight:650}
 .tx{color:#AEB6C4;font-size:13.5px;line-height:1.5}
 a.back{color:#8A93A3;text-decoration:none;font-size:14px;font-weight:600}
+/* Desktop: seven rows in a 620px column left ~60% of a laptop screen empty
+   and shrank every cover to a 98x64 crop. As a grid the covers get to be
+   covers, and the whole catalogue is visible without scrolling. */
+@media (min-width:900px){
+  body{padding:56px 40px 92px}
+  .w{max-width:1180px}
+  h1{font-size:44px;letter-spacing:-1.2px}
+  .s{font-size:17px;margin-top:10px}
+  ul{margin-top:38px;display:grid;gap:22px;
+     grid-template-columns:repeat(auto-fill,minmax(324px,1fr))}
+  li a{flex-direction:column;align-items:stretch;gap:0;height:100%;
+       padding:0;margin:0;border-radius:22px;overflow:hidden}
+  li a:hover{transform:translateY(-4px)}
+  .th{width:100%;height:auto;aspect-ratio:16/10;border-radius:0;
+      border:0;border-bottom:1px solid rgba(255,255,255,.10);
+      object-position:center 12%}
+  .thi{display:grid;place-items:center;aspect-ratio:16/10;font-size:58px}
+  .tx{padding:19px 21px 21px;gap:6px;font-size:14.5px}
+  .tx b{font-size:18.5px;letter-spacing:-.2px}
+}
+@media (min-width:1440px){ .w{max-width:1300px} }
 </style></head>
 <body><div class="bg"></div><main class="w">
 <a class="back" href="/">← Mahdi Mortazavi · مهدی مرتضوی</a>
@@ -622,6 +717,27 @@ time{display:block;font-size:12.5px;font-weight:600;color:var(--dim);letter-spac
  color:#9EC9FF;background:rgba(10,132,255,.16);border:1px solid rgba(10,132,255,.35)}
 .body p{color:var(--muted);font-size:14px;line-height:1.65;margin-top:8px;overflow-wrap:anywhere}
 .more{display:inline-block;margin-top:10px;font-size:13px;font-weight:600;color:var(--dim);text-decoration:none}
+/* Desktop: 40 releases down one 660px column ran to 7,500px of scroll.
+   Two columns halve that, and the connecting rail goes with it — a spine
+   that threads through only the left column would be describing an order
+   the eye no longer follows. The dot stays as the date marker. */
+@media (min-width:900px){
+  body{padding:56px 40px 96px}
+  .w{max-width:1180px}
+  h1{font-size:44px;letter-spacing:-1.2px}
+  .sub{font-size:17px;max-width:70ch}
+  ul{margin-top:40px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+     column-gap:26px}
+  ul:before{display:none}
+  .ev{padding-left:30px;padding-bottom:24px}
+  .h{font-size:17px}
+  .body{padding:17px 19px}
+  .body p{font-size:14.5px}
+}
+@media (min-width:1440px){
+  .w{max-width:1320px}
+  ul{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
 .more:hover{color:var(--txt)}
 </style></head>
 <body><div class="bg" aria-hidden="true"></div><main class="w">
