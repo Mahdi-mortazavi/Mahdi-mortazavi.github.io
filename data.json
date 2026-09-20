@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-19T20:38:24.205Z",
+  "generatedAt": "2026-09-20T00:38:23.787Z",
   "totals": {
     "stars": 320,
     "forks": 25,
@@ -14,7 +14,7 @@
       "stars": 190,
       "forks": 14,
       "language": "Kotlin",
-      "pushedAt": "2026-09-17T12:38:47Z",
+      "pushedAt": "2026-09-20T00:33:16Z",
       "description": "📱 Share your phone's internet with your PC — Android → Windows reverse tethering over an encrypted WireGuard tunnel. No root, no server, no account."
     },
     "flow": {
@@ -131,6 +131,10 @@
     },
     {
       "m": "2026-09-19",
+      "v": 320
+    },
+    {
+      "m": "2026-09-20",
       "v": 320
     }
   ],
