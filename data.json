@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-09-24T21:29:52.022Z",
+  "generatedAt": "2026-09-25T04:55:47.127Z",
   "totals": {
-    "stars": 326,
+    "stars": 327,
     "forks": 26,
     "repos": 10,
     "followers": 50,
-    "last30": 32
+    "last30": 33
   },
   "bio": "Full-Stack Developer × Product Builder × Problem Solver",
   "growthSource": "daily-snapshots",
@@ -32,7 +32,7 @@
       "description": "💎 Sooda — Liquid-glass profit, price & discount calculator. Offline-first PWA, bilingual (EN/FA), zero dependencies on servers."
     },
     "nava": {
-      "stars": 23,
+      "stars": 24,
       "forks": 1,
       "language": "Dart",
       "pushedAt": "2026-07-23T00:22:09Z",
@@ -152,6 +152,10 @@
     {
       "m": "2026-09-24",
       "v": 326
+    },
+    {
+      "m": "2026-09-25",
+      "v": 327
     }
   ],
   "timeline": [
