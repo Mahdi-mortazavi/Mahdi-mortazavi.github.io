@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-14T04:51:15.481Z",
+  "generatedAt": "2026-10-14T11:49:46.684Z",
   "totals": {
-    "stars": 346,
+    "stars": 347,
     "forks": 28,
     "repos": 10,
-    "followers": 54,
-    "last30": 29
+    "followers": 55,
+    "last30": 30
   },
   "bio": "Full-Stack Developer × Product Builder × Problem Solver",
   "growthSource": "daily-snapshots",
@@ -18,7 +18,7 @@
       "description": "📱 Share your phone's internet with your PC — Android → Windows reverse tethering over an encrypted WireGuard tunnel. No root, no server, no account."
     },
     "flow": {
-      "stars": 73,
+      "stars": 74,
       "forks": 8,
       "language": "Dart",
       "pushedAt": "2026-08-20T23:36:49Z",
@@ -231,7 +231,7 @@
     },
     {
       "m": "2026-10-14",
-      "v": 346
+      "v": 347
     }
   ],
   "timeline": [
