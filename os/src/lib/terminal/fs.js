@@ -115,6 +115,7 @@ const about = [
 
 const contact = [
   `${"email".padEnd(10)} ${profile.email}`,
+  `${"phone".padEnd(10)} ${profile.phone}`,
   `${"website".padEnd(10)} ${profile.website}`,
   ...socials
     .filter((s) => s.id !== "email")

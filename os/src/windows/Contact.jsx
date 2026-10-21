@@ -1,4 +1,4 @@
-import { Copy, Github, Mail, Megaphone, MessageCircle, Send } from "lucide-react";
+import { Copy, Github, Mail, Megaphone, MessageCircle, Phone, Send } from "lucide-react";
 import WindowHeader from "../components/window/WindowHeader";
 import Avatar from "../components/Avatar";
 import { useNow } from "../hooks/useNow";
@@ -6,7 +6,7 @@ import { copyEmail, openWindow } from "../lib/actions";
 import { useContent } from "../i18n/content";
 import { formatDate, useLocale, useT } from "../i18n";
 
-const ICONS = { github: Github, telegram: Send, channel: Megaphone, email: Mail };
+const ICONS = { github: Github, telegram: Send, whatsapp: MessageCircle, channel: Megaphone, email: Mail };
 
 const Contact = () => {
   const now = useNow();
@@ -16,10 +16,9 @@ const Contact = () => {
   const telegram = socials.find((s) => s.id === "telegram");
   const time = formatDate(now, { hour: "numeric", minute: "2-digit", timeZone: profile.timezone }, locale);
 
-  const github = socials.find((s) => s.id === "github");
   const actions = [
     { key: "message", icon: MessageCircle, href: telegram.href },
-    { key: "github", icon: Github, href: github.href },
+    { key: "call", icon: Phone, href: profile.phoneHref },
   ];
 
   return (
@@ -68,6 +67,14 @@ const Contact = () => {
             <dd>
               <a href={`mailto:${profile.email}`} className="ltr">
                 {profile.email}
+              </a>
+            </dd>
+          </div>
+          <div className="contact-row">
+            <dt>{t("contact.phone")}</dt>
+            <dd>
+              <a href={profile.phoneHref} className="ltr tabular-nums">
+                {profile.phone}
               </a>
             </dd>
           </div>

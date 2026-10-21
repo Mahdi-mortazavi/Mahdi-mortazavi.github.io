@@ -10,18 +10,22 @@ export const profile = {
   photo: "/images/me.webp",
   // Head-and-shoulders crop of the same photo, for round avatars.
   avatar: "/images/me-avatar.webp",
-  role: "Full-Stack Developer",
-  headline: "Full-stack developer and product builder. I turn hard problems into shipped, private-by-design software",
+  role: "CTO · Full-Stack Engineer",
+  title: "CTO & Head of Product · Full-Stack Engineer · Co-Founder",
+  headline: "I solve the problem first and choose the technology second. Technology is an instrument, not an identity",
   location: "Iran",
   timezone: "Asia/Tehran",
   email: "mahdi.mortazavi.135@gmail.com",
+  phone: "+98 992 927 1926",
+  phoneHref: "tel:+989929271926",
+  whatsapp: "https://wa.me/989929271926",
   website: "https://mahdi-mortazavi.github.io",
   host: "mahdi-mortazavi.github.io",
   resumeUrl: "/files/mahdi-mortazavi-resume.pdf",
-  availability: "Available for collaborations and product partnerships",
+  availability: "Available now for remote work, full-time or contract",
   summary: [
-    "I'm a full-stack developer and product builder from Iran. I take hard problems, break them down to first principles, and ship the answer as a real product people use every day: Android and Windows apps, Flutter apps, Rust desktop tools, PWAs and real-time games at the edge.",
-    "Everything I make is open source, offline-first and private by design. No accounts, no trackers, nothing leaves your device unless it has to. My work has earned hundreds of stars on GitHub, led by relay, which shares a phone's internet with a PC over an encrypted WireGuard tunnel.",
+    "I solve the problem first and choose the technology second. I've designed, built and released six products across four different toolchains (Dart, Rust, Kotlin and TypeScript), because each problem demanded a different one. Technology is an instrument, not an identity.",
+    "Today I'm CTO & Head of Product at Senagh, an AI assistant for real-estate agents, and co-founder of a HealthTech startup working on cardiac early warning. Everything I ship on my own is open source, offline-first and private by design.",
   ],
 };
 
@@ -29,13 +33,15 @@ export const profile = {
 export const profileFa = {
   name: "مهدی مرتضوی",
   firstName: "مهدی",
-  role: "توسعه‌دهنده فول‌استک",
-  headline: "توسعه‌دهنده فول‌استک و سازنده محصول؛ مسئله‌های سخت را به نرم‌افزارهای منتشرشده و حریم‌خصوصی‌محور تبدیل می‌کنم",
+  role: "مدیر فنی · توسعه‌دهنده فول‌استک",
+  title: "مدیر فنی و مدیر محصول · توسعه‌دهنده فول‌استک · هم‌بنیان‌گذار",
+  headline: "اول مسئله را حل می‌کنم، بعد ابزارش را انتخاب می‌کنم. تکنولوژی برای من ابزار است، نه هویت",
+  resumeUrl: "/files/mahdi-mortazavi-resume-fa.pdf",
   location: "ایران",
-  availability: "آماده همکاری و شراکت در ساخت محصول",
+  availability: "همین حالا برای همکاری دورکاری آماده‌ام، تمام‌وقت یا پروژه‌ای",
   summary: [
-    "توسعه‌دهنده فول‌استک و سازنده محصول از ایران هستم. مسئله‌های سخت را تا اصول پایه‌شان تجزیه می‌کنم و پاسخ را به محصولی واقعی تبدیل می‌کنم که آدم‌ها هر روز از آن استفاده می‌کنند: اپ‌های اندروید و ویندوز، اپ‌های فلاتر، ابزارهای دسکتاپ با Rust، وب‌اپ‌های PWA و بازی‌های بلادرنگ روی لبه شبکه.",
-    "همه کارهایم متن‌باز، آفلاین‌محور و با حریم خصوصی از پایه‌اند: بدون حساب کاربری، بدون ردیاب، و هیچ داده‌ای بی‌دلیل از دستگاه شما بیرون نمی‌رود. کارهایم در گیت‌هاب صدها ستاره گرفته‌اند؛ در صدرشان ریلی، که اینترنت گوشی را از راه یک تونل رمزنگاری‌شده WireGuard با کامپیوتر به اشتراک می‌گذارد.",
+    "اول مسئله را حل می‌کنم، بعد ابزارش را انتخاب می‌کنم. تا امروز شش محصول را طراحی کرده‌ام، ساخته‌ام و منتشر کرده‌ام، با چهار زبان و ابزار متفاوت (Dart، Rust، Kotlin و TypeScript)، چون هر مسئله ابزار خودش را می‌خواست. تکنولوژی برای من ابزار است، نه هویت.",
+    "این روزها مدیر فنی و مدیر محصول ثناق هستم، دستیار هوش مصنوعی مشاوران املاک، و هم‌بنیان‌گذار یک استارتاپ سلامت در حوزه هشدار زودهنگام قلبی. هر چیزی که خودم منتشر می‌کنم متن‌باز، آفلاین‌محور و با حریم خصوصی از پایه است.",
   ],
 };
 
@@ -53,6 +59,12 @@ export const socials = [
     href: "https://t.me/Mahdi_mortazavi1",
   },
   {
+    id: "whatsapp",
+    label: "WhatsApp",
+    handle: profile.phone,
+    href: profile.whatsapp,
+  },
+  {
     id: "channel",
     label: "Startup Legend",
     handle: "@Startup_legend",
@@ -68,43 +80,103 @@ export const socials = [
 
 export const skillCategoriesFa = {
   Mobile: "موبایل",
-  Desktop: "دسکتاپ",
-  Web: "وب",
-  "Edge & networking": "لبه شبکه و شبکه",
-  Data: "داده",
-  Design: "طراحی",
-  Practice: "روش کار",
+  "Systems & desktop": "سیستم و دسکتاپ",
+  "Web & backend": "وب و بک‌اند",
+  Infrastructure: "زیرساخت",
+  "AI engineering": "مهندسی AI",
+  "Product & design": "محصول و طراحی",
 };
 
 export const skills = [
-  { category: "Mobile", items: ["Flutter", "Dart", "Riverpod", "Kotlin", "Jetpack Compose"] },
-  { category: "Desktop", items: ["C#", ".NET 8", "WinUI 3", "Rust", "Tauri 2"] },
-  { category: "Web", items: ["TypeScript", "JavaScript", "React", "Vite", "PWA", "WebGL"] },
+  { category: "Mobile", items: ["Flutter", "Dart", "Riverpod", "Kotlin", "Jetpack Compose", "Android SDK", "Swift"] },
+  { category: "Systems & desktop", items: ["Rust", "Tauri", "C# / .NET", "Go", "WireGuard", "Python"] },
+  { category: "Web & backend", items: ["TypeScript", "React 19", "Next.js", "Vite", "PWA", "Node.js"] },
   {
-    category: "Edge & networking",
-    items: ["Cloudflare Workers", "Durable Objects", "WebSockets", "WireGuard", "Go"],
+    category: "Infrastructure",
+    items: ["Cloudflare Workers", "Durable Objects", "Supabase", "Firebase", "Railway", "GitHub Actions"],
   },
-  { category: "Data", items: ["SQLite", "IndexedDB", "Offline-first sync"] },
   {
-    category: "Design",
-    items: ["Product design", "Liquid Glass UI", "Motion", "RTL & Persian typography"],
+    category: "AI engineering",
+    items: ["Gemini API", "Multi-agent orchestration", "Temporal", "Windmill", "Agentic coding"],
   },
-  { category: "Practice", items: ["First-principles thinking", "Open source", "GitHub Actions CI/CD", "Privacy by design"] },
+  {
+    category: "Product & design",
+    items: ["Figma", "iOS HIG interaction design", "RTL & localization", "PWA performance"],
+  },
 ];
 
-// How I work, in one line each.
+// Startups and roles, newest first.
+export const ventures = [
+  {
+    id: "senagh",
+    role: "CTO & Head of Product",
+    name: "Senagh",
+    what: "AI assistant for real-estate agents",
+    href: "https://senagh.ir",
+    text: "Technical and product lead for an AI-agent assistant that works alongside real-estate agents. The system absorbs the repetitive half of the job so the agent spends their hours with clients instead. I own the architecture, the agent design and the product direction.",
+  },
+  {
+    id: "healthtech",
+    role: "Co-Founder",
+    name: "HealthTech startup",
+    what: "Cardiac early warning",
+    text: "Building software for the early detection and prevention of heart attack, a problem where a few minutes of warning is the difference between saving someone and losing them. I work on product architecture and the signal pipeline.",
+  },
+  {
+    id: "admobify",
+    role: "Co-Founder",
+    name: "Admobify",
+    what: "Developer monetization",
+    text: "Infrastructure that lets developers inside constrained markets connect AdMob and actually receive their revenue. The hard part was payments, not code, and it had been keeping an entire region of builders out of the global market.",
+  },
+  {
+    id: "startup-legend",
+    role: "Community Organizer",
+    name: "Startup Legend",
+    what: "Founder community",
+    href: "https://t.me/Startup_legend",
+    text: "Running a founder community: programming, coordination and growth.",
+  },
+];
+
+export const venturesFa = {
+  senagh: {
+    role: "مدیر فنی (CTO) و مدیر محصول",
+    name: "ثناق",
+    what: "دستیار هوش مصنوعی مشاوران املاک",
+    text: "مسئول فنی و محصولِ یک دستیار مبتنی بر AI Agent برای مشاوران املاک. سیستم نیمه‌ی تکراری کار را برمی‌دارد تا مشاور وقتش را با مشتری بگذراند. معماری سیستم، طراحی ایجنت‌ها و مسیر محصول با من است.",
+  },
+  healthtech: {
+    role: "هم‌بنیان‌گذار",
+    name: "استارتاپ سلامت",
+    what: "هشدار زودهنگام قلبی",
+    text: "نرم‌افزاری می‌سازیم که سکته‌ی قلبی را زودتر تشخیص بدهد و از آن پیشگیری کند. در این مسئله، چند دقیقه هشدارِ زودتر یعنی فاصله‌ی میان نجات یک نفر و از دست دادن او. من روی معماری محصول و پردازش سیگنال کار می‌کنم.",
+  },
+  admobify: {
+    role: "هم‌بنیان‌گذار",
+    what: "درآمدزایی توسعه‌دهندگان",
+    text: "زیرساختی که به توسعه‌دهنده‌ها در بازارهای محدود اجازه می‌دهد AdMob را وصل کنند و درآمدشان را واقعاً دریافت کنند. بخش سخت ماجرا پرداخت بود، نه کد؛ و همین یک منطقه‌ی کامل از سازنده‌ها را از بازار جهانی بیرون نگه داشته بود.",
+  },
+  "startup-legend": {
+    role: "گرداننده‌ی جامعه",
+    what: "جامعه‌ی بنیان‌گذاران",
+    text: "اداره‌ی یک جامعه‌ی بنیان‌گذار: برنامه‌ریزی، هماهنگی و رشد.",
+  },
+};
+
+// How I work: one principle per line.
 export const funFacts = [
-  "I start every project with one question: what is the actual problem, before anyone named a solution for it?",
-  "relay exists because a laptop kept having no internet while the phone in my pocket did.",
-  "If a feature needs a server, an account or a tracker, it has to prove it. Most of mine never do.",
-  "Persian is never a translation in my apps. Right-to-left, Jalali dates and Persian digits are designed in from the first screen.",
-  "I'd rather ship something real today than polish something imaginary for a month. That's what Mova is named after.",
+  "Problem before stack. I open a problem down to its most basic parts, then take the tool it actually calls for: Rust for a native binary, Kotlin for Android, Flutter for cross-platform, TypeScript for the web.",
+  "New tech is not a cost. Learning an unfamiliar language or framework mid-project is normal for me. Four different toolchains, all self-taught, all shipped and public.",
+  "Speed to released. Idea to public release in weeks, working alone. I use AI tooling for speed; it never replaces understanding the code.",
+  "Privacy from the architecture, not from a policy page. If a feature needs a server, an account or a tracker, it has to prove it.",
+  "Send me a hard problem and I'll tell you within a day whether I can solve it and how I'd start.",
 ];
 
 export const funFactsFa = [
-  "هر پروژه را با یک سؤال شروع می‌کنم: مسئله واقعی چیست، قبل از اینکه کسی برایش راه‌حلی اسم گذاشته باشد؟",
-  "ریلی به این خاطر ساخته شد که لپ‌تاپم مدام اینترنت نداشت، در حالی که گوشی توی جیبم داشت.",
-  "اگر قابلیتی به سرور، حساب کاربری یا ردیاب نیاز داشته باشد، باید ثابتش کند. بیشترِ قابلیت‌های من هیچ‌وقت نیاز ندارند.",
-  "فارسی در اپ‌های من هیچ‌وقت ترجمه نیست. راست‌به‌چپ، تاریخ شمسی و ارقام فارسی از صفحه اول طراحی می‌شوند.",
-  "ترجیح می‌دهم امروز چیزی واقعی منتشر کنم تا اینکه یک ماه چیزی خیالی را صیقل بدهم. اسم مووا از همین می‌آید.",
+  "مسئله، قبل از ابزار. هر مسئله را تا پایه‌ترین اجزایش باز می‌کنم، بعد ابزاری را برمی‌دارم که همان مسئله می‌طلبد: Rust برای باینری نیتیو، Kotlin برای اندروید، Flutter برای چندپلتفرمی، TypeScript برای وب.",
+  "تکنولوژی جدید برایم هزینه نیست. یاد گرفتن یک زبان یا فریم‌ورک تازه وسط کار برایم عادی است. چهار ابزار متفاوت، همه خودآموخته، همه منتشرشده و عمومی.",
+  "سرعت تا انتشار. از ایده تا انتشار عمومی، چند هفته و به‌تنهایی. از ابزارهای AI برای سرعت استفاده می‌کنم، اما جای فهمیدن کد را نمی‌گیرند.",
+  "حریم خصوصی از دل معماری می‌آید، نه از متن سیاست‌نامه. اگر قابلیتی به سرور، حساب کاربری یا ردیاب نیاز داشته باشد، باید ثابتش کند.",
+  "یک مسئله‌ی سخت برایم بفرستید؛ ظرف یک روز می‌گویم می‌توانم حلش کنم یا نه، و از کجا شروع می‌کنم.",
 ];

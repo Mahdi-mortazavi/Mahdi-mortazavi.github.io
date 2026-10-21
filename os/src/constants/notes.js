@@ -2,7 +2,22 @@
 // Inline syntax: [label](https://…) opens a link, [label](app:safari/relay)
 // opens a window (app:<window>/<optional data id>).
 
-import { profile, profileFa, skills, skillCategoriesFa, funFacts, funFactsFa } from "./profile";
+import {
+  profile,
+  profileFa,
+  skills,
+  skillCategoriesFa,
+  funFacts,
+  funFactsFa,
+  ventures,
+  venturesFa,
+} from "./profile";
+
+const ventureBlocks = (list) =>
+  list.flatMap((v) => [
+    { type: "h2", text: `${v.name} · ${v.role}` },
+    { type: "p", text: v.href ? `${v.what}. ${v.text} [${v.href.replace(/^https:\/\//, "")}](${v.href})` : `${v.what}. ${v.text}` },
+  ]);
 
 export const notes = [
   {
@@ -25,6 +40,7 @@ export const notes = [
       {
         type: "ul",
         items: [
+          "CTO & Head of Product at [Senagh](https://senagh.ir), an AI assistant for real-estate agents. [All my roles](app:notes/ventures).",
           "Shipping [Relay](app:safari/relay): share your phone's internet with your PC over an encrypted WireGuard tunnel. No root, no server, no account.",
           "Growing [Flow (تک‌نقطه)](app:safari/flow), an offline focus and habit app built on behavioral science.",
           "Helping shopkeepers price honestly with [Sooda](app:safari/sooda), a bilingual, offline profit calculator.",
@@ -79,6 +95,21 @@ export const notes = [
         type: "p",
         text: "A Rust disk cleaner you can trust, a minimalist Flutter to-do, an eight-player arena shooter on Cloudflare's edge, and more. [See all projects](app:safari).",
       },
+    ],
+  },
+  {
+    id: "ventures",
+    title: "startups & roles",
+    emoji: "🚀",
+    pinned: true,
+    date: "Oct 2026",
+    blocks: [
+      { type: "h1", text: "startups & roles" },
+      {
+        type: "p",
+        text: "Besides my own open-source products, I build and lead startups: three built or led so far, plus a founder community.",
+      },
+      ...ventureBlocks(ventures),
     ],
   },
   {
@@ -157,6 +188,7 @@ export const notesFa = [
       {
         type: "ul",
         items: [
+          "مدیر فنی و مدیر محصول [ثناق](https://senagh.ir) هستم، دستیار هوش مصنوعی مشاوران املاک. [همه نقش‌هایم](app:notes/ventures).",
           "[ریلی](app:safari/relay) را منتشر می‌کنم: اینترنت گوشی را از راه تونل رمزنگاری‌شده WireGuard با کامپیوتر به اشتراک بگذارید؛ بدون روت، بدون سرور، بدون حساب.",
           "[تک‌نقطه](app:safari/flow) را رشد می‌دهم؛ اپ آفلاین تمرکز و عادت، ساخته‌شده بر پایه علم رفتار.",
           "با [سودا](app:safari/sooda) به کسبه کمک می‌کنم صادقانه قیمت بگذارند؛ ماشین‌حساب سود دوزبانه و آفلاین.",
@@ -211,6 +243,21 @@ export const notesFa = [
         type: "p",
         text: "یک پاک‌کننده دیسک قابل‌اعتماد با Rust، یک اپ مینیمال مدیریت کار با فلاتر، یک شوتر آرنای هشت‌نفره روی لبه شبکه کلادفلر و چیزهای دیگر. [همه پروژه‌ها را ببینید](app:safari).",
       },
+    ],
+  },
+  {
+    id: "ventures",
+    title: "استارتاپ‌ها و نقش‌ها",
+    emoji: "🚀",
+    pinned: true,
+    date: "مهر ۱۴۰۵",
+    blocks: [
+      { type: "h1", text: "استارتاپ‌ها و نقش‌ها" },
+      {
+        type: "p",
+        text: "جدا از محصولات متن‌باز خودم، استارتاپ می‌سازم و رهبری می‌کنم: تا امروز سه استارتاپ، به‌علاوه‌ی یک جامعه‌ی بنیان‌گذاران.",
+      },
+      ...ventureBlocks(ventures.map((v) => ({ ...v, ...venturesFa[v.id] }))),
     ],
   },
   {

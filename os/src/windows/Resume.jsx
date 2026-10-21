@@ -2,13 +2,13 @@ import { createPortal } from "react-dom";
 import { Download, Printer } from "lucide-react";
 import WindowHeader from "../components/window/WindowHeader";
 import ResumeDocument from "../components/ResumeDocument";
-import { profile } from "#constants";
 import { useT } from "../i18n";
-
-const RESUME_PDF = profile.resumeUrl;
+import { useContent } from "../i18n/content";
 
 const Resume = () => {
   const t = useT();
+  // My designed PDF, in the visitor's language.
+  const RESUME_PDF = useContent().profile.resumeUrl;
   return (
   <>
     <WindowHeader title={t("resume.title")}>

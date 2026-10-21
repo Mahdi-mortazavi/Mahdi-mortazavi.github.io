@@ -3152,6 +3152,54 @@ html[lang="fa"] {
     }
   }
 
+  .resume-lede {
+    margin-top: 14px;
+    font-size: 13.5px;
+    color: #3a3a40;
+  }
+
+  .resume-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 14px;
+
+    @media (max-width: 767px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    div {
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: #f3f5f9;
+    }
+
+    dt {
+      font-size: 18px;
+      font-weight: 700;
+      color: #0a6cff;
+    }
+
+    dd {
+      font-size: 11px;
+      color: #4a4a50;
+    }
+  }
+
+  .resume-principles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+    }
+
+    p {
+      color: #3a3a40;
+    }
+  }
+
   .resume-item {
     margin-bottom: 12px;
     break-inside: avoid;
@@ -3183,7 +3231,7 @@ html[lang="fa"] {
 
     div {
       display: grid;
-      grid-template-columns: 90px 1fr;
+      grid-template-columns: 130px 1fr;
       gap: 10px;
     }
 

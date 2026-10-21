@@ -202,8 +202,9 @@ export const ui = {
     "contact.website": "website",
     "contact.github": "github",
     "contact.channel": "channel",
+    "contact.whatsapp": "whatsapp",
     "contact.telegram": "telegram",
-    "contact.note": "Have a hard problem, a product idea or a bug report? Send a message from Mail, or reach me directly on Telegram. I read everything.",
+    "contact.note": "Send me a hard problem and I'll tell you within a day whether I can solve it and how I'd start. Fastest reply on Telegram or WhatsApp; phone calls welcome.",
 
     "resume.title": "Resume.pdf",
     "resume.print": "Print resume",
@@ -529,8 +530,9 @@ export const ui = {
     "contact.website": "وب‌سایت",
     "contact.github": "گیت‌هاب",
     "contact.channel": "کانال",
+    "contact.whatsapp": "واتساپ",
     "contact.telegram": "تلگرام",
-    "contact.note": "مسئله‌ای سخت، ایده محصول یا گزارش باگ دارید؟ از اپ ایمیل پیام بدهید یا مستقیم در تلگرام پیدایم کنید. همه پیام‌ها را می‌خوانم.",
+    "contact.note": "یک مسئله‌ی سخت برایم بفرستید؛ ظرف یک روز می‌گویم می‌توانم حلش کنم یا نه، و از کجا شروع می‌کنم. سریع‌ترین راه، تلگرام یا واتساپ است؛ تماس تلفنی هم پاسخ می‌دهم.",
 
     "resume.title": "رزومه.pdf",
     "resume.print": "چاپ رزومه",
