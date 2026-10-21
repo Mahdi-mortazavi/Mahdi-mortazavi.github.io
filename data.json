@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-21T04:43:38.119Z",
+  "generatedAt": "2026-10-21T11:46:16.101Z",
   "totals": {
-    "stars": 355,
+    "stars": 357,
     "forks": 28,
     "repos": 10,
     "followers": 56,
-    "last30": 33
+    "last30": 35
   },
   "bio": "Full-Stack Developer × Product Builder × Problem Solver",
   "growthSource": "daily-snapshots",
@@ -25,7 +25,7 @@
       "description": "🪨 One decision a day. ⏱ Focus. 🌱 Habits. 🔒 100% offline."
     },
     "sooda": {
-      "stars": 29,
+      "stars": 30,
       "forks": 0,
       "language": "TypeScript",
       "pushedAt": "2026-09-20T02:10:08Z",
@@ -39,7 +39,7 @@
       "description": "🍎 Nava: The Art of Reduction. A Jony Ive inspired productivity app with Squircle design, Haptic feedback & Breathing animations. | نوا: مینیمالیسم محض؛ هنرِ حذف اضافات."
     },
     "purify": {
-      "stars": 2,
+      "stars": 3,
       "forks": 0,
       "language": "Rust",
       "pushedAt": "2026-08-27T14:03:50Z",
@@ -259,7 +259,7 @@
     },
     {
       "m": "2026-10-21",
-      "v": 355
+      "v": 357
     }
   ],
   "timeline": [
