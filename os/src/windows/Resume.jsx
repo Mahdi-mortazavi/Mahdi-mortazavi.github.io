@@ -32,7 +32,7 @@ const Resume = () => {
       </div>
     </WindowHeader>
     <div className="window-body resume-viewer">
-      <div className="resume-paper ltr" lang="en">
+      <div className="resume-paper">
         <ResumeDocument />
       </div>
       <a className="btn btn-primary resume-download" href={RESUME_PDF} download>

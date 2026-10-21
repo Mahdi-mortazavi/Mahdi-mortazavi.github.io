@@ -1,0 +1,1 @@
+import{a}from"./gsap-Dipo7aLe.js";let l=null;const o=()=>l??=fetch("/data.json").then(t=>t.ok?t.json():null).catch(()=>null),r=()=>{const[t,n]=a.useState(null);return a.useEffect(()=>{let e=!0;return o().then(s=>e&&n(s)),()=>{e=!1}},[]),t};export{r as u};
