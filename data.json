@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T17:10:28.569Z",
+  "generatedAt": "2026-10-21T21:41:54.964Z",
   "totals": {
     "stars": 358,
     "forks": 28,
@@ -14,7 +14,7 @@
       "stars": 220,
       "forks": 17,
       "language": "Kotlin",
-      "pushedAt": "2026-10-21T02:37:39Z",
+      "pushedAt": "2026-10-21T21:40:39Z",
       "description": "📱 Share your phone's internet with your PC — Android → Windows reverse tethering over an encrypted WireGuard tunnel. No root, no server, no account."
     },
     "flow": {
@@ -263,6 +263,15 @@
     }
   ],
   "timeline": [
+    {
+      "repo": "relay",
+      "slug": "relay",
+      "tag": "v2.11.0",
+      "name": "Relay 2.11.0",
+      "at": "2026-10-21T21:31:03Z",
+      "url": "https://github.com/Mahdi-mortazavi/relay/releases/tag/v2.11.0",
+      "body": "## Relay 2.11.0 **Share your phone's internet with your PC.** Tap *Start Sharing* on the phone, click your phone in the list on the PC, tap *Allow*."
+    },
     {
       "repo": "relay",
       "slug": "relay",
@@ -613,15 +622,6 @@
       "at": "2026-07-12T10:29:35Z",
       "url": "https://github.com/Mahdi-mortazavi/app/releases/tag/v2.0.1",
       "body": "یک بیلد بهینه و پایدار از Nava — ساخته‌شده با Flutter، معماری Riverpod و رابط کاربری Liquid Glass. ### 📦 دانلود / Download | فایل | معماری | حداقل نسخه اندروید |"
-    },
-    {
-      "repo": "purify",
-      "slug": "purify",
-      "tag": "v0.1.0",
-      "name": "purify v0.1.0",
-      "at": "2026-07-12T09:31:00Z",
-      "url": "https://github.com/Mahdi-mortazavi/purify/releases/tag/v0.1.0",
-      "body": "## What's Changed * Phase 0: workspace skeleton with safety-first foundations by @Mahdi-mortazavi in https://github.com/Mahdi-mortazavi/purify/pull/1 * purify Phases 1–6: scanner, rule engine, quarantine, desktop UI, organizer/guardian, release by @Mahdi-morta"
     }
   ]
 }
