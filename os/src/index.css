@@ -4765,6 +4765,29 @@ html[lang="fa"] {
     .resume-doc {
       padding: 0;
     }
+
+    /* A4 is narrower than the phone breakpoint: keep the desktop layout. */
+    .resume-stats {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    .resume-principles {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .resume-doc .resume-contact {
+      text-align: end;
+    }
+
+    [dir="rtl"] .resume-contact {
+      text-align: start;
+    }
+
+    .resume-stats div,
+    .resume-principles > div,
+    .resume-item {
+      break-inside: avoid;
+    }
   }
 }
 
