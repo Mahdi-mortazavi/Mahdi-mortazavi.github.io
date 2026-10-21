@@ -28,7 +28,7 @@ const AppleMenu = () => {
   const ui = useUiStore.getState;
 
   const items = [
-    { id: "about", label: t("menu.aboutReza"), run: () => openApp("notes") },
+    { id: "about", label: t("menu.aboutMe"), run: () => openApp("notes") },
     { id: "projects", label: t("menu.projects"), run: () => openApp("safari") },
     { id: "resume", label: t("menu.resume"), run: () => openApp("resume") },
     "-",
