@@ -8,6 +8,8 @@ export const profile = {
   // Shown on the iPhone home screen (wallpaper + profile widget), in Contacts
   // and in the Control Center. Replace the file to change it everywhere.
   photo: "/images/me.webp",
+  // Head-and-shoulders crop of the same photo, for round avatars.
+  avatar: "/images/me-avatar.webp",
   role: "Full-Stack Developer",
   headline: "Full-stack developer and product builder. I turn hard problems into shipped, private-by-design software",
   location: "Iran",

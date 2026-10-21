@@ -79,7 +79,7 @@ const ControlCenter = ({ className }) => {
         </div>
 
         <div className="cc-tile cc-music">
-          <img src={profile.photo} alt="" className="cc-cover" width="44" height="44" />
+          <img src={profile.avatar} alt="" className="cc-cover" width="44" height="44" />
           <div className="min-w-0">
             <p className="cc-track truncate">{t("cc.channel")}</p>
             <p className="cc-artist truncate">{t("cc.channelSub")}</p>

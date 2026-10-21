@@ -30,7 +30,7 @@ Projects: [Relay](https://github.com/Mahdi-mortazavi/relay) ·
 
 ## Editing
 
-- **My photo** (iPhone wallpaper, profile widget, Contacts): replace `os/public/images/me.webp`.
+- **My photo:** `os/public/images/me.webp` is the iPhone wallpaper; `me-avatar.webp` (a face crop) is used for round avatars.
   A portrait photo of at least 1080 px wide looks best.
 - **About, contact, skills:** `os/src/constants/profile.js` (Persian next to English)
 - **Notes:** `os/src/constants/notes.js`

@@ -11,7 +11,7 @@ const Avatar = ({ className, size = 96 }) => {
         profile.initials
       ) : (
         <img
-          src={profile.photo}
+          src={profile.avatar}
           alt=""
           width={size}
           height={size}
