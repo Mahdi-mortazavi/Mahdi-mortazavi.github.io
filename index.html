@@ -1,431 +1,96 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#05070d" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Mahdi Mortazavi · مهدی مرتضوی — Full-Stack Developer</title>
+    <meta name="description" content="Mahdi Mortazavi (مهدی مرتضوی) — Full-Stack Developer, Product Builder and Problem Solver from Iran. Open source: relay, Flow, sooda, Nava, purify, overrun." />
+    <meta name="author" content="Mahdi Mortazavi" />
+    <meta name="theme-color" content="#e9ecf2" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="canonical" href="https://mahdi-mortazavi.github.io/" />
+    <link rel="alternate" hreflang="en" href="https://mahdi-mortazavi.github.io/" />
+    <link rel="alternate" hreflang="fa" href="https://mahdi-mortazavi.github.io/fa/" />
+    <link rel="alternate" hreflang="x-default" href="https://mahdi-mortazavi.github.io/" />
+    <meta name="google-site-verification" content="aAHPPvsYFRi91Ey3-MIEcLEP-M76pLV6z-P0M4CEMNg" />
 
-<title>Mahdi Mortazavi · مهدی مرتضوی — Full-Stack Developer</title>
-<meta name="description" content="Mahdi Mortazavi (مهدی مرتضوی) — Full-Stack Developer, Product Builder and Problem Solver from Iran. Open source: relay, Flow, sooda, Nava, purify, overrun." />
-<link rel="canonical" href="https://mahdi-mortazavi.github.io/" />
-<meta name="google-site-verification" content="aAHPPvsYFRi91Ey3-MIEcLEP-M76pLV6z-P0M4CEMNg" />
-<link rel="icon" type="image/png" href="avatar.png" />
-<link rel="apple-touch-icon" href="avatar.png" />
-<link rel="preload" as="image" href="avatar.webp" />
+    <link rel="icon" type="image/png" href="/avatar.png" />
+    <link rel="apple-touch-icon" href="/avatar.png" />
 
-<!-- Open Graph -->
-<meta property="og:type" content="profile" />
-<meta property="og:site_name" content="Mahdi Mortazavi" />
-<meta property="og:title" content="Mahdi Mortazavi · مهدی مرتضوی — Full-Stack Developer" />
-<meta property="og:description" content="Full-Stack Developer · Product Builder · Problem Solver from Iran. I turn hard problems into shipped products." />
-<meta property="og:url" content="https://mahdi-mortazavi.github.io/" />
-<meta property="og:image" content="https://mahdi-mortazavi.github.io/og-card.png" />
-<meta property="og:image:secure_url" content="https://mahdi-mortazavi.github.io/og-card.png" />
-<meta property="og:image:type" content="image/png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Mahdi Mortazavi — Full-Stack Developer, Product Builder and Problem Solver" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Mahdi Mortazavi" />
+    <meta property="og:title" content="Mahdi Mortazavi · مهدی مرتضوی — Full-Stack Developer" />
+    <meta property="og:description" content="Full-Stack Developer · Product Builder · Problem Solver from Iran. Explore my work like a Mac: projects, notes, a terminal and more." />
+    <meta property="og:url" content="https://mahdi-mortazavi.github.io/" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="fa_IR" />
+    <meta property="og:image" content="https://mahdi-mortazavi.github.io/og-card.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Mahdi Mortazavi — Full-Stack Developer, Product Builder and Problem Solver" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mahdi Mortazavi · مهدی مرتضوی — Full-Stack Developer" />
+    <meta name="twitter:description" content="Full-Stack Developer · Product Builder · Problem Solver from Iran. Explore my work like a Mac: projects, notes, a terminal and more." />
+    <meta name="twitter:image" content="https://mahdi-mortazavi.github.io/og-card.png" />
 
-<!-- Twitter / X -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Mahdi Mortazavi · مهدی مرتضوی — Full-Stack Developer" />
-<meta name="twitter:description" content="Full-Stack Developer · Product Builder · Problem Solver from Iran. I turn hard problems into shipped products." />
-<meta name="twitter:image" content="https://mahdi-mortazavi.github.io/og-card.png" />
+    <link rel="preconnect" href="https://api.open-meteo.com" crossorigin />
 
-<!-- FONTS -->
-<style>@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;
-src:url(/assets/fonts/inter-400.woff2) format('woff2')}
-@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;
-src:url(/assets/fonts/inter-600.woff2) format('woff2')}
-@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;
-src:url(/assets/fonts/inter-700.woff2) format('woff2')}
-@font-face{font-family:'Inter';font-style:normal;font-weight:800;font-display:swap;
-src:url(/assets/fonts/inter-800.woff2) format('woff2')}
-@font-face{font-family:'Vazirmatn';font-style:normal;font-weight:400;font-display:swap;
-src:url(/assets/fonts/vazirmatn-400.woff2) format('woff2')}
-@font-face{font-family:'Vazirmatn';font-style:normal;font-weight:700;font-display:swap;
-src:url(/assets/fonts/vazirmatn-700.woff2) format('woff2')}</style>
-<!-- /FONTS -->
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfilePage","@id":"https://mahdi-mortazavi.github.io/#profilepage","url":"https://mahdi-mortazavi.github.io/","name":"Mahdi Mortazavi · مهدی مرتضوی","inLanguage":["en","fa"],"isPartOf":{"@id":"https://mahdi-mortazavi.github.io/#website"},"mainEntity":{"@id":"https://mahdi-mortazavi.github.io/#person"},"about":{"@id":"https://mahdi-mortazavi.github.io/#person"},"primaryImageOfPage":"https://mahdi-mortazavi.github.io/og-card.png"},{"@type":"Person","@id":"https://mahdi-mortazavi.github.io/#person","name":"Mahdi Mortazavi","alternateName":["مهدی مرتضوی","مهدي مرتضوي","Mahdi Mortazavi","Mehdi Mortazavi","Mahdi Mortazavy"],"url":"https://mahdi-mortazavi.github.io/","image":"https://mahdi-mortazavi.github.io/avatar.png","jobTitle":"Full-Stack Developer, Product Builder","description":"Mahdi Mortazavi (مهدی مرتضوی) — Full-Stack Developer, Product Builder and Problem Solver from Iran. I take hard problems, break them down to first principles, and turn the solution into a real, shipped product.","nationality":{"@type":"Country","name":"Iran"},"address":{"@type":"PostalAddress","addressCountry":"IR"},"knowsAbout":["Flutter","Dart","Rust","C#","TypeScript","JavaScript","Python","Product Design","Open Source","First-principles thinking","WireGuard","Tauri","Cloudflare Workers","Progressive Web Apps","Offline-first software","RTL and Persian typography"],"sameAs":["https://github.com/Mahdi-mortazavi","https://t.me/Mahdi_mortazavi1","https://t.me/Startup_legend"],"mainEntityOfPage":"https://mahdi-mortazavi.github.io/","knowsLanguage":[{"@type":"Language","name":"Persian","alternateName":"fa"},{"@type":"Language","name":"English","alternateName":"en"}]},{"@type":"WebSite","@id":"https://mahdi-mortazavi.github.io/#website","url":"https://mahdi-mortazavi.github.io/","name":"Mahdi Mortazavi · مهدی مرتضوی","inLanguage":["en","fa"],"publisher":{"@id":"https://mahdi-mortazavi.github.io/#person"},"about":{"@id":"https://mahdi-mortazavi.github.io/#person"}},{"@type":"ItemList","@id":"https://mahdi-mortazavi.github.io/#projects","name":"Open-source projects by Mahdi Mortazavi","itemListElement":[{"@type":"ListItem","position":1,"name":"relay","url":"https://mahdi-mortazavi.github.io/p/relay/"},{"@type":"ListItem","position":2,"name":"Flow — تک‌نقطه","url":"https://mahdi-mortazavi.github.io/p/flow/"},{"@type":"ListItem","position":3,"name":"sooda","url":"https://mahdi-mortazavi.github.io/p/sooda/"},{"@type":"ListItem","position":4,"name":"Nava","url":"https://mahdi-mortazavi.github.io/p/nava/"},{"@type":"ListItem","position":5,"name":"purify","url":"https://mahdi-mortazavi.github.io/p/purify/"},{"@type":"ListItem","position":6,"name":"overrun","url":"https://mahdi-mortazavi.github.io/p/overrun/"},{"@type":"ListItem","position":7,"name":"Mova","url":"https://mahdi-mortazavi.github.io/p/mova/"}]}]}</script>
-<style>
+    <!-- FONTS -->
+    <!-- /FONTS -->
 
+    <script>
+      // Apply the saved (or system) theme before first paint to avoid a flash.
+      (function () {
+        try {
+          var s = JSON.parse(localStorage.getItem("portfolio:settings") || "{}").state || {};
+          var a = s.appearance || "auto";
+          var dark = a === "dark" || (a === "auto" && matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) document.documentElement.classList.add("dark");
+        } catch (e) {}
+        // A visitor who picked Persian before gets it from the first paint.
+        try {
+          var l = localStorage.getItem("portfolio:locale");
+          if (l === "fa" || (!l && /^fa/i.test(navigator.language || ""))) {
+            document.documentElement.lang = "fa";
+            document.documentElement.dir = "rtl";
+          }
+        } catch (e) {}
+      })();
+    </script>
 
-
-
-
-
-/* ─────────────────────────────────────────────────────────────
-   Liquid Glass · iOS 27 (mobile) / macOS 27 window (desktop)
-   ───────────────────────────────────────────────────────────── */
-:root{
-  --accent:#0A84FF; --accent2:#5E5CE6; --tg:#2AABEE;
-  --txt:#F5F5F7; --muted:#B9C0CC; --dim:#8A93A3;
-  --stroke:rgba(255,255,255,.16);
-  --font:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  --fa:'Vazirmatn',var(--font);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{
-  font-family:var(--font); color:var(--txt);
-  background:#05070d; min-height:100vh; overflow-x:hidden;
-  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-  padding:max(26px,env(safe-area-inset-top)) 16px calc(52px + env(safe-area-inset-bottom));
-  display:flex; justify-content:center; align-items:flex-start;
-}
-/* ── Ambient light field ── */
-.bg{position:fixed; inset:-25%; z-index:-2; filter:blur(70px) saturate(150%);
-  background:
-    radial-gradient(38% 42% at 22% 18%, rgba(10,132,255,.55), transparent 70%),
-    radial-gradient(34% 38% at 82% 26%, rgba(94,92,230,.50), transparent 70%),
-    radial-gradient(42% 44% at 68% 88%, rgba(48,209,208,.34), transparent 70%),
-    radial-gradient(40% 42% at 12% 92%, rgba(255,55,95,.28), transparent 70%);
-  animation:drift 26s ease-in-out infinite alternate;}
-.bg2{position:fixed; inset:0; z-index:-1; pointer-events:none;
-  background-image:radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);
-  background-size:34px 34px; mask-image:radial-gradient(circle at 50% 20%, #000, transparent 85%); opacity:.5;}
-@keyframes drift{
-  0%{transform:translate3d(0,0,0) scale(1)}
-  50%{transform:translate3d(-3%,2%,0) scale(1.08)}
-  100%{transform:translate3d(3%,-2%,0) scale(1.04)}
-}
-
-.shell{width:100%; max-width:620px}
-
-/* ── shared glass sheen (pointer-reactive) ── */
-[data-glass]{position:relative}
-[data-glass]::after{content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
-  background:radial-gradient(150px 150px at var(--mx,-300px) var(--my,-300px), rgba(255,255,255,.13), transparent 62%);}
-
-/* ── macOS window chrome (desktop only) ── */
-.titlebar{display:none}
-.window{border-radius:0}
-
-/* ── hero / sidebar ── */
-.side{
-  text-align:center; padding:34px 26px 30px; border-radius:28px;
-  background:linear-gradient(155deg, rgba(255,255,255,.11), rgba(255,255,255,.06));
-  -webkit-backdrop-filter:blur(30px) saturate(185%); backdrop-filter:blur(30px) saturate(185%);
-  border:1px solid var(--stroke);
-  box-shadow:0 12px 50px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.28), inset 0 -18px 40px rgba(0,0,0,.14);
-}
-.avatar-wrap{width:104px; height:104px; margin:0 auto 18px; position:relative}
-.avatar{width:104px; height:104px; border-radius:32px; object-fit:cover; display:block;
-  border:1px solid rgba(255,255,255,.35);
-  box-shadow:0 10px 30px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.4);}
-.avatar-glow{position:absolute; inset:-8px; border-radius:40px; z-index:-1;
-  background:conic-gradient(from 120deg, var(--accent), var(--accent2), var(--tg), var(--accent));
-  filter:blur(16px); opacity:.7}
-h1{font-size:28px; font-weight:800; letter-spacing:-.6px; line-height:1.12}
-h1 .fa{display:block; font-size:19px; font-weight:700; color:var(--muted); margin-top:3px}
-.fa{font-family:var(--fa)}
-[dir="rtl"]{font-family:var(--fa)}
-.role{margin-top:10px; color:var(--muted); font-size:15px; font-weight:550; line-height:1.55}
-.role b{color:#fff}
-.status{display:inline-flex; align-items:center; gap:8px; margin-top:16px;
-  padding:7px 14px; border-radius:999px; font-size:13px; font-weight:600; color:#D6F5E1;
-  background:rgba(48,209,120,.12); border:1px solid rgba(48,209,120,.32)}
-.dot{width:8px; height:8px; border-radius:50%; background:#30D158; box-shadow:0 0 10px #30D158; animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-.bio{margin:18px auto 0; max-width:430px; color:var(--muted); font-size:14.5px; line-height:1.65}
-.bio[dir="rtl"]{color:var(--dim); margin-top:8px}
-
-/* ── section labels ── */
-.label{font-size:11.5px; letter-spacing:3.5px; text-transform:uppercase; color:var(--dim);
-  font-weight:700; margin:28px 6px 12px; display:flex; align-items:baseline; gap:10px}
-.label .fa{letter-spacing:0; text-transform:none; font-size:12.5px; font-weight:600}
-
-/* ── rows ── */
-.row{display:flex; align-items:center; gap:14px; text-decoration:none; color:var(--txt);
-  padding:15px 17px; margin-bottom:11px; border-radius:19px;
-  background:linear-gradient(155deg, rgba(255,255,255,.09), rgba(255,255,255,.045));
-  -webkit-backdrop-filter:blur(18px) saturate(170%); backdrop-filter:blur(18px) saturate(170%);
-  border:1px solid rgba(255,255,255,.13);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.2);
-  transition:transform .18s cubic-bezier(.2,.8,.2,1), border-color .18s, background .18s, box-shadow .18s;}
-@media (hover:hover){
-  .row:hover{transform:translateY(-3px); border-color:rgba(255,255,255,.3);
-    background:linear-gradient(155deg, rgba(255,255,255,.15), rgba(255,255,255,.07));
-    box-shadow:0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.3)}
-  .row:hover .arrow{transform:translateX(3px); color:var(--txt)}
-}
-.row:active{transform:scale(.985)}
-.row:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
-.ic{width:42px; height:42px; border-radius:13px; flex:none; display:grid; place-items:center; font-size:20px;
-  background:rgba(0,0,0,.22); border:1px solid rgba(255,255,255,.12)}
-.ic svg{width:22px; height:22px}
-.rt{display:flex; flex-direction:column; min-width:0}
-.rt .t{font-weight:650; font-size:15.5px; letter-spacing:-.2px}
-.rt .d{color:var(--dim); font-size:12.5px; margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-/* The address needs 196px and a 320px screen gives the row 165px, so it was
-   being ellipsed into something you cannot copy. It is the contact detail —
-   let it wrap rather than truncate on the narrowest phones. At 360 it fits
-   with zero slack, so wrap just below the common 375 breakpoint. */
-@media (max-width:374px){
-  .row[href^="mailto:"] .d{white-space:normal; overflow-wrap:anywhere; text-overflow:clip}
-}
-.arrow{margin-left:auto; color:var(--dim); font-size:17px; transition:transform .18s, color .18s; flex:none}
-
-/* tinted rows */
-.row.tg{background:linear-gradient(155deg, rgba(42,171,238,.30), rgba(42,171,238,.12)); border-color:rgba(42,171,238,.42)}
-.row.tg .ic{background:rgba(42,171,238,.30)}
-.row.gh{background:linear-gradient(155deg, rgba(255,255,255,.20), rgba(255,255,255,.08)); border-color:rgba(255,255,255,.3)}
-.row.star{background:linear-gradient(155deg, rgba(255,214,10,.22), rgba(255,149,0,.10)); border-color:rgba(255,190,60,.4)}
-.row.star .ic{background:rgba(255,190,60,.22)}
-@media (hover:hover){
-  .row.tg:hover{background:linear-gradient(155deg, rgba(42,171,238,.42), rgba(42,171,238,.18))}
-}
-
-.two{display:grid; grid-template-columns:1fr 1fr; gap:11px; margin-bottom:11px}
-.two .row{margin-bottom:0}
-
-.foot{text-align:center; color:var(--dim); font-size:13px; margin-top:28px; line-height:1.9}
-.foot b{color:var(--muted)}
-.foot a{color:var(--muted); text-decoration:none}
-.reveal{opacity:0; transform:translateY(14px); animation:rise .7s cubic-bezier(.2,.8,.2,1) forwards}
-@keyframes rise{to{opacity:1; transform:none}}
-
-/* live stats + growth */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-bottom:14px;border-radius:19px;
- overflow:hidden;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.13)}
-.stat{display:flex;flex-direction:column;align-items:center;gap:2px;padding:13px 6px;text-decoration:none;
- color:var(--txt);background:#0e131c;transition:background .18s}
-@media(hover:hover){.stat:hover{background:#151d2a}}
-.stat b{font-size:19px;font-weight:800;letter-spacing:-.4px}
-.stat span{font-size:11px;font-weight:600;color:var(--dim);letter-spacing:.3px}
-.growth{margin-bottom:16px;padding:14px 16px 10px;border-radius:19px;
- background:linear-gradient(155deg,rgba(255,255,255,.09),rgba(255,255,255,.045));
- border:1px solid rgba(255,255,255,.13)}
-.growth figcaption{font-size:11.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--dim);font-weight:700}
-.growth .fa{letter-spacing:0;text-transform:none;font-size:12px}
-.growth svg{width:100%;height:96px;margin-top:8px;display:block}
-.gmeta{display:flex;justify-content:space-between;font-size:11.5px;color:var(--dim);font-weight:600}
-
-/* sticky one-tap contact on phones */
-.cta-bar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:none;gap:9px;
- padding:10px 14px calc(10px + env(safe-area-inset-bottom));
- background:rgba(9,12,18,.72);-webkit-backdrop-filter:blur(22px) saturate(180%);
- backdrop-filter:blur(22px) saturate(180%);border-top:1px solid rgba(255,255,255,.12)}
-.cta-bar a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;
- border-radius:15px;text-decoration:none;font-weight:700;font-size:15px;color:#fff;
- border:1px solid rgba(255,255,255,.16)}
-.cta-bar .tg{background:linear-gradient(155deg,#2AABEE,#1c8fca);border-color:#2AABEE}
-.cta-bar .em{background:linear-gradient(155deg,rgba(255,255,255,.14),rgba(255,255,255,.06))}
-@media(max-width:959px){.cta-bar{display:flex}body{padding-bottom:104px}}
-
-/* ─────────────────────────────────────────────────────────────
-   Desktop ≥ 960px — a floating macOS app window
-   ───────────────────────────────────────────────────────────── */
-@media (min-width:960px){
-  body{padding-top:56px}
-  .shell{max-width:1240px}
-  .window{
-    border-radius:30px; overflow:hidden;
-    background:linear-gradient(160deg, rgba(255,255,255,.10), rgba(255,255,255,.045));
-    -webkit-backdrop-filter:blur(36px) saturate(190%); backdrop-filter:blur(36px) saturate(190%);
-    border:1px solid var(--stroke);
-    box-shadow:0 40px 110px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.3), inset 0 -24px 60px rgba(0,0,0,.14);
-  }
-  .titlebar{
-    display:flex; align-items:center; height:52px; padding:0 20px; position:relative;
-    border-bottom:1px solid rgba(255,255,255,.09);
-    background:linear-gradient(rgba(255,255,255,.05), rgba(255,255,255,.015));
-  }
-  .tl{display:flex; gap:8px}
-  .tl i{width:12px; height:12px; border-radius:50%; border:1px solid rgba(0,0,0,.25)}
-  .tl .r{background:#FF5F57}.tl .y{background:#FFBD2E}.tl .g{background:#28C840}
-  .wt{position:absolute; left:50%; transform:translateX(-50%); font-size:13px; font-weight:600; color:var(--dim); letter-spacing:.2px}
-  .panes{display:grid; grid-template-columns:400px 1fr}
-  .side{
-    border-radius:0; border:none; box-shadow:none;
-    -webkit-backdrop-filter:none; backdrop-filter:none;
-    background:linear-gradient(160deg, rgba(255,255,255,.05), rgba(255,255,255,.015));
-    border-right:1px solid rgba(255,255,255,.09);
-    padding:44px 34px 40px;
-    display:flex; flex-direction:column; justify-content:center;
-  }
-  .content{padding:30px 34px 36px}
-  /* The sidebar was centred, which split its spare height into two voids —
-     one above the avatar and a larger one below. Anchored to the top with
-     the availability pill pushed to the bottom, the same content reads as
-     a designed column instead of a floating block. */
-  .side{justify-content:flex-start}
-  /* Nine identical full-width rows is a phone list shown on a desk. */
-  .projgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-  .projgrid .row{margin-bottom:0;align-items:flex-start}
-  /* Half-width rows cut "Crash-proof focus." to "Crash-..." — the taglines
-     are the reason to click, so let them wrap to a second line instead. */
-  .projgrid .rt .d{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.45}
-  .projgrid .ic{margin-top:1px}
-  .label:first-child{margin-top:2px}
-  .foot{margin-top:26px}
-}
-@media (max-width:459px){ .two{grid-template-columns:1fr} h1{font-size:26px} .side{padding:30px 20px 26px} }
-@media (prefers-reduced-motion:reduce){ .reveal{animation:none;opacity:1;transform:none} .bg{animation:none} .dot{animation:none} .row{transition:none} }
-</style>
-</head>
-<body>
-<div class="bg" aria-hidden="true"></div><div class="bg2" aria-hidden="true"></div>
-
-<div class="shell">
-  <div class="window reveal" data-glass>
-    <!-- macOS titlebar (desktop only) -->
-    <div class="titlebar" aria-hidden="true">
-      <span class="tl"><i class="r"></i><i class="y"></i><i class="g"></i></span>
-      <span class="wt">Mahdi Mortazavi — Personal Hub</span>
-    </div>
-
-    <div class="panes">
-      <!-- HERO / SIDEBAR -->
-      <aside class="side" data-glass>
-        <div>
-          <div class="avatar-wrap">
-            <div class="avatar-glow" aria-hidden="true"></div>
-            <picture>
-              <source srcset="avatar.webp" type="image/webp" />
-              <img class="avatar" src="avatar.png" alt="Mahdi Mortazavi" width="104" height="104" />
-            </picture>
-          </div>
-          <h1>Mahdi Mortazavi<span class="fa" lang="fa">مهدی مرتضوی</span></h1>
-          <p class="role" data-bio><b>Full-Stack Developer</b> · Product Builder · Problem Solver · Iran 🇮🇷</p>
-          <div class="status"><span class="dot" aria-hidden="true"></span> Available for collaborations · <span class="fa" lang="fa">آماده‌ی همکاری</span></div>
-          <p class="bio">🧩 First-principles thinking → 💡 designing solutions → 🚀 building real products. I break hard problems down to fundamentals and ship the answer as something people actually use.</p>
-          <p class="bio" dir="rtl" lang="fa">تفکر بر پایه‌ی اصول ← طراحی راه‌حل ← ساختِ محصول واقعی. مسئله‌های سخت را تا مبانی پایه تجزیه می‌کنم و پاسخ را به محصولی تبدیل می‌کنم که واقعاً استفاده می‌شود.</p>
-        </div>
-      </aside>
-
-      <!-- CONTENT -->
-      <main class="content">
-        <!-- Live from GitHub (data.json, refreshed by the sync workflow) -->
-        <div class="stats reveal" id="stats" style="animation-delay:.03s" data-glass>
-          <a class="stat" href="https://github.com/Mahdi-mortazavi?tab=repositories"><b data-t="stars">—</b><span>Stars</span></a>
-          <a class="stat" href="https://github.com/Mahdi-mortazavi?tab=followers"><b data-t="followers">—</b><span>Followers</span></a>
-          <a class="stat" href="https://github.com/Mahdi-mortazavi?tab=repositories"><b data-t="repos">—</b><span>Repos</span></a>
-          <a class="stat" href="/timeline/"><b data-t="last30">—</b><span>★ / 30d</span></a>
-        </div>
-        <figure class="growth reveal" id="growth" style="animation-delay:.05s" data-glass hidden>
-          <figcaption>Star growth <span class="fa" lang="fa">· رشد ستاره‌ها</span></figcaption>
-          <svg viewBox="0 0 560 150" preserveAspectRatio="none" role="img" aria-label="Cumulative star growth">
-            <defs><linearGradient id="gf" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#0A84FF" stop-opacity=".5"/>
-              <stop offset="100%" stop-color="#0A84FF" stop-opacity="0"/></linearGradient></defs>
-            <path id="gArea" fill="url(#gf)"/><path id="gLine" fill="none" stroke="#0A84FF" stroke-width="2.5"
-              stroke-linejoin="round" stroke-linecap="round"/>
-            <circle id="gDot" r="4" fill="#fff"/>
-          </svg>
-          <div class="gmeta"><span id="gFrom"></span><span id="gTo"></span></div>
-        </figure>
-
-        <p class="label reveal" style="animation-delay:.05s">Let's Connect <span class="fa" lang="fa">· بیایید در ارتباط باشیم</span></p>
-        <div class="two reveal" style="animation-delay:.08s">
-          <a class="row tg" href="https://t.me/Mahdi_mortazavi1" data-glass>
-            <span class="ic"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M9.8 15.6 9.6 19c.4 0 .6-.2.8-.4l1.9-1.8 3.9 2.9c.7.4 1.2.2 1.4-.7l2.6-12.1c.3-1.1-.4-1.6-1.1-1.3L2.4 9.9c-1.1.4-1.1 1-.2 1.3l4.2 1.3 9.7-6.1c.5-.3.9-.1.5.3l-7.8 7z"/></svg></span>
-            <span class="rt"><span class="t">Message me</span><span class="d">Telegram · Direct</span></span>
-          </a>
-          <a class="row" href="https://t.me/Startup_legend" data-glass>
-            <span class="ic">🚀</span>
-            <span class="rt"><span class="t">Startup Legend</span><span class="d">Join the community</span></span>
-          </a>
-        </div>
-        <a class="row gh reveal" href="https://github.com/Mahdi-mortazavi" style="animation-delay:.11s" data-glass>
-          <span class="ic"><svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.8c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/></svg></span>
-          <span class="rt"><span class="t">View my GitHub</span><span class="d">Follow · explore all my work</span></span>
-          <span class="arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="row reveal" href="mailto:mahdi.mortazavi.135@gmail.com" style="animation-delay:.13s" data-glass>
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3.5 7.5 8.5 6 8.5-6"/></svg></span>
-          <span class="rt"><span class="t">Email</span><span class="d">mahdi.mortazavi.135@gmail.com</span></span>
-          <span class="arrow" aria-hidden="true">→</span>
-        </a>
-
-        <p class="label reveal" style="animation-delay:.15s">Open-Source Projects <span class="fa" lang="fa">· پروژه‌های متن‌باز</span></p>
-        <div class="projgrid">
-        <a class="row star reveal" href="/p/relay/" style="animation-delay:.17s" data-glass>
-          <span class="ic">📡</span><span class="rt"><span class="t">relay</span><span class="d">C# · Share your connection. Instantly.</span></span><span class="arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="row reveal" href="/p/flow/" style="animation-delay:.19s" data-glass>
-          <span class="ic">◉</span><span class="rt"><span class="t">Flow — تک‌نقطه</span><span class="d">Dart / Flutter · One daily boulder. Crash-proof focus.</span></span><span class="arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="row reveal" href="/p/sooda/" style="animation-delay:.21s" data-glass>
-          <span class="ic">📊</span><span class="rt"><span class="t">sooda</span><span class="d">TypeScript · Built in the open.</span></span><span class="arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="row reveal" href="/p/nava/" style="animation-delay:.23s" data-glass>
-          <span class="ic">🍎</span><span class="rt"><span class="t">Nava</span><span class="d">Dart / Flutter · The Art of Reduction.</span></span><span class="arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="row reveal" href="/p/purify/" style="animation-delay:.25s" data-glass>
-          <span class="ic">🧹</span><span class="rt"><span class="t">purify</span><span class="d">Rust + Tauri · Reclaim your disk. Zero friction.</span></span><span class="arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="row reveal" href="/p/overrun/" style="animation-delay:.27s" data-glass>
-          <span class="ic">🎮</span><span class="rt"><span class="t">overrun</span><span class="d">JavaScript · Real-time arena, at the edge.</span></span><span class="arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="row reveal" href="/p/mova/" style="animation-delay:.29s" data-glass>
-          <span class="ic">🌀</span><span class="rt"><span class="t">Mova</span><span class="d">TypeScript · In motion, not in perfection.</span></span><span class="arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="row reveal" href="/p/" style="animation-delay:.31s" data-glass>
-          <span class="ic">🗂️</span><span class="rt"><span class="t">All projects</span><span class="d">Browse everything I build in the open</span></span><span class="arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="row reveal" href="/timeline/" style="animation-delay:.33s" data-glass>
-          <span class="ic">🛠️</span><span class="rt"><span class="t">Build in Public</span><span class="d">Every release, as it ships</span></span><span class="arrow" aria-hidden="true">→</span>
-        </a>
-        </div>
-
-        <p class="foot reveal" style="animation-delay:.28s">
-          <b>Mahdi Mortazavi</b> · <span class="fa" lang="fa">مهدی مرتضوی</span><br/>
-          Full-Stack Developer · Product Builder · <a href="https://github.com/Mahdi-mortazavi">github.com/Mahdi-mortazavi</a>
+    <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfilePage","@id":"https://mahdi-mortazavi.github.io/#profilepage","url":"https://mahdi-mortazavi.github.io/","name":"Mahdi Mortazavi · مهدی مرتضوی","inLanguage":["en","fa"],"isPartOf":{"@id":"https://mahdi-mortazavi.github.io/#website"},"mainEntity":{"@id":"https://mahdi-mortazavi.github.io/#person"},"about":{"@id":"https://mahdi-mortazavi.github.io/#person"},"primaryImageOfPage":"https://mahdi-mortazavi.github.io/og-card.png"},{"@type":"Person","@id":"https://mahdi-mortazavi.github.io/#person","name":"Mahdi Mortazavi","alternateName":["مهدی مرتضوی","مهدي مرتضوي","Mahdi Mortazavi","Mehdi Mortazavi","Mahdi Mortazavy"],"url":"https://mahdi-mortazavi.github.io/","image":"https://mahdi-mortazavi.github.io/avatar.png","jobTitle":"Full-Stack Developer, Product Builder","description":"Mahdi Mortazavi (مهدی مرتضوی) — Full-Stack Developer, Product Builder and Problem Solver from Iran. I take hard problems, break them down to first principles, and turn the solution into a real, shipped product.","nationality":{"@type":"Country","name":"Iran"},"address":{"@type":"PostalAddress","addressCountry":"IR"},"knowsAbout":["Flutter","Dart","Rust","C#","TypeScript","JavaScript","Python","Product Design","Open Source","First-principles thinking","WireGuard","Tauri","Cloudflare Workers","Progressive Web Apps","Offline-first software","RTL and Persian typography"],"sameAs":["https://github.com/Mahdi-mortazavi","https://t.me/Mahdi_mortazavi1","https://t.me/Startup_legend"],"mainEntityOfPage":"https://mahdi-mortazavi.github.io/","knowsLanguage":[{"@type":"Language","name":"Persian","alternateName":"fa"},{"@type":"Language","name":"English","alternateName":"en"}]},{"@type":"WebSite","@id":"https://mahdi-mortazavi.github.io/#website","url":"https://mahdi-mortazavi.github.io/","name":"Mahdi Mortazavi · مهدی مرتضوی","inLanguage":["en","fa"],"publisher":{"@id":"https://mahdi-mortazavi.github.io/#person"},"about":{"@id":"https://mahdi-mortazavi.github.io/#person"}},{"@type":"ItemList","@id":"https://mahdi-mortazavi.github.io/#projects","name":"Open-source projects by Mahdi Mortazavi","itemListElement":[{"@type":"ListItem","position":1,"name":"relay","url":"https://mahdi-mortazavi.github.io/p/relay/"},{"@type":"ListItem","position":2,"name":"Flow — تک‌نقطه","url":"https://mahdi-mortazavi.github.io/p/flow/"},{"@type":"ListItem","position":3,"name":"sooda","url":"https://mahdi-mortazavi.github.io/p/sooda/"},{"@type":"ListItem","position":4,"name":"Nava","url":"https://mahdi-mortazavi.github.io/p/nava/"},{"@type":"ListItem","position":5,"name":"purify","url":"https://mahdi-mortazavi.github.io/p/purify/"},{"@type":"ListItem","position":6,"name":"overrun","url":"https://mahdi-mortazavi.github.io/p/overrun/"},{"@type":"ListItem","position":7,"name":"Mova","url":"https://mahdi-mortazavi.github.io/p/mova/"}]}]}</script>
+    <script type="module" crossorigin src="/static/gsap-Dipo7aLe.js"></script>
+    <script type="module" crossorigin src="/static/react-CLIAPp9J.js"></script>
+    <script type="module" crossorigin src="/static/main-CA2-cxmS.js"></script>
+    <link rel="stylesheet" crossorigin href="/static/main-DUB0PNcs.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <main style="font-family: system-ui, sans-serif; max-width: 640px; margin: 48px auto; padding: 0 20px; line-height: 1.6; background: #fff; color: #1d1d1f; border-radius: 12px">
+        <img src="/avatar.png" alt="Mahdi Mortazavi" width="96" height="96" style="border-radius: 50%" />
+        <h1>Mahdi Mortazavi · <span lang="fa">مهدی مرتضوی</span></h1>
+        <p>Full-Stack Developer, Product Builder and Problem Solver from Iran. I break hard problems down to first principles and ship the answer as real, open-source products: offline-first and private by design.</p>
+        <h2>Projects</h2>
+        <ul>
+          <li><a href="/p/relay/">relay</a>: Share your connection. Instantly.</li>
+          <li><a href="/p/flow/">Flow — تک‌نقطه</a>: One daily boulder. Crash-proof focus.</li>
+          <li><a href="/p/sooda/">sooda</a>: Profit math, crystal clear.</li>
+          <li><a href="/p/nava/">Nava</a>: The Art of Reduction.</li>
+          <li><a href="/p/purify/">purify</a>: Reclaim your disk. Zero friction.</li>
+          <li><a href="/p/overrun/">overrun</a>: Real-time arena, at the edge.</li>
+          <li><a href="/p/mova/">Mova</a>: In motion, not in perfection.</li>
+        </ul>
+        <p>
+          <a href="https://t.me/Mahdi_mortazavi1">Telegram</a> ·
+          <a href="mailto:mahdi.mortazavi.135@gmail.com">Email</a> ·
+          <a href="https://github.com/Mahdi-mortazavi">GitHub</a> ·
+          <a href="/p/">All projects</a> ·
+          <a href="/timeline/">Build in Public</a> ·
+          <a href="/fa/" hreflang="fa" lang="fa">فارسی</a>
         </p>
       </main>
-    </div>
-  </div>
-</div>
-
-<nav class="cta-bar" aria-label="Quick contact">
-  <a class="tg" href="https://t.me/Mahdi_mortazavi1">💬 Message me</a>
-  <a class="em" href="mailto:mahdi.mortazavi.135@gmail.com">✉️ Email</a>
-</nav>
-
-<script>
-  // Live numbers + growth curve, straight from the synced GitHub data.
-  fetch('/data.json', {cache:'no-cache'}).then(r=>r.ok?r.json():null).then(d=>{
-    if(!d) return;
-    const set=(k,v)=>document.querySelectorAll('[data-t="'+k+'"]').forEach(e=>e.textContent=v);
-    set('stars', d.totals.stars); set('followers', d.totals.followers);
-    set('repos', d.totals.repos); set('last30', '+'+d.totals.last30);
-    if (d.bio) { const r=document.querySelector('[data-bio]');
-      if(r) r.innerHTML = '<b>'+d.bio.split(/\s*[×·|]\s*/)[0]+'</b> · '
-        + d.bio.split(/\s*[×·|]\s*/).slice(1).join(' · ') + ' · Iran 🇮🇷'; }
-    const g=d.growth||[]; if(g.length<2) return;
-    const W=560,H=150,max=g[g.length-1].v||1;
-    const X=i=>i*(W/(g.length-1)), Y=v=>H-4-(v/max)*(H-16);
-    const line=g.map((p,i)=>(i?'L':'M')+X(i).toFixed(1)+','+Y(p.v).toFixed(1)).join('');
-    document.getElementById('gLine').setAttribute('d',line);
-    document.getElementById('gArea').setAttribute('d',line+'L'+W+','+H+'L0,'+H+'Z');
-    const dot=document.getElementById('gDot');
-    dot.setAttribute('cx',X(g.length-1)); dot.setAttribute('cy',Y(g[g.length-1].v));
-    const lbl=m=>{const[y,mo]=m.split('-');return new Date(y,mo-1).toLocaleString('en',{month:'short',year:'2-digit'})};
-    document.getElementById('gFrom').textContent=lbl(g[0].m);
-    document.getElementById('gTo').textContent=lbl(g[g.length-1].m)+' · '+max+'★';
-    document.getElementById('growth').hidden=false;
-  }).catch(()=>{});
-
-  // Liquid-glass pointer sheen (rAF-throttled)
-  (function(){
-    var glasses = document.querySelectorAll('[data-glass]');
-    var queued = false, ev = null;
-    function apply(){
-      queued = false;
-      for (var i = 0; i < glasses.length; i++){
-        var g = glasses[i], r = g.getBoundingClientRect();
-        if (ev.clientX > r.left - 40 && ev.clientX < r.right + 40 && ev.clientY > r.top - 40 && ev.clientY < r.bottom + 40){
-          g.style.setProperty('--mx', (ev.clientX - r.left) + 'px');
-          g.style.setProperty('--my', (ev.clientY - r.top) + 'px');
-        }
-      }
-    }
-    window.addEventListener('pointermove', function(e){
-      ev = e;
-      if (!queued){ queued = true; requestAnimationFrame(apply); }
-    }, {passive:true});
-  })();
-</script>
-</body>
+    </noscript>
+  </body>
 </html>

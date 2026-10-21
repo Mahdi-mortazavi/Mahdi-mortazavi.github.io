@@ -751,7 +751,7 @@ time{display:block;font-size:12.5px;font-weight:600;color:var(--dim);letter-spac
 }
 
 // sitemap + robots
-const urls = [`${ORIGIN}/`, `${ORIGIN}/p/`, `${ORIGIN}/timeline/`, ...projects.map(p => `${ORIGIN}/p/${p.slug}/`)];
+const urls = [`${ORIGIN}/`, `${ORIGIN}/fa/`, `${ORIGIN}/p/`, `${ORIGIN}/timeline/`, ...projects.map(p => `${ORIGIN}/p/${p.slug}/`)];
 const today = new Date().toISOString().slice(0, 10);
 /* Screenshots are listed as <image:image> so they can rank in Google Images,
    which is a second way into the same pages. */
