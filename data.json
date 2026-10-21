@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-20T21:35:53.272Z",
+  "generatedAt": "2026-10-21T04:43:38.119Z",
   "totals": {
     "stars": 355,
     "forks": 28,
     "repos": 10,
     "followers": 56,
-    "last30": 34
+    "last30": 33
   },
   "bio": "Full-Stack Developer × Product Builder × Problem Solver",
   "growthSource": "daily-snapshots",
@@ -14,7 +14,7 @@
       "stars": 219,
       "forks": 17,
       "language": "Kotlin",
-      "pushedAt": "2026-10-12T10:12:48Z",
+      "pushedAt": "2026-10-21T02:37:39Z",
       "description": "📱 Share your phone's internet with your PC — Android → Windows reverse tethering over an encrypted WireGuard tunnel. No root, no server, no account."
     },
     "flow": {
@@ -256,9 +256,22 @@
     {
       "m": "2026-10-20",
       "v": 355
+    },
+    {
+      "m": "2026-10-21",
+      "v": 355
     }
   ],
   "timeline": [
+    {
+      "repo": "relay",
+      "slug": "relay",
+      "tag": "v2.10.0",
+      "name": "Relay 2.10.0",
+      "at": "2026-10-21T02:37:39Z",
+      "url": "https://github.com/Mahdi-mortazavi/relay/releases/tag/v2.10.0",
+      "body": "## Relay 2.10.0 **Share your phone's internet with your PC.** Tap *Start Sharing* on the phone, click your phone in the list on the PC, tap *Allow*."
+    },
     {
       "repo": "relay",
       "slug": "relay",
@@ -609,15 +622,6 @@
       "at": "2026-07-12T09:31:00Z",
       "url": "https://github.com/Mahdi-mortazavi/purify/releases/tag/v0.1.0",
       "body": "## What's Changed * Phase 0: workspace skeleton with safety-first foundations by @Mahdi-mortazavi in https://github.com/Mahdi-mortazavi/purify/pull/1 * purify Phases 1–6: scanner, rule engine, quarantine, desktop UI, organizer/guardian, release by @Mahdi-morta"
-    },
-    {
-      "repo": "app",
-      "slug": "nava",
-      "tag": "v2.0.0",
-      "name": "🍎 Nava v2.0.0",
-      "at": "2026-07-09T05:33:45Z",
-      "url": "https://github.com/Mahdi-mortazavi/app/releases/tag/v2.0.0",
-      "body": "<div align=\"center\"> ### هنرِ حذف کردن اضافات — The Art of Reduction </div>"
     }
   ]
 }
