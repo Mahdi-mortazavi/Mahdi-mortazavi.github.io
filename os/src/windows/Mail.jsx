@@ -299,16 +299,12 @@ const Mail = () => {
             maxLength={5000}
           />
 
-          {/* Honeypot: hidden from people and assistive tech. */}
-          <input
-            ref={honeypot}
-            type="text"
-            name="company"
-            tabIndex={-1}
-            autoComplete="off"
-            aria-hidden="true"
-            className="mail-hp"
-          />
+          {/* Honeypot: hidden from people and assistive tech. The name must
+              not match anything browser autofill knows (like "company"), or
+              real visitors' messages are silently dropped as spam. */}
+          <div hidden aria-hidden="true">
+            <input ref={honeypot} type="text" name="hp_field" tabIndex={-1} autoComplete="new-password" />
+          </div>
 
           <div className="mail-footer">
             <div className="min-w-0 flex-1" aria-live="polite">

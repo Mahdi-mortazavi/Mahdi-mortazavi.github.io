@@ -2,6 +2,7 @@ import { createPortal } from "react-dom";
 import { Download, Printer } from "lucide-react";
 import WindowHeader from "../components/window/WindowHeader";
 import ResumeDocument from "../components/ResumeDocument";
+import { useWindowContext } from "../components/window/WindowContext";
 import { useT } from "../i18n";
 import { useContent } from "../i18n/content";
 
@@ -9,6 +10,7 @@ const Resume = () => {
   const t = useT();
   // My designed PDF, in the visitor's language.
   const RESUME_PDF = useContent().profile.resumeUrl;
+  const { isVisible } = useWindowContext();
   return (
   <>
     <WindowHeader title={t("resume.title")}>
@@ -39,12 +41,13 @@ const Resume = () => {
         <Download aria-hidden="true" /> {t("resume.downloadPdf")}
       </a>
     </div>
-    {createPortal(
-      <div className="print-root">
-        <ResumeDocument />
-      </div>,
-      document.body,
-    )}
+    {isVisible &&
+      createPortal(
+        <div className="print-root">
+          <ResumeDocument />
+        </div>,
+        document.body,
+      )}
   </>
   );
 };

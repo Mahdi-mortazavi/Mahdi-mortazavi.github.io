@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useIsMobile } from "../hooks/useMediaQuery";
 import { useBackLayer } from "../hooks/useBackLayer";
+import { useWindowContext } from "./window/WindowContext";
 import { localizeDigits, useT } from "../i18n";
 
 // Full-screen image viewer. Portaled to <body> so window transforms
@@ -11,6 +12,7 @@ const Lightbox = ({ images, index, onClose, title }) => {
   const [current, setCurrent] = useState(index);
   const touchX = useRef(null);
   const closeRef = useRef(null);
+  const rootRef = useRef(null);
   const count = images.length;
   const t = useT();
   useBackLayer(true, onClose, { enabled: useIsMobile() });
@@ -18,17 +20,38 @@ const Lightbox = ({ images, index, onClose, title }) => {
   const prev = useCallback(() => setCurrent((i) => (i - 1 + count) % count), [count]);
   const next = useCallback(() => setCurrent((i) => (i + 1) % count), [count]);
 
+  // The viewer belongs to its window: closing or minimising the window
+  // closes it too, instead of leaving it on screen over the desktop.
+  const { isVisible = true } = useWindowContext() ?? {};
+  useEffect(() => {
+    if (!isVisible) onClose();
+  }, [isVisible, onClose]);
+
+  // Focus moves into the viewer and returns to whatever opened it.
+  useEffect(() => {
+    const opener = document.activeElement;
+    closeRef.current?.focus();
+    return () => opener?.focus?.({ preventScroll: true });
+  }, []);
+
   useEffect(() => {
     const onKey = (e) => {
+      // It's modal: no shortcut reaches the windows underneath.
+      e.stopPropagation();
       if (e.key === "ArrowLeft") prev();
       else if (e.key === "ArrowRight") next();
-      else if (e.key === "Escape") {
-        e.stopPropagation();
-        onClose();
+      else if (e.key === "Escape") onClose();
+      else if (e.key === "Tab") {
+        // Keep Tab cycling inside the viewer.
+        const items = [...(rootRef.current?.querySelectorAll("button") ?? [])];
+        if (!items.length) return;
+        const i = items.indexOf(document.activeElement);
+        const nextIndex = e.shiftKey ? (i <= 0 ? items.length - 1 : i - 1) : (i + 1) % items.length;
+        e.preventDefault();
+        items[nextIndex].focus();
       }
     };
     window.addEventListener("keydown", onKey, true);
-    closeRef.current?.focus();
     return () => window.removeEventListener("keydown", onKey, true);
   }, [prev, next, onClose]);
 
@@ -36,6 +59,7 @@ const Lightbox = ({ images, index, onClose, title }) => {
     // Physical layout on purpose: arrows and swipes match the screen, not the
     // reading direction.
     <div
+      ref={rootRef}
       className="lightbox"
       dir="ltr"
       role="dialog"

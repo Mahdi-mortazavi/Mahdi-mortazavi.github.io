@@ -26,6 +26,16 @@ import {
 
 gsap.registerPlugin(Draggable, Flip);
 
+// Pull a window back so part of it stays reachable, e.g. after the browser
+// window shrinks. Same margins as the drag bounds.
+const keepOnScreen = (el) => {
+  if (!el || el.style.display === "none" || el.dataset.maximized === "true" || el.dataset.snap) return;
+  const r = el.getBoundingClientRect();
+  const dx = Math.min(0, window.innerWidth - 96 - r.left) + Math.max(0, 96 - r.right);
+  const dy = Math.min(0, window.innerHeight - 64 - r.top) + Math.max(0, MENUBAR_H - r.top);
+  if (dx || dy) gsap.set(el, { x: `+=${dx}`, y: `+=${dy}` });
+};
+
 const WindowWrapper = (Component, windowKey) => {
   const Wrapped = (props) => {
     const t = useT();
@@ -39,6 +49,9 @@ const WindowWrapper = (Component, windowKey) => {
     const ref = useRef(null);
     const prevVisible = useRef(false);
     const savedOffset = useRef({ x: 0, y: 0 });
+    // Where a free window was when a drag began: tiling by dragging to an
+    // edge should remember this, not the spot it was dropped.
+    const pressOffset = useRef(null);
     const [handle, setHandle] = useState(null);
     const [hasMounted, setHasMounted] = useState(win.isOpen);
 
@@ -46,10 +59,15 @@ const WindowWrapper = (Component, windowKey) => {
     // state like scroll position or open tabs survives close → reopen.
     if (win.isOpen && !hasMounted) setHasMounted(true);
 
-    // Keep showing the last data while the close animation runs.
-    const lastData = useRef(win.data);
-    if (win.data != null) lastData.current = win.data;
-    const data = win.data ?? lastData.current;
+    // Keep showing the last data while the close animation runs, but never
+    // hand it back on the next open: a fresh open without data means defaults.
+    const [shownData, setShownData] = useState(win.data);
+    if (win.isOpen && win.data !== shownData) setShownData(win.data);
+    const data = win.isOpen ? win.data : shownData;
+
+    // A closing window keeps its place in the stack while it fades out.
+    const [lastZ, setLastZ] = useState(zIndex);
+    if (win.isOpen && zIndex !== lastZ) setLastZ(zIndex);
 
     const visible = win.isOpen && !win.isMinimized;
 
@@ -80,6 +98,7 @@ const WindowWrapper = (Component, windowKey) => {
           },
         );
         el.dataset.minimized = "false";
+        if (!isMobile) keepOnScreen(el);
         if (!isMobile) {
           (el.querySelector("[data-autofocus]") ?? el).focus({ preventScroll: true });
         }
@@ -132,6 +151,10 @@ const WindowWrapper = (Component, windowKey) => {
         minimumMovement: 3,
         onPress() {
           applyBounds(this);
+          pressOffset.current =
+            el.dataset.snap || el.dataset.maximized === "true"
+              ? null
+              : { x: gsap.getProperty(el, "x"), y: gsap.getProperty(el, "y") };
         },
         onDragStart() {
           // Dragging a tiled window restores its own size under the pointer.
@@ -176,7 +199,11 @@ const WindowWrapper = (Component, windowKey) => {
       });
 
       if (el.dataset.maximized === "true") draggable.disable();
+      const onResize = () => keepOnScreen(el);
+      window.addEventListener("resize", onResize);
+      keepOnScreen(el);
       return () => {
+        window.removeEventListener("resize", onResize);
         draggable.kill();
         showSnapPreview(null);
       };
@@ -196,13 +223,17 @@ const WindowWrapper = (Component, windowKey) => {
 
       const state = Flip.getState(el);
       const draggable = Draggable.get(el);
-      // Zooming a tiled window replaces the tiling.
+      // Zooming a tiled window replaces the tiling. A tiled window's offset
+      // is 0,0; its free position was saved when it tiled.
+      const wasTiled = Boolean(el.dataset.snap);
       delete el.dataset.snap;
       if (shouldMax) {
-        savedOffset.current = {
-          x: gsap.getProperty(el, "x"),
-          y: gsap.getProperty(el, "y"),
-        };
+        if (!wasTiled) {
+          savedOffset.current = {
+            x: gsap.getProperty(el, "x"),
+            y: gsap.getProperty(el, "y"),
+          };
+        }
         gsap.set(el, { x: 0, y: 0 });
         draggable?.disable();
       } else {
@@ -210,6 +241,7 @@ const WindowWrapper = (Component, windowKey) => {
         draggable?.enable();
       }
       el.dataset.maximized = String(shouldMax);
+      if (!shouldMax) keepOnScreen(el);
       if (el.style.display !== "none" && !prefersReducedMotion()) {
         Flip.from(state, { duration: 0.32, ease: "power3.inOut" });
       }
@@ -224,6 +256,14 @@ const WindowWrapper = (Component, windowKey) => {
 
       const state = Flip.getState(el);
       if (target) {
+        // Remember where it was, so un-tiling (via zoom) can put it back.
+        if (!el.dataset.snap && el.dataset.maximized !== "true") {
+          savedOffset.current = pressOffset.current ?? {
+            x: gsap.getProperty(el, "x"),
+            y: gsap.getProperty(el, "y"),
+          };
+        }
+        pressOffset.current = null;
         gsap.set(el, { x: 0, y: 0 });
         el.dataset.snap = target;
       } else {
@@ -261,7 +301,7 @@ const WindowWrapper = (Component, windowKey) => {
           id={windowKey}
           className={`window window-${windowKey}${isMobile ? " is-mobile" : ""}`}
           data-focused={isFocused}
-          style={{ zIndex }}
+          style={{ zIndex: win.isOpen ? zIndex : lastZ }}
           role="dialog"
           aria-label={title}
           aria-hidden={!visible}

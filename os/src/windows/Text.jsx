@@ -1,10 +1,24 @@
 import WindowHeader from "../components/window/WindowHeader";
 import { useT } from "../i18n";
+import { useContent } from "../i18n/content";
+
+// Finder items are stored as window data in the language they were opened
+// in. Look the item up again by id so it follows a language switch.
+const findItem = (nodes, id) => {
+  for (const node of nodes) {
+    if (node.id === id) return node;
+    const hit = node.children && findItem(node.children, id);
+    if (hit) return hit;
+  }
+  return null;
+};
 
 const Text = ({ data }) => {
   const t = useT();
+  const { locations } = useContent();
   if (!data) return <WindowHeader title={t("window.txtfile")} />;
-  const { name, title, subtitle, description = [] } = data;
+  const item = findItem(Object.values(locations), data.id) ?? data;
+  const { name, title, subtitle, description = [] } = item;
 
   return (
     <>
