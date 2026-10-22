@@ -48,6 +48,7 @@ const buildIndex = (locale, t) => {
         subtitle: a.href ? t("spotlight.newTab") : t("spotlight.application"),
         icon: a.icon,
         terms: `${bothLanguages(`app.${a.id}`)} ${a.keywords}`,
+        names: bothLanguages(`app.${a.id}`),
         run: () => openApp(a.id),
       })),
     ...projects.map((p) => ({
@@ -57,6 +58,7 @@ const buildIndex = (locale, t) => {
       subtitle: p.tagline,
       thumb: p.thumbnail,
       terms: `${projectSearchTerms(p.id)} ${p.kind} ${p.stack.join(" ")}`,
+      names: projectSearchTerms(p.id),
       run: () => openProject(p.id),
     })),
     ...notes.map((n) => ({
@@ -66,6 +68,7 @@ const buildIndex = (locale, t) => {
       subtitle: t("spotlight.note"),
       glyph: FileText,
       terms: [notesEn, notesFa].map((list) => list.find((x) => x.id === n.id)?.title).join(" ") + " about notes",
+      names: [notesEn, notesFa].map((list) => list.find((x) => x.id === n.id)?.title).join(" "),
       run: () => openWindow("notes", { noteId: n.id }),
     })),
     {
@@ -142,7 +145,13 @@ const buildIndex = (locale, t) => {
       terms: `${bothLanguages("menu.shortcuts")} keyboard shortcuts keys help`,
       run: () => ui().openShortcuts(),
     },
-  ].map((r) => ({ ...r, terms: normalize(`${r.title} ${r.terms}`) }));
+  ].map((r) => ({
+    ...r,
+    terms: normalize(`${r.title} ${r.terms}`),
+    // Names in both languages, so "Projects" ranks the Projects app first
+    // on the Persian site too.
+    names: normalize(`${r.title} ${r.names ?? ""}`).split(/\s+/),
+  }));
 };
 
 const SUGGESTED = ["project-relay", "project-flow", "app-notes", "app-resume", "act-message"];
@@ -167,18 +176,22 @@ const SpotlightPanel = () => {
     const q = normalize(query.trim());
     if (!q) return SUGGESTED.map((id) => index.find((r) => r.id === id));
     const words = q.split(/\s+/);
-    return index
+    const top = index
       .map((r) => {
         const hay = r.terms;
         const title = normalize(r.title);
         if (!words.every((w) => hay.includes(w))) return null;
-        const score = title.startsWith(q) ? 0 : title.includes(q) ? 1 : 2;
+        const named = title.startsWith(q) || r.names.some((n) => n.startsWith(q));
+        const score = named ? 0 : title.includes(q) ? 1 : 2;
         return { r, score };
       })
       .filter(Boolean)
       .sort((a, b) => a.score - b.score)
       .slice(0, 9)
       .map((x) => x.r);
+    // Show each group once, in order of its best result.
+    const groups = [...new Set(top.map((r) => r.group))];
+    return groups.flatMap((g) => top.filter((r) => r.group === g));
   }, [query, index]);
 
   useEffect(() => {

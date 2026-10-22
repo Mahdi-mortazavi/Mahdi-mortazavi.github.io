@@ -250,11 +250,15 @@ export const resolvePath = (cwd, input = "") => {
 export const displayPath = (abs) =>
   abs === HOME ? "~" : abs.startsWith(`${HOME}/`) ? `~${abs.slice(HOME.length)}` : abs;
 
+// Own-property lookup: names like "constructor" or "toString" must not
+// resolve to Object.prototype members.
+export const own = (obj, key) => (Object.hasOwn(obj, key) ? obj[key] : undefined);
+
 export const getNode = (root, abs) => {
   let node = root;
   for (const part of abs.split("/").filter(Boolean)) {
     if (node?.type !== "dir") return null;
-    node = node.children[part];
+    node = own(node.children, part);
   }
   return node ?? null;
 };

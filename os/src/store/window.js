@@ -95,7 +95,12 @@ const useWindowStore = create(
         const visible = state.order.filter((k) => !state.windows[k].isMinimized);
         if (visible.length) {
           visible.forEach((k) => (state.windows[k].isMinimized = true));
-          state.desktopHidden = visible;
+          // Keep windows hidden by an earlier Show Desktop that are still
+          // waiting to come back; the next toggle restores all of them.
+          state.desktopHidden = [
+            ...state.desktopHidden.filter((k) => !visible.includes(k) && state.windows[k].isOpen),
+            ...visible,
+          ];
         } else {
           state.desktopHidden.forEach((k) => {
             if (state.windows[k].isOpen) state.windows[k].isMinimized = false;

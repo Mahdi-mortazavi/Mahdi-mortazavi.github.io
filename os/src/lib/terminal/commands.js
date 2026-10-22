@@ -7,6 +7,7 @@ import {
   baseName,
   displayPath,
   getNode,
+  own,
   globToRegExp,
   humanSize,
   isWritableDir,
@@ -214,11 +215,20 @@ const cat = ({ args, stdin, session, name }) => {
 
 const headTail = (which) => ({ args, stdin, session }) => {
   const { flags, rest } = parseArgs(args, ["n"]);
-  const n = Number(flags.n ?? 10);
+  const raw = String(flags.n ?? 10);
+  const n = Math.abs(parseInt(raw, 10)) || 0;
   const { sources, err } = inputs(session, rest, stdin, which);
   const out = sources.flatMap((s, i) => {
-    const lines = s.content.replace(/\n$/, "").split("\n");
-    const picked = which === "head" ? lines.slice(0, n) : lines.slice(-n);
+    const lines = s.content ? s.content.replace(/\n$/, "").split("\n") : [];
+    // tail -n +N starts at line N; -n 0 prints nothing (slice(-0) is everything).
+    const picked =
+      which === "head"
+        ? lines.slice(0, n)
+        : raw.startsWith("+")
+          ? lines.slice(Math.max(0, n - 1))
+          : n
+            ? lines.slice(-n)
+            : [];
     const header =
       sources.length > 1 ? [...(i ? [line("")] : []), line(span(`==> ${s.name} <==`, "t-muted"))] : [];
     return [...header, ...picked.map((t) => line(t))];
@@ -281,32 +291,16 @@ export const COMMANDS = {
       const targets = rest.length ? rest : ["."];
       const out = [];
       const err = [];
-      targets.forEach((t, i) => {
+      const files = [];
+      const dirs = [];
+      for (const t of targets) {
         const abs = resolvePath(session.cwd, t);
         const node = getNode(session.fs, abs);
-        if (!node) {
-          err.push(...text(`ls: ${t}: No such file or directory`, "t-err"));
-          return;
-        }
-        const entries =
-          node.type === "dir"
-            ? [
-                ...(flags.a ? [[".", node, abs], ["..", getNode(session.fs, parentOf(abs)), parentOf(abs)]] : []),
-                ...Object.keys(node.children)
-                  .filter((n) => flags.a || !n.startsWith("."))
-                  .sort((a, b) => a.localeCompare(b))
-                  .map((n) => [n, node.children[n], childPath(abs, n)]),
-              ]
-            : [[t, node, abs]];
-        if (targets.length > 1) {
-          if (i) out.push(line(""));
-          out.push(line(span(`${t}:`, "t-muted")));
-        }
+        if (!node) err.push(...text(`ls: ${t}: No such file or directory`, "t-err"));
+        else (node.type === "dir" ? dirs : files).push([t, node, abs]);
+      }
+      const list = (entries) => {
         if (flags.l) {
-          if (node.type === "dir") {
-            const blocks = entries.reduce((sum, [, n]) => sum + Math.ceil(sizeOf(n) / 512), 0);
-            out.push(line(span(`total ${blocks}`, "t-muted")));
-          }
           for (const [name, n, p] of entries) {
             const mode =
               n.type === "dir" ? "drwxr-xr-x" : n.exe ? "-rwxr-xr-x" : n.userCreated ? "-rw-r--r--" : "-r--r--r--";
@@ -320,6 +314,27 @@ export const COMMANDS = {
         } else if (entries.length) {
           out.push({ grid: entries.map(([name, n, p]) => entrySpan(name, n, p)) });
         }
+      };
+      // Like ls(1): file operands first, as one listing; then each directory,
+      // with a heading when there is more than one thing to show.
+      list(files);
+      dirs.forEach(([t, node, abs], i) => {
+        const entries = [
+          ...(flags.a ? [[".", node, abs], ["..", getNode(session.fs, parentOf(abs)), parentOf(abs)]] : []),
+          ...Object.keys(node.children)
+            .filter((n) => flags.a || !n.startsWith("."))
+            .sort((a, b) => a.localeCompare(b))
+            .map((n) => [n, node.children[n], childPath(abs, n)]),
+        ];
+        if (targets.length > 1) {
+          if (i || files.length) out.push(line(""));
+          out.push(line(span(`${t}:`, "t-muted")));
+        }
+        if (flags.l) {
+          const blocks = entries.reduce((sum, [, n]) => sum + Math.ceil(sizeOf(n) / 512), 0);
+          out.push(line(span(`total ${blocks}`, "t-muted")));
+        }
+        list(entries);
       });
       return { out, err, code: err.length ? 1 : 0 };
     },
@@ -374,8 +389,12 @@ export const COMMANDS = {
         if (pattern && !pattern.test(baseName(p))) continue;
         if (type === "f" && node.type !== "file") continue;
         if (type === "d" && node.type !== "dir") continue;
-        const shown = start.replace(/\/$/, "") + p.slice(abs.length);
-        out.push(line(entrySpan(shown || start, node, p)));
+        const base = start === "/" ? "" : start.replace(/\/$/, "");
+        const shown = base + p.slice(abs.length) || start;
+        const entry = entrySpan(shown, node, p);
+        // find prints paths, not ls-style names: no trailing slash on directories.
+        if (node.type === "dir") entry.text = shown;
+        out.push(line(entry));
       }
       return { out, err: [], code: out.length ? 0 : 1 };
     },
@@ -547,18 +566,19 @@ export const COMMANDS = {
       if (!rest.length) return fail("usage: rm [-rf] <path>");
       if (flags.r && rest.some((r) => ["/", "~", HOME, "*", "/*"].includes(r)))
         return fail("rm: nice try. This portfolio took weeks. 🙂");
+      // Like rm(1): report each bad operand and keep going with the rest.
+      const err = [];
       for (const r of rest) {
         const abs = resolvePath(session.cwd, r);
         const node = getNode(session.fs, abs);
-        if (!node) {
-          if (flags.f) continue;
-          return fail(`rm: ${r}: No such file or directory`);
-        }
-        if (!node.userCreated) return fail(`rm: ${r}: Operation not permitted (it's load-bearing)`);
-        if (node.type === "dir" && !flags.r) return fail(`rm: ${r}: is a directory`);
-        delete getNode(session.fs, parentOf(abs)).children[baseName(abs)];
+        let problem = null;
+        if (!node) problem = flags.f ? null : "No such file or directory";
+        else if (!node.userCreated) problem = "Operation not permitted (it's load-bearing)";
+        else if (node.type === "dir" && !flags.r) problem = "is a directory";
+        else delete getNode(session.fs, parentOf(abs)).children[baseName(abs)];
+        if (problem) err.push(...text(`rm: ${r}: ${problem}`, "t-err"));
       }
-      return ok();
+      return { out: [], err, code: err.length ? 1 : 0 };
     },
   },
   open: {
@@ -889,8 +909,8 @@ export const COMMANDS = {
       const out = [];
       let code = 0;
       for (const a of args) {
-        if (ALIASES[a]) out.push(line(`${a}: aliased to ${ALIASES[a]}`));
-        else if (COMMANDS[a]) out.push(line(`/usr/bin/${a}`));
+        if (own(ALIASES, a)) out.push(line(`${a}: aliased to ${ALIASES[a]}`));
+        else if (own(COMMANDS, a)) out.push(line(`/usr/bin/${a}`));
         else {
           out.push(line(span(`${a} not found`, "t-err")));
           code = 1;
@@ -906,7 +926,7 @@ export const COMMANDS = {
     run: ({ args }) => {
       const name = args[0];
       if (!name) return fail("What manual page do you want? Try: man ls");
-      const cmd = COMMANDS[name];
+      const cmd = own(COMMANDS, name);
       if (!cmd) return fail(`No manual entry for ${name}`);
       return ok([
         line(span("NAME", "t-h2")),

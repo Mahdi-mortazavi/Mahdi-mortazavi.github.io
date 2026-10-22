@@ -28,7 +28,7 @@ const AppleMenu = () => {
   const ui = useUiStore.getState;
 
   const items = [
-    { id: "about", label: t("menu.aboutReza"), run: () => openApp("notes") },
+    { id: "about", label: t("menu.aboutMe"), run: () => openApp("notes") },
     { id: "projects", label: t("menu.projects"), run: () => openApp("safari") },
     { id: "resume", label: t("menu.resume"), run: () => openApp("resume") },
     "-",
@@ -149,7 +149,7 @@ const MenuBar = () => {
           <SlidersHorizontal className="size-4" aria-hidden="true" />
         </button>
         <time className="menubar-item menubar-clock tabular-nums" dateTime={now.toISOString()}>
-          {locale === "fa" ? clock.replace("،", "") : clock.replace(",", "").replace(" at", "")}
+          {locale === "fa" ? clock.replace(/،/g, "") : clock.replace(/,/g, "").replace(/\s+at\s+/, " ")}
         </time>
       </div>
 

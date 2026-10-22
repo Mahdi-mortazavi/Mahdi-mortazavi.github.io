@@ -4,7 +4,7 @@ import { useWindowContext } from "../components/window/WindowContext";
 import useWindowStore from "#store/window";
 import useSettingsStore from "#store/settings";
 import { openApp, openExternal, openProject } from "../lib/actions";
-import { complete, createSession, execute, promptPath } from "../lib/terminal/shell";
+import { complete, createSession, execute, promptPath, pushHistory, setExitCode } from "../lib/terminal/shell";
 import { line, span } from "../lib/terminal/output";
 import { safeStorage } from "../lib/storage";
 import { USER, HOSTNAME } from "../lib/terminal/fs";
@@ -136,7 +136,10 @@ const Terminal = () => {
   });
   const [value, setValue] = useState("");
   const [historyIndex, setHistoryIndex] = useState(-1);
+  // What was typed before stepping into history, restored on the way back.
+  const [draft, setDraft] = useState("");
   const inputRef = useRef(null);
+  const clearRef = useRef(null);
   const bodyRef = useRef(null);
 
   const io = {
@@ -148,8 +151,14 @@ const Terminal = () => {
     getAppearance: () => useSettingsStore.getState().appearance,
     setWallpaper: (id) => useSettingsStore.getState().setWallpaper(id),
     isDark: () => document.documentElement.classList.contains("dark"),
+    // Set by the clear command, consumed by execute() once per clear.
     clear: () => {
-      io.cleared = true;
+      clearRef.current = "requested";
+    },
+    takeClear: () => {
+      if (clearRef.current !== "requested") return false;
+      clearRef.current = "done";
+      return true;
     },
     close: () => closeWindow(windowKey),
   };
@@ -168,16 +177,16 @@ const Terminal = () => {
 
   const run = (raw) => {
     const cmd = raw.trim();
-    if (cmd && session.history[session.history.length - 1] !== cmd) {
-      session.history.push(cmd);
-      safeStorage.setItem(HISTORY_KEY, JSON.stringify(session.history.slice(-200)));
-    }
+    pushHistory(session, cmd);
     const prompt = { cwd: promptPath(session), cmd: raw, ok: session.lastCode === 0 };
-    io.cleared = false;
+    clearRef.current = null;
     const lines = cmd ? execute(session, io, cmd) : [];
+    // Saved after running, so `history -c` is what gets stored.
+    if (cmd) safeStorage.setItem(HISTORY_KEY, JSON.stringify(session.history.slice(-200)));
     setValue("");
     setHistoryIndex(-1);
-    if (io.cleared) setBlocks([]);
+    setDraft("");
+    if (clearRef.current === "done") setBlocks(lines.length ? [{ id: ++blockSeq, lines }] : []);
     else append({ prompt, lines });
     if (!isMobile) inputRef.current?.focus({ preventScroll: true });
   };
@@ -196,13 +205,15 @@ const Terminal = () => {
     const h = session.history;
     if (!h.length) return;
     let next;
-    if (dir < 0) next = historyIndex === -1 ? h.length - 1 : Math.max(0, historyIndex - 1);
-    else {
+    if (dir < 0) {
+      if (historyIndex === -1) setDraft(value);
+      next = historyIndex === -1 ? h.length - 1 : Math.max(0, historyIndex - 1);
+    } else {
       if (historyIndex === -1) return;
       next = historyIndex + 1;
       if (next >= h.length) {
         setHistoryIndex(-1);
-        setValue("");
+        setValue(draft);
         return;
       }
     }
@@ -227,7 +238,7 @@ const Terminal = () => {
       if (window.getSelection()?.toString()) return; // let copy work
       e.preventDefault();
       append({ prompt: { cwd: promptPath(session), cmd: `${value}^C`, ok: session.lastCode === 0 }, lines: [] });
-      session.lastCode = 130;
+      setExitCode(session, 130);
       setValue("");
     } else if (e.ctrlKey && e.key.toLowerCase() === "l") {
       e.preventDefault();

@@ -55,9 +55,16 @@ The Mail app posts to any form service when an endpoint is set at build time
 (`VITE_CONTACT_ENDPOINT`, plus `VITE_CONTACT_ACCESS_KEY` for Web3Forms). Without
 one it opens the visitor's email app with the message filled in.
 
-## Credits
+## Credits & thanks
 
-The desktop design and code are based on
-[Reza Abdollahi's macOS portfolio](https://github.com/Rezaabdollahi7/portfolio)
-([srezadev.ir](https://srezadev.ir)). Persian text is set in
-[Vazirmatn](https://github.com/rastikerdar/vazirmatn) (SIL OFL).
+This site stands on the work of **[Reza Abdollahi](https://github.com/Rezaabdollahi7)**
+([srezadev.ir](https://srezadev.ir)), the original developer of
+**[Rezaabdollahi7/portfolio](https://github.com/Rezaabdollahi7/portfolio)**, the macOS-style
+portfolio this desktop is built on. The window manager, dock, Spotlight, terminal, Mission
+Control, the iOS home screen and the bilingual (English/Persian) architecture are all his
+design and code. Thank you, Reza, for building it so carefully and sharing it in the open. 🙏
+
+If you like this site, please ⭐ [the original repository](https://github.com/Rezaabdollahi7/portfolio) too.
+
+Persian text is set in [Vazirmatn](https://github.com/rastikerdar/vazirmatn) by
+Saber Rastikerdar (SIL Open Font License).

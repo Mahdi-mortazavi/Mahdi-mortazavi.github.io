@@ -74,12 +74,18 @@ const Safari = ({ data, openCount }) => {
     else if (data?.home) navigate(INDEX);
   }
 
-  // Scroll to top on navigation, and mirror the page in the URL hash.
+  // Scroll to top on navigation.
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: 0 });
+  }, [page]);
+
+  // Mirror the page in the URL hash while Safari is on screen. Closing clears
+  // the hash, so reopening on the same page has to write it again.
+  useEffect(() => {
+    if (!isVisible) return;
     const hash = `#${pagePath(page)}`;
     if (window.location.hash !== hash) window.history.replaceState(window.history.state, "", hash);
-  }, [page]);
+  }, [page, isVisible]);
 
   const go = (delta) =>
     updateTab(active.id, (t) => ({

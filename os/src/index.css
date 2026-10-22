@@ -1823,9 +1823,12 @@ html[lang="fa"] {
     }
   }
 
+  /* Flex, not grid: in an auto grid row the image's max-height:100% has
+     nothing to resolve against, so tall images ran under the thumbnails. */
   .lightbox-stage {
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     min-height: 0;
     margin: 0;
   }
@@ -1860,7 +1863,9 @@ html[lang="fa"] {
   .lightbox-thumbs {
     display: flex;
     gap: 8px;
-    justify-content: center;
+    /* "safe": when the strip overflows, start at the first thumbnail instead
+       of pushing the first ones past the left edge where they can't be reached. */
+    justify-content: safe center;
     overflow-x: auto;
     padding: 4px;
     scrollbar-width: none;
@@ -4755,7 +4760,8 @@ html[lang="fa"] {
     background: #fff !important;
   }
 
-  #root {
+  /* Only while the Resume window is open does printing print the resume. */
+  body:has(.print-root) #root {
     display: none !important;
   }
 
@@ -4946,15 +4952,6 @@ html[lang="fa"] {
       color: var(--text-3);
       opacity: 0.8;
     }
-  }
-
-  .mail-hp {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    pointer-events: none;
-    inset-inline-start: -9999px;
   }
 
   .mail-footer {

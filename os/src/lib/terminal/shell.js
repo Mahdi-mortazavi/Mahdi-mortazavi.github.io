@@ -9,6 +9,7 @@ import {
   buildFs,
   displayPath,
   getNode,
+  own,
   globToRegExp,
   isWritableDir,
   parentOf,
@@ -152,24 +153,43 @@ export const parse = (tokens) => {
     } else cmd.argv.push(t);
   }
   if (cmd.argv.length || cmd.redirect || pipeline.length) endPipeline(null);
+  else if (connector === "&&" || connector === "||") throw new Error(`parse error near \`${connector}'`);
   return sequence;
 };
 
-// Expand * and ? in the last path segment. Unmatched patterns stay literal.
+// Expand * and ? in any path segment (projects/*/README.md). Unmatched
+// patterns stay literal.
 const expandGlob = (session, token) => {
   if (!token.glob) return [token.word];
   const pattern = token.word;
-  const slash = pattern.lastIndexOf("/");
-  const dirPart = slash === -1 ? "" : pattern.slice(0, slash + 1);
-  const basePart = pattern.slice(slash + 1);
-  if (!/[*?]/.test(basePart)) return [pattern];
-  const dirNode = getNode(session.fs, resolvePath(session.cwd, dirPart || "."));
-  if (dirNode?.type !== "dir") return [pattern];
-  const re = globToRegExp(basePart);
-  const matches = Object.keys(dirNode.children)
-    .filter((n) => re.test(n) && (basePart.startsWith(".") || !n.startsWith(".")))
-    .sort((a, b) => a.localeCompare(b))
-    .map((n) => dirPart + n);
+  if (!/[*?]/.test(pattern)) return [pattern];
+  const absolute = pattern.startsWith("/");
+  const segments = pattern.split("/").filter((s, i) => s || i === 0);
+  // Each candidate: the text shown so far and the absolute path it names.
+  let candidates = [{ shown: absolute ? "/" : "", abs: absolute ? "/" : session.cwd }];
+  segments.forEach((seg, i) => {
+    if (!seg) return; // leading "/" of an absolute pattern
+    const last = i === segments.length - 1;
+    const join = (c, name) => ({
+      shown: c.shown === "" || c.shown.endsWith("/") ? c.shown + name : `${c.shown}/${name}`,
+      abs: resolvePath(c.abs, name),
+    });
+    if (!/[*?]/.test(seg)) {
+      candidates = candidates.map((c) => join(c, seg));
+      return;
+    }
+    const re = globToRegExp(seg);
+    candidates = candidates.flatMap((c) => {
+      const node = getNode(session.fs, c.abs);
+      if (node?.type !== "dir") return [];
+      return Object.keys(node.children)
+        .filter((n) => re.test(n) && (seg.startsWith(".") || !n.startsWith(".")))
+        .filter((n) => last || node.children[n].type === "dir")
+        .sort((a, b) => a.localeCompare(b))
+        .map((n) => join(c, n));
+    });
+  });
+  const matches = candidates.filter((c) => getNode(session.fs, c.abs)).map((c) => c.shown);
   return matches.length ? matches : [pattern];
 };
 
@@ -179,6 +199,7 @@ const writeRedirect = (session, redirect, content) => {
   const abs = resolvePath(session.cwd, redirect.path);
   const existing = getNode(session.fs, abs);
   if (existing?.type === "dir") return `zsh: is a directory: ${redirect.path}`;
+  if (redirect.path.endsWith("/")) return `zsh: no such file or directory: ${redirect.path}`;
   if (existing && !existing.userCreated) return `zsh: permission denied: ${redirect.path}`;
   if (!existing && !isWritableDir(session.fs, parentOf(abs)))
     return `zsh: ${getNode(session.fs, parentOf(abs)) ? "read-only file system" : "no such file or directory"}: ${redirect.path}`;
@@ -200,7 +221,8 @@ const writeRedirect = (session, redirect, content) => {
 const runCommand = (session, io, cmd, stdin) => {
   let argv = cmd.argv.flatMap((t) => expandGlob(session, t));
   const invokedAs = argv[0];
-  if (ALIASES[argv[0]]) argv = [...ALIASES[argv[0]].split(" "), ...argv.slice(1)];
+  const alias = own(ALIASES, argv[0]);
+  if (alias) argv = [...alias.split(" "), ...argv.slice(1)];
 
   // VAR=value assignments
   if (argv.length === 1 && /^[A-Za-z_][A-Za-z0-9_]*=/.test(argv[0])) {
@@ -217,7 +239,7 @@ const runCommand = (session, io, cmd, stdin) => {
   }
 
   const [name, ...args] = argv;
-  const command = COMMANDS[name];
+  const command = own(COMMANDS, name);
   if (!command) {
     if (!name) return { out: [], err: [], code: 0 };
     const guess = suggest(name);
@@ -239,6 +261,14 @@ const runCommand = (session, io, cmd, stdin) => {
   }
 };
 
+export const setExitCode = (session, code) => {
+  session.lastCode = code;
+};
+
+export const pushHistory = (session, cmd) => {
+  if (cmd && session.history[session.history.length - 1] !== cmd) session.history.push(cmd);
+};
+
 // Run one input line. Returns the lines to print.
 export const execute = (session, io, input) => {
   let sequence;
@@ -258,6 +288,8 @@ export const execute = (session, io, input) => {
     let result = { out: [], err: [], code: 0 };
     pipeline.forEach((cmd, i) => {
       result = runCommand(session, io, cmd, stdin);
+      // `clear` wipes what this line printed so far; later output still shows.
+      if (io.takeClear?.()) printed.length = 0;
       printed.push(...result.err);
       const isLast = i === pipeline.length - 1;
       if (cmd.redirect) {
@@ -268,7 +300,8 @@ export const execute = (session, io, input) => {
         }
         stdin = "";
       } else if (!isLast) {
-        stdin = toText(result.out);
+        // Commands end their output with a newline (wc -c counts it).
+        stdin = result.out.length ? `${toText(result.out)}\n` : "";
       } else {
         printed.push(...result.out);
       }
@@ -308,7 +341,7 @@ export const complete = (session, input) => {
       .filter((c) => c.startsWith(current))
       .map((c) => ({ insert: c, label: c, suffix: " " }));
   } else {
-    const name = ALIASES[cmd]?.split(" ")[0] ?? cmd;
+    const name = own(ALIASES, cmd)?.split(" ")[0] ?? cmd;
     if (name === "man" || name === "which") {
       candidates = Object.keys(COMMANDS)
         .filter((c) => c.startsWith(current))

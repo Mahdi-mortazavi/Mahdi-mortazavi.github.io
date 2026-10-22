@@ -43,6 +43,16 @@ export const useGlobalShortcuts = (isMobile) => {
       }
       if (ui.spotlightOpen || ui.missionControlOpen) return;
 
+      // "?" (or the Persian "؟") lists every shortcut, and closes the list.
+      if (!typing && !e.metaKey && !e.ctrlKey && (e.key === "?" || e.key === "؟")) {
+        e.preventDefault();
+        if (ui.shortcutsOpen) ui.closeShortcuts();
+        else ui.openShortcuts();
+        return;
+      }
+      // Window shortcuts must not act on windows behind a sheet or menu.
+      if (ui.shortcutsOpen || ui.contextMenu) return;
+
       if (e.altKey && !e.metaKey && !e.ctrlKey && (!typing || inTerminal)) {
         const run = WINDOW_KEYS[e.code];
         if (!run) return;
@@ -50,13 +60,6 @@ export const useGlobalShortcuts = (isMobile) => {
         const store = useWindowStore.getState();
         run(store, selectFocusedKey(store));
         return;
-      }
-
-      // "?" (or the Persian "؟") lists every shortcut.
-      if (!typing && !e.metaKey && !e.ctrlKey && (e.key === "?" || e.key === "؟")) {
-        e.preventDefault();
-        if (ui.shortcutsOpen) ui.closeShortcuts();
-        else ui.openShortcuts();
       }
     };
     window.addEventListener("keydown", onKey);
