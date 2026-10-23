@@ -9,7 +9,6 @@ import { useNow } from "../../hooks/useNow";
 import { useBackLayer } from "../../hooks/useBackLayer";
 import { openApp, openProject, openWindow } from "../../lib/actions";
 import { prefersReducedMotion } from "../../lib/motion";
-import { WeatherWidget } from "../desktop/Widgets";
 import GitHubWidget from "../desktop/GitHubWidget";
 import ControlCenter from "../menubar/ControlCenter";
 import Avatar from "../Avatar";
@@ -161,9 +160,6 @@ const MobileHome = () => {
           </button>
 
           <div className="ios-widget-col">
-            <div className="ios-animate">
-              <WeatherWidget compact />
-            </div>
             <button
               type="button"
               className="ios-animate widget ios-feature"

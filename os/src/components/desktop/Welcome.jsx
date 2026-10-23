@@ -1,24 +1,22 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { Download, FolderOpen } from "lucide-react";
 import { prefersReducedMotion } from "../../lib/motion";
-import { useLocale, useT } from "../../i18n";
+import { openApp } from "../../lib/actions";
+import { useLiveStats } from "../../hooks/useLiveStats";
+import { localizeDigits, useLocale, useT } from "../../i18n";
 import { useContent } from "../../i18n/content";
 
 const WEIGHTS = {
-  subtitle: { min: 100, max: 400, base: 100 },
-  title: { min: 400, max: 900, base: 400 },
+  subtitle: { min: 300, max: 700, base: 500 },
+  title: { min: 600, max: 900, base: 800 },
 };
 
-const renderText = (text, className, weight) =>
+const renderText = (text, weight) =>
   [...text].map((char, i) => (
-    <span
-      key={i}
-      aria-hidden="true"
-      className={className}
-      style={{ fontVariationSettings: `'wght' ${weight}` }}
-    >
-      {char === " " ? " " : char}
+    <span key={i} aria-hidden="true" style={{ fontVariationSettings: `'wght' ${weight}` }}>
+      {char}
     </span>
   ));
 
@@ -48,28 +46,48 @@ const setupHover = (container, type) => {
   };
 };
 
+const Split = ({ text, weight, split }) =>
+  split ? (
+    <>
+      <span className="sr-only">{text}</span>
+      {renderText(text, weight)}
+    </>
+  ) : (
+    text
+  );
+
+// Hero: what I do (headline), proof (subtitle, star count from data.json) and
+// the two things a recruiter wants (projects, resume). Location lives in
+// About and Contact, not here.
 const Welcome = () => {
+  const rootRef = useRef(null);
   const titleRef = useRef(null);
   const subtitleRef = useRef(null);
-  const rootRef = useRef(null);
   const t = useT();
-  const locale = useLocale();
-  const { profile } = useContent();
-  const sub = t("welcome.sub", { name: profile.firstName });
+  const split = useLocale() !== "fa";
   const title = t("welcome.title");
-  const split = locale !== "fa";
+  const { profile } = useContent();
+  const relayStars = useLiveStats()?.stats?.relay?.stars;
+  // "220+": round down to the tens so the claim stays true between syncs.
+  const sub =
+    relayStars != null
+      ? t("welcome.sub", { stars: localizeDigits(String(Math.floor(relayStars / 10) * 10)) })
+      : t("welcome.subPlain");
 
   useGSAP(() => {
-    if (!prefersReducedMotion()) {
-      gsap.from(rootRef.current.children, {
-        opacity: 0,
-        y: 18,
-        duration: 0.9,
-        ease: "power3.out",
-        stagger: 0.12,
-        delay: 0.15,
-      });
-    }
+    if (prefersReducedMotion()) return;
+    gsap.from(rootRef.current.children, {
+      opacity: 0,
+      y: 18,
+      duration: 0.9,
+      ease: "power3.out",
+      stagger: 0.12,
+      delay: 0.15,
+    });
+  }, []);
+
+  // Re-bind when the subtitle changes (star count arrives after first paint).
+  useGSAP(() => {
     if (!split) return;
     const a = setupHover(titleRef.current, "title");
     const b = setupHover(subtitleRef.current, "subtitle");
@@ -77,33 +95,24 @@ const Welcome = () => {
       a();
       b();
     };
-  }, [split]);
+  }, [split, title, sub]);
 
   return (
     <section ref={rootRef} className="welcome" aria-labelledby="welcome-title">
-      <p ref={subtitleRef} className="welcome-sub">
-        {split ? (
-          <>
-            <span className="sr-only">{sub}</span>
-            {renderText(sub, "", 100)}
-          </>
-        ) : (
-          sub
-        )}
-      </p>
       <h1 id="welcome-title" ref={titleRef} className="welcome-title">
-        {split ? (
-          <>
-            <span className="sr-only">{title}</span>
-            {renderText(title, "", 400)}
-          </>
-        ) : (
-          title
-        )}
+        <Split text={title} weight={WEIGHTS.title.base} split={split} />
       </h1>
-      <p className="welcome-role">
-        {profile.role} · {profile.location}
+      <p ref={subtitleRef} className="welcome-sub">
+        <Split text={sub} weight={WEIGHTS.subtitle.base} split={split} />
       </p>
+      <div className="welcome-actions">
+        <button type="button" className="btn btn-primary" onClick={() => openApp("safari")}>
+          <FolderOpen aria-hidden="true" /> {t("welcome.projects")}
+        </button>
+        <a className="btn welcome-btn-ghost" href={profile.resumeUrl} download>
+          <Download aria-hidden="true" /> {t("welcome.resume")}
+        </a>
+      </div>
     </section>
   );
 };
