@@ -1218,8 +1218,16 @@ html[lang="fa"] {
     gap: 16px;
     align-items: flex-start;
 
-    @media (max-width: 1180px) {
+    /* Stack the cards so the hero (centered, up to 880px) never runs into them. */
+    @media (max-width: 1700px) {
       flex-direction: column;
+    }
+
+    /* Too narrow for cards beside the hero: the headline wins. */
+    @media (max-width: 1100px) {
+      .featured-widget {
+        display: none;
+      }
     }
 
     @media (max-height: 760px) {
@@ -1318,55 +1326,74 @@ html[lang="fa"] {
     }
   }
 
-  .weather-widget {
+  .featured-widget {
     display: flex;
     flex-direction: column;
-    width: 170px;
-    height: 170px;
+    gap: 6px;
+    width: 256px;
     padding: 14px 16px;
-    color: #fff;
-    background: linear-gradient(180deg, #2a6fd6 0%, #5a9be6 100%);
+    color: var(--text);
+    background: var(--glass-strong);
+    backdrop-filter: blur(30px) saturate(1.6);
+    -webkit-backdrop-filter: blur(30px) saturate(1.6);
+  }
 
-    &.is-compact {
-      width: 100%;
-      height: 100%;
-      min-height: 0;
+  .featured-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+  }
+
+  .featured-title {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .featured-stars {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-2);
+  }
+
+  .featured-desc {
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: var(--text-2);
+  }
+
+  .featured-links {
+    display: flex;
+    gap: 14px;
+    margin-top: 4px;
+    font-size: 12.5px;
+    font-weight: 600;
+
+    button,
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      color: var(--accent);
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    svg {
+      width: 13px;
+      height: 13px;
     }
   }
 
-  .dark .weather-widget {
-    background: linear-gradient(180deg, #0d2347 0%, #284a7e 100%);
-  }
-
-  .weather-city {
-    font-size: 15px;
-    font-weight: 600;
-  }
-
-  .weather-temp {
-    font-size: 44px;
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: -0.03em;
-  }
-
-  .weather-foot {
-    margin-top: auto;
-    font-size: 12.5px;
-    font-weight: 600;
-  }
-
-  .weather-icon {
-    width: 18px;
-    height: 18px;
-    margin-bottom: 2px;
-  }
-
-  .weather-range {
-    font-weight: 500;
-    opacity: 0.9;
-  }
-
+  /* Hero: solid scrim so the headline reads on any wallpaper. */
   .welcome {
     position: absolute;
     top: 46%;
@@ -1374,46 +1401,62 @@ html[lang="fa"] {
     transform: translate(-50%, -50%);
     text-align: center;
     color: #fff;
-    user-select: none;
-    text-shadow: 0 2px 30px rgb(0 0 0 / 0.18);
-    width: max-content;
-    max-width: 90vw;
-  }
-
-  .welcome-sub {
-    font-family: var(--font-display);
-    font-size: clamp(22px, 2.3vw, 32px);
-    line-height: 1.2;
+    /* Leave room for the Featured card (left) and the icon column (right). */
+    width: min(880px, 90vw, max(560px, calc(100vw - 620px)));
+    padding: 28px 32px 30px;
+    border-radius: 28px;
+    background: rgb(10 12 20 / 0.55);
+    backdrop-filter: blur(18px) saturate(1.4);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+    box-shadow: 0 0 0 0.5px rgb(255 255 255 / 0.18), 0 24px 60px -24px rgb(0 0 0 / 0.6);
   }
 
   .welcome-title {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: clamp(88px, 10vw, 144px);
-    line-height: 1;
+    font-family: var(--font-heading);
+    font-size: clamp(30px, 4.2vw, 58px);
+    font-weight: 800;
+    line-height: 1.1;
     letter-spacing: -0.02em;
-    margin-top: 10px;
+    text-wrap: balance;
   }
 
-  html[lang="fa"] .welcome-sub {
-    font-family: "Vazirmatn Variable", sans-serif;
-    font-weight: 300;
+  .welcome-sub {
+    margin-top: 14px;
+    font-size: clamp(14px, 1.45vw, 19px);
+    font-weight: 500;
+    line-height: 1.4;
+    color: rgb(255 255 255 / 0.92);
   }
 
   html[lang="fa"] .welcome-title {
-    font-style: normal;
+    font-family: "Vazirmatn Variable", sans-serif;
     font-weight: 800;
-    font-size: clamp(72px, 7.8vw, 120px);
-    line-height: 1.15;
+    line-height: 1.3;
     letter-spacing: 0;
   }
 
-  .welcome-role {
-    margin-top: 18px;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-    opacity: 0.85;
+  .welcome-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 22px;
+
+    .btn {
+      height: 44px;
+      padding: 0 22px;
+      font-size: 15px;
+    }
+  }
+
+  .welcome-btn-ghost {
+    color: #fff;
+    background: rgb(255 255 255 / 0.16);
+    box-shadow: 0 0 0 1px rgb(255 255 255 / 0.4) inset;
+
+    &:hover {
+      background: rgb(255 255 255 / 0.26);
+    }
   }
 
   .desktop-icons {
@@ -1423,6 +1466,22 @@ html[lang="fa"] {
     display: grid;
     gap: 6px;
     justify-items: center;
+
+    /* Six icons do not fit a short viewport at full size and used to overlap. */
+    @media (max-height: 720px) {
+      gap: 2px;
+
+      .desktop-icon {
+        width: 80px;
+        padding: 2px 4px;
+        gap: 2px;
+
+        img {
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
   }
 
   .desktop-icon {
@@ -4285,43 +4344,8 @@ html[lang="fa"] {
 
   .ios-widget-col {
     display: grid;
-    grid-template-rows: 1fr 1fr;
-    gap: 16px;
+    grid-template-rows: 1fr;
     aspect-ratio: 1;
-
-    > div {
-      min-height: 0;
-    }
-
-    .weather-widget {
-      padding: 10px 12px;
-      border-radius: 18px;
-    }
-
-    .weather-city {
-      font-size: 12px;
-    }
-
-    .weather-temp {
-      font-size: 26px;
-    }
-
-    .weather-foot {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 10.5px;
-    }
-
-    .weather-icon {
-      width: 12px;
-      height: 12px;
-      margin: 0;
-    }
-
-    .weather-range {
-      margin-inline-start: auto;
-    }
   }
 
   .ios-feature {

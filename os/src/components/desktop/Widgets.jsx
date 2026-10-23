@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useWeather } from "../../hooks/useWeather";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { useLiveStats } from "../../hooks/useLiveStats";
 import { useNow } from "../../hooks/useNow";
-import WeatherIcon from "../WeatherIcon";
 import { monthGrid } from "../../lib/calendar";
+import { openProject } from "../../lib/actions";
 import { formatDate, localizeDigits, useLocale, useT } from "../../i18n";
+import { useContent } from "../../i18n/content";
 
 export const CalendarWidget = () => {
   const today = useNow();
@@ -56,22 +57,27 @@ export const CalendarWidget = () => {
   );
 };
 
-export const WeatherWidget = ({ compact = false }) => {
-  const w = useWeather();
+// Featured project card; stars come from data.json (hidden until it loads).
+export const FeaturedWidget = () => {
   const t = useT();
-  const city = t("weather.city");
-  const condition = t(`weather.${w.condition}`);
+  const stars = useLiveStats()?.stats?.relay?.stars;
+  const { projects } = useContent();
+  const relay = projects.find((p) => p.id === "relay");
   return (
-    <section
-      className={compact ? "widget weather-widget is-compact" : "widget weather-widget"}
-      aria-label={t("weather.aria", { city, temp: w.temperature, condition })}
-    >
-      <p className="weather-city">{city}</p>
-      <p className="weather-temp tabular-nums">{localizeDigits(w.temperature)}°</p>
-      <div className="weather-foot">
-        <WeatherIcon code={w.code} className="weather-icon" />
-        <p className="weather-cond">{condition}</p>
-        <p className="weather-range tabular-nums">{t("weather.range", { high: w.high, low: w.low })}</p>
+    <section className="widget featured-widget" aria-label={t("featured.label")}>
+      <p className="featured-label">{t("featured.label")}</p>
+      <h2 className="featured-title">
+        {relay.title}
+        {stars != null && <span className="featured-stars tabular-nums">★ {localizeDigits(String(stars))}</span>}
+      </h2>
+      <p className="featured-desc">{t("featured.relay")}</p>
+      <div className="featured-links">
+        <button type="button" onClick={() => openProject("relay")}>
+          {t("featured.caseStudy")}
+        </button>
+        <a href="https://github.com/Mahdi-mortazavi/relay" target="_blank" rel="noopener noreferrer">
+          GitHub <ArrowUpRight aria-hidden="true" className="rtl-flip" />
+        </a>
       </div>
     </section>
   );

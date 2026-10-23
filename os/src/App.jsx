@@ -2,7 +2,7 @@ import MenuBar from "./components/menubar/MenuBar";
 import Dock from "./components/Dock";
 import Welcome from "./components/desktop/Welcome";
 import DesktopIcons from "./components/desktop/DesktopIcons";
-import { CalendarWidget, WeatherWidget } from "./components/desktop/Widgets";
+import { CalendarWidget, FeaturedWidget } from "./components/desktop/Widgets";
 import GitHubWidget from "./components/desktop/GitHubWidget";
 import MobileHome from "./components/mobile/MobileHome";
 import Spotlight from "./components/Spotlight";
@@ -52,7 +52,7 @@ const App = () => {
           <main className="desktop" aria-label={t("menu.desktop")} onContextMenu={onDesktopContextMenu}>
             <div className="widgets">
               <CalendarWidget />
-              <WeatherWidget />
+              <FeaturedWidget />
             </div>
             <Welcome />
             <GitHubWidget className="is-desktop" />
