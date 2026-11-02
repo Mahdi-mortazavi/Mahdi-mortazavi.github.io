@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-02T05:58:45.646Z",
+  "generatedAt": "2026-11-02T15:46:40.604Z",
   "totals": {
     "stars": 374,
     "forks": 30,
-    "repos": 10,
+    "repos": 11,
     "followers": 60,
     "last30": 31
   },
@@ -311,6 +311,15 @@
     }
   ],
   "timeline": [
+    {
+      "repo": "angaros",
+      "slug": null,
+      "tag": "v3.0.3",
+      "name": "v3.0.3",
+      "at": "2026-11-02T14:43:48Z",
+      "url": "https://github.com/Mahdi-mortazavi/angaros/releases/tag/v3.0.3",
+      "body": "<!-- Release notes generated using configuration in .github/release.yml at v3.0.3 --> **Full Changelog**: https://github.com/Mahdi-mortazavi/angaros/commits/v3.0.3"
+    },
     {
       "repo": "relay",
       "slug": "relay",
@@ -661,15 +670,6 @@
       "at": "2026-07-12T23:31:20Z",
       "url": "https://github.com/Mahdi-mortazavi/purify/releases/tag/v0.1.2",
       "body": "## What's Changed * v0.1.1: QA & hardening — fix scanner, safety, quarantine, and desktop… by @Mahdi-mortazavi in https://github.com/Mahdi-mortazavi/purify/pull/5 * v0.1.2: major analysis speedup + full Windows end-to-end testing by @Mahdi-mortazavi in https:/"
-    },
-    {
-      "repo": "purify",
-      "slug": "purify",
-      "tag": "v0.1.1",
-      "name": "purify v0.1.1",
-      "at": "2026-07-12T10:30:41Z",
-      "url": "https://github.com/Mahdi-mortazavi/purify/releases/tag/v0.1.1",
-      "body": "## What's Changed * Claude/windows cleanup rust app 6b5m3t by @Mahdi-mortazavi in https://github.com/Mahdi-mortazavi/purify/pull/3 * v0.1.1: QA & hardening — scanner/safety/quarantine/desktop bug fixes by @Mahdi-mortazavi in https://github.com/Mahdi-mortazavi/"
     }
   ]
 }
