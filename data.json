@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-05T06:42:31.787Z",
+  "generatedAt": "2026-11-05T19:55:46.149Z",
   "totals": {
     "stars": 376,
     "forks": 30,
-    "repos": 11,
+    "repos": 12,
     "followers": 60,
     "last30": 31
   },
@@ -14,14 +14,14 @@
       "stars": 237,
       "forks": 19,
       "language": "Kotlin",
-      "pushedAt": "2026-11-02T03:56:29Z",
+      "pushedAt": "2026-11-05T09:42:13Z",
       "description": "📱 Share your phone's internet with your PC — Android → Windows reverse tethering over an encrypted WireGuard tunnel. No root, no server, no account."
     },
     "flow": {
       "stars": 75,
       "forks": 8,
       "language": "Dart",
-      "pushedAt": "2026-08-20T23:36:49Z",
+      "pushedAt": "2026-11-05T09:40:44Z",
       "description": "🪨 One decision a day. ⏱ Focus. 🌱 Habits. 🔒 100% offline."
     },
     "sooda": {
@@ -35,7 +35,7 @@
       "stars": 26,
       "forks": 1,
       "language": "Dart",
-      "pushedAt": "2026-07-23T00:22:09Z",
+      "pushedAt": "2026-11-05T09:41:01Z",
       "description": "🍎 Nava: The Art of Reduction. A Jony Ive inspired productivity app with Squircle design, Haptic feedback & Breathing animations. | نوا: مینیمالیسم محض؛ هنرِ حذف اضافات."
     },
     "purify": {
@@ -323,6 +323,15 @@
     }
   ],
   "timeline": [
+    {
+      "repo": "angaros",
+      "slug": null,
+      "tag": "v3.1.0",
+      "name": "v3.1.0",
+      "at": "2026-11-05T09:38:46Z",
+      "url": "https://github.com/Mahdi-mortazavi/angaros/releases/tag/v3.1.0",
+      "body": "## [3.1.0](https://github.com/Mahdi-mortazavi/angaros/compare/v3.0.3...v3.1.0) (2026-11-02) ### Features * official Claude Code plugin + marketplace, accurate install instructions (no PyPI yet) ([75cd808](https://github.com/Mahdi-mortazavi/angaros/commit/75cd8"
+    },
     {
       "repo": "angaros",
       "slug": null,
@@ -673,15 +682,6 @@
       "at": "2026-07-13T00:04:36Z",
       "url": "https://github.com/Mahdi-mortazavi/purify/releases/tag/v0.1.3",
       "body": "## What's Changed * v0.1.3: macOS-inspired \"Liquid Glass\" desktop redesign by @Mahdi-mortazavi in https://github.com/Mahdi-mortazavi/purify/pull/7 **Full Changelog**: https://github.com/Mahdi-mortazavi/purify/compare/v0.1.2...v0.1.3"
-    },
-    {
-      "repo": "purify",
-      "slug": "purify",
-      "tag": "v0.1.2",
-      "name": "purify v0.1.2",
-      "at": "2026-07-12T23:31:20Z",
-      "url": "https://github.com/Mahdi-mortazavi/purify/releases/tag/v0.1.2",
-      "body": "## What's Changed * v0.1.1: QA & hardening — fix scanner, safety, quarantine, and desktop… by @Mahdi-mortazavi in https://github.com/Mahdi-mortazavi/purify/pull/5 * v0.1.2: major analysis speedup + full Windows end-to-end testing by @Mahdi-mortazavi in https:/"
     }
   ]
 }
