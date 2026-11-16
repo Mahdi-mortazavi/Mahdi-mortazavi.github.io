@@ -1,25 +1,25 @@
 {
-  "generatedAt": "2026-11-15T18:49:30.084Z",
+  "generatedAt": "2026-11-16T06:24:56.255Z",
   "totals": {
-    "stars": 383,
-    "forks": 31,
+    "stars": 384,
+    "forks": 30,
     "repos": 12,
     "followers": 60,
-    "last30": 31
+    "last30": 30
   },
   "bio": "Full-Stack Developer × Product Builder × Problem Solver",
   "growthSource": "daily-snapshots",
   "stats": {
     "relay": {
-      "stars": 243,
+      "stars": 244,
       "forks": 20,
       "language": "Kotlin",
-      "pushedAt": "2026-11-10T14:40:55Z",
+      "pushedAt": "2026-11-16T03:56:16Z",
       "description": "📱 Share your phone's internet with your PC — Android → Windows reverse tethering over an encrypted WireGuard tunnel. No root, no server, no account."
     },
     "flow": {
       "stars": 76,
-      "forks": 8,
+      "forks": 7,
       "language": "Dart",
       "pushedAt": "2026-11-05T09:40:44Z",
       "description": "🪨 One decision a day. ⏱ Focus. 🌱 Habits. 🔒 100% offline."
@@ -360,6 +360,10 @@
     {
       "m": "2026-11-15",
       "v": 383
+    },
+    {
+      "m": "2026-11-16",
+      "v": 384
     }
   ],
   "timeline": [
