@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-27T21:14:49.196Z",
+  "generatedAt": "2026-11-28T07:45:08.208Z",
   "totals": {
     "stars": 395,
     "forks": 30,
     "repos": 12,
     "followers": 63,
-    "last30": 28
+    "last30": 23
   },
   "bio": "Full-Stack Developer × Product Builder × Problem Solver",
   "growthSource": "daily-snapshots",
@@ -407,6 +407,10 @@
     },
     {
       "m": "2026-11-27",
+      "v": 395
+    },
+    {
+      "m": "2026-11-28",
       "v": 395
     }
   ],
